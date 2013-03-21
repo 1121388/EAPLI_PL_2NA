@@ -17,7 +17,6 @@ public class MainMenu {
         System.out.println("===================\n");
         
         System.out.println("1. Register an expense");
-        System.out.println("3. Manage expense types");
         System.out.println("0. Exit\n\n");
         
         int option = Console.readInteger("Please choose a option");
@@ -28,10 +27,6 @@ public class MainMenu {
             case 1: 
                 ExpenseRegisterUI ui = new ExpenseRegisterUI();
                 ui.mainLoop();
-                break;
-            case 3: 
-                ExpenseTypeUI pExpenseTypeUI = new ExpenseTypeUI();
-                pExpenseTypeUI.mainLoop();
                 break;
         }
     }
