@@ -22,13 +22,17 @@ public class ExpensesMonthlyUI {
         String what = Console.readLine("Introduza data (formato MM/AAAA):");
         String[] dados = what.split("/");
         
-        ExpensesMonthlyController controller = new ExpensesMonthlyController();
+        //ExpensesMonthlyController DPC = new ExpensesMonthlyController();
+                        
+        //List<String, BigDecimal> despesas = DPC.consultaDadosMensais(dados[0], dados[1]);
         
-        List<Expense> resultado = controller.consultaDadosMensais(dados[0], dados[1]);
-        
-        for(int i=0; i<resultado.size(); i++)
-        {
-            System.out.println("So far, no expenses...");
-        }
+        //BigDecimal totalDespesas = 0;
+        //int numDespesas = 0;
+                
+        //for(int i=0; i<despesas.size(); i++)
+        //{
+        //    
+        //    System.out.println("So far, no expenses...");
+        //}
     }
 }
