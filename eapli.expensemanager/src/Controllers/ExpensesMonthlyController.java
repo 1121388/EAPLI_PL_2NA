@@ -4,11 +4,18 @@
  */
 package Controllers;
 
+import Model.Expense;
+import java.util.List;
+
 /**
  *
  * @author adao
  */
 public class ExpensesMonthlyController {
-    public void consultaDadosMensais(String mes, String ano) {
+
+    public List<Expense> consultaDadosMensais(String mes, String ano)
+    {
+        List<Expense> j = null;
+        return j;
     }
 }

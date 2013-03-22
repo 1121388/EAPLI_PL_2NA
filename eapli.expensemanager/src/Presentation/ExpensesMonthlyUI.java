@@ -5,9 +5,11 @@
 package Presentation;
 
 import Controllers.ExpensesMonthlyController;
+import Model.Expense;
 import eapli.util.Console;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -22,8 +24,11 @@ public class ExpensesMonthlyUI {
         
         ExpensesMonthlyController controller = new ExpensesMonthlyController();
         
-        controller.consultaDadosMensais(dados[0], dados[1]);
+        List<Expense> resultado = controller.consultaDadosMensais(dados[0], dados[1]);
         
-        System.out.println("So far, no expenses...");
+        for(int i=0; i<resultado.size(); i++)
+        {
+            System.out.println("So far, no expenses...");
+        }
     }
 }
