@@ -4,7 +4,11 @@
  */
 package Presentation;
 
+import Controllers.InitializeBalanceController;
+import Presentation.InitializeBalanceUI;
 import eapli.util.Console;
+
+
 
 /**
  *
@@ -44,14 +48,19 @@ public class MainMenu {
         System.out.println("      Settings      ");
         System.out.println("====================\n");
 
-        System.out.println("1. ");
+        System.out.println("1. Initialize Balance");
         System.out.println("0. Back to main menu\n\n");
 
         int option = Console.readInteger("Please choose a option");
         switch (option) {
             case 0: 
                 mainLoop();
-    }
+            case 1:
+                InitializeBalanceUI ui = new InitializeBalanceUI();
+                ui.InitializeBalance();
+                mainLoop();
+                break;
+        }
     }
     
 }
