@@ -18,6 +18,7 @@ public class MainMenu {
         
         System.out.println("1. Register an expense");
         System.out.println("2. Settings");
+        System.out.println("5. Monthy expenses");
         System.out.println("0. Exit\n\n");
         
         int option = Console.readInteger("Please choose a option");
@@ -26,11 +27,15 @@ public class MainMenu {
                 System.out.println("bye bye ...");
                 return;
             case 1: 
-                ExpenseRegisterUI ui = new ExpenseRegisterUI();
-                ui.mainLoop();
+                ExpenseRegisterUI ui1 = new ExpenseRegisterUI();
+                ui1.mainLoop();
                 break;
             case 2: 
                 Settings();
+                break;
+            case 5: 
+                ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
+                ui5.mainLoop();
                 break;
         }
     }
