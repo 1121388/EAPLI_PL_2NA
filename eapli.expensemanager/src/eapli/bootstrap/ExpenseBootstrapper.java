@@ -16,9 +16,9 @@ public class ExpenseBootstrapper {
 
     static {
         ExpenseRepository repo = new ExpenseRepository();
-        repo.save(new Expense("Autocarro", 2013, 3, 4, new BigDecimal(2.4)));
-        repo.save(new Expense("Almoço", 2013, 3, 5, new BigDecimal(12.4)));
-        repo.save(new Expense("Sapatilhas", 2013, 3, 4, new BigDecimal(123.4)));
-        repo.save(new Expense("Cinema", 2013, 3, 4, new BigDecimal(5.0)));
+        repo.save(new Expense("Autocarro", 2013, 3, 4, new BigDecimal(2.4),"Transportes"));
+        repo.save(new Expense("Almoço", 2013, 3, 5, new BigDecimal(12.4),"Refeições"));
+        repo.save(new Expense("Sapatilhas", 2013, 3, 4, new BigDecimal(123.4),"Vestuário"));
+        repo.save(new Expense("Cinema", 2013, 3, 4, new BigDecimal(5.0),"Lazer"));
     }
 }
