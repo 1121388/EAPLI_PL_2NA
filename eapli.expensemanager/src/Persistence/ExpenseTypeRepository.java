@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ExpenseTypeRepository {
     
-    private List<ExpenseType> ExpenseTypeList = new ArrayList<ExpenseType>();
+    private static List<ExpenseType> pExpenseTypeList = new ArrayList<ExpenseType>();
     
     public ExpenseTypeRepository() {}
     
@@ -23,19 +23,26 @@ public class ExpenseTypeRepository {
     }
     
     private void AddExpenseType(ExpenseType aExpenseType) {
-        ExpenseTypeList.add(aExpenseType);
+        pExpenseTypeList.add(aExpenseType);
     }
     
     public String ExpenseTypeList() {
         String List = "";
-        if (ExpenseTypeList.size() > 0) {
+        if (pExpenseTypeList.size() > 0) {
             List = "\nExpense types list:\n";
-            for (int i = 0; i < ExpenseTypeList.size(); i++) {
-                List = List + "[" + (i + 1) + "] " + ExpenseTypeList.get(i).GetDescription() + "\n";
+            for (int i = 0; i < pExpenseTypeList.size(); i++) {
+                List = List + "[" + (i + 1) + "] " + pExpenseTypeList.get(i).GetDescription() + "\n";
             }
         }
         return List;
     }
 
+    public List<ExpenseType> ExpenseTypeObjectList() {
+        return pExpenseTypeList;
+    }
+        
+    public ExpenseType GetExpenseType(int aNrObject) {
+        return pExpenseTypeList.get(aNrObject - 1);
+    }
     
 }

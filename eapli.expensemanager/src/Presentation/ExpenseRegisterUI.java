@@ -27,7 +27,16 @@ class ExpenseRegisterUI {
         System.out.println(controller.ExpenseTypeList());
         String expenseType = Console.readLine("Type:");
         
-        controller.registerExpense(what, date, amount, expenseType);
+        
+        if(expenseType.equalsIgnoreCase("check")){
+            int checkNumber=Console.readInteger("Please enter the check number: ");
+            controller.registerExpense(what, date, amount, expenseType, checkNumber);
+        } else {
+            controller.registerExpense(what, date, amount, expenseType);
+        }
+            
+
+        
         
         System.out.println("expense recorded.");
     
