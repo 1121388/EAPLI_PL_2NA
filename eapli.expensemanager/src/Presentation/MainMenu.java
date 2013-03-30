@@ -4,10 +4,9 @@
  */
 package Presentation;
 
-import Controllers.InitializeBalanceController;
-import Presentation.InitializeBalanceUI;
+import Controllers.*;
+import Presentation.*;
 import eapli.util.Console;
-
 
 
 /**
@@ -40,27 +39,10 @@ public class MainMenu {
             case 5: 
                 ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
                 ui5.mainLoop();
-                break;
-            case 5: 
-                ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
-                ui5.mainLoop();
-                break;
+                break;          
         }
     }
-    public void Settings() {
-        System.out.println("====================");
-        System.out.println("      Settings      ");
-        System.out.println("====================\n");
 
-        System.out.println("1. ");
-        System.out.println("0. Back to main menu\n\n");
-
-        int option = Console.readInteger("Please choose a option");
-        switch (option) {
-            case 0: 
-                mainLoop();
-    }
-    }
     public void Settings() {
         System.out.println("====================");
         System.out.println("      Settings      ");

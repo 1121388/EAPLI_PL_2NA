@@ -4,7 +4,9 @@
  */
 package Presentation;
 
-import Controllers.ExpenseRegisterController;
+import Controllers.*;
+import Model.*;
+import Presentation.*;
 
 import eapli.util.Console;
 import java.math.BigDecimal;
@@ -25,19 +27,11 @@ class ExpenseRegisterUI {
         BigDecimal amount = new BigDecimal(value);
         
         System.out.println(controller.ExpenseTypeList());
-        String expenseType = Console.readLine("Type:");
+        ExpenseType expenseType = controller.GetExpenseType(Console.readInteger("Type:"));
         
-        
-        if(expenseType.equalsIgnoreCase("check")){
-            int checkNumber=Console.readInteger("Please enter the check number: ");
-            controller.registerExpense(what, date, amount, expenseType, checkNumber);
-        } else {
-            controller.registerExpense(what, date, amount, expenseType);
-        }
-            
+        controller.registerExpense(what, date, amount, expenseType);
+         
 
-        
-        
         System.out.println("expense recorded.");
     
     }

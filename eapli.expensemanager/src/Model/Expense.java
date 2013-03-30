@@ -20,11 +20,11 @@ public class Expense {
    
     BigDecimal amount;
     
-    String expenseType;
+    ExpenseType expenseType;
     
     protected Expense() {}
     
-    public Expense( String description, Date dateOccurred, BigDecimal amount, String expenseType) {
+    public Expense( String description, Date dateOccurred, BigDecimal amount, ExpenseType expenseType) {
         if (description == null || dateOccurred == null || amount == null) {
             throw new IllegalArgumentException();
         }
@@ -37,7 +37,7 @@ public class Expense {
         this.expenseType = expenseType; 
     }
     
-    public Expense( String description, int year, int month, int day, BigDecimal amount, String expenseType) {
+    public Expense( String description, int year, int month, int day, BigDecimal amount, ExpenseType expenseType) {
         this( description, DateTime.newDate(year, month, day), amount, expenseType);
     }
     

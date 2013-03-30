@@ -25,8 +25,13 @@ public class ExpenseRegisterController {
         ExpenseTypeRepository expenseTypeRepository = new ExpenseTypeRepository();
         return expenseTypeRepository.ExpenseTypeList();
     }
+    public ExpenseType GetExpenseType(int expenseType){
+        ExpenseTypeRepository expenseTypeRepository = new ExpenseTypeRepository();
+        return expenseTypeRepository.GetExpenseType(expenseType);
+    }
+ 
     
-    public void registerExpense(String what, Date date, BigDecimal amount, String expenseType) {
+    public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType) {
         Expense expense = new Expense( what, date, amount,expenseType);
         ExpenseRepository repo = new ExpenseRepository();
         repo.save(expense);
