@@ -22,6 +22,8 @@ public class Expense {
     
     ExpenseType expenseType;
     
+    Date dateOccurred;
+    
     MeansOfPayment meansOfPayment;
     
     protected Expense() {}
@@ -38,6 +40,8 @@ public class Expense {
         this.amount = amount;
         this.expenseType = expenseType; 
         this.meansOfPayment = meansOfPayment;
+        this.dateOccurred = dateOccurred;
+
     }
     
     public Expense( String description, int year, int month, int day, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
@@ -47,6 +51,9 @@ public class Expense {
     public BigDecimal getAmount() {
         return amount;
     }
-
+    
+    public Date getDateOccurred() {
+        return dateOccurred;
+    }
    
 }
