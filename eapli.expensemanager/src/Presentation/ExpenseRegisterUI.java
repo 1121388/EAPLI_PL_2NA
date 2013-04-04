@@ -29,9 +29,17 @@ class ExpenseRegisterUI {
         System.out.println(controller.ExpenseTypeList());
         ExpenseType expenseType = controller.GetExpenseType(Console.readInteger("Type:"));
         
-        controller.registerExpense(what, date, amount, expenseType);
-         
-
+        System.out.println(controller.listPaymentTypeList());
+        PaymentType paymentType = controller.GetPaymentType(Console.readInteger("Type:"));
+        MeansOfPayment meansOfPayment;
+        if(paymentType.GetDescription().equalsIgnoreCase("check")){
+            int checkNumber = Console.readInteger("Please enter the check number: ");
+            meansOfPayment = controller.meansOfPayment(paymentType, checkNumber);
+        } else {
+            meansOfPayment = controller.meansOfPayment(paymentType);
+        }
+       
+        controller.registerExpense(what, date, amount, expenseType, meansOfPayment);
         System.out.println("expense recorded.");
     
     }
