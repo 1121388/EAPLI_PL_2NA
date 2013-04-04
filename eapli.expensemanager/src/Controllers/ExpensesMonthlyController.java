@@ -5,8 +5,11 @@
 package Controllers;
 
 import Model.Expense;
+import Model.ExpenseType;
 import java.util.List;
 import Persistence.ExpenseRepository;
+import Persistence.ExpenseTypeRepository;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -17,16 +20,27 @@ public class ExpensesMonthlyController {
 
     public List<String> consultaDadosMensais(String mes, String ano)
     {
-        List<Expense> j = new ExpenseRepository().getMonthlyExpenses( Integer.parseInt(mes), Integer.parseInt(ano));
-        List<String> a = new ArrayList<String>();
+        List<Expense> despesas = new ExpenseRepository().getMonthlyExpenses( Integer.parseInt(mes), Integer.parseInt(ano));
+        List<String> result = new ArrayList<String>(); 
+        List<BigDecimal> amountList = new ArrayList<BigDecimal>(); 
         
-        for(int i=0; i<j.size(); i++)
+        List<ExpenseType> typeList = new ExpenseTypeRepository().ExpenseTypeObjectList();
+        
+        for(int i=0; i<typeList.size(); i++)
         {   
-            a.add("Data: "+j.get(i).getDateOccurred()+" Valor: "+j.get(i).getAmount());
+            amountList.add(BigDecimal.ZERO);
+            
+            for(int j=0; j<despesas.size(); j++)
+            {   
+                if(despesas.get(j).getExpenseType() == typeList.get(i))
+                {
+                    amountList.set(i, (amountList.get(i).add(despesas.get(j).getAmount())));
+                }
+            }
+            
+            result.add( "Despesa do Tipo: "+typeList.get(i).GetDescription()+" Gasto: "+amountList.get(i)+" €");
         }
-        //TODO
-        //buscar tipos 
-        //criar lista de tipos com ou sem valor
-        return a;
+        
+        return result;
     }
 }
