@@ -21,7 +21,9 @@ public class MainMenu {
         
         System.out.println("1. Register an expense");
         System.out.println("2. Settings");
+        System.out.println("3. Define types expense");
         System.out.println("5. Monthy expenses");
+        System.out.println("7. Define income types");
         System.out.println("0. Exit\n\n");
         
         int option = Console.readInteger("Please choose a option");
@@ -36,10 +38,18 @@ public class MainMenu {
             case 2: 
                 Settings();
                 break;
+            case 3: 
+                ExpenseTypeUI ui3 = new ExpenseTypeUI();
+                ui3.mainLoop();
+                break;
             case 5: 
                 ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
                 ui5.mainLoop();
-                break;          
+                break;   
+            case 7: 
+                IncomeTypeRegisterUI ui7 = new IncomeTypeRegisterUI();
+                ui7.mainLoop();
+                break;
         }
     }
 
@@ -56,8 +66,8 @@ public class MainMenu {
             case 0: 
                 mainLoop();
             case 1:
-                //InitializeBalanceUI ui = new InitializeBalanceUI();
-                //ui.InitializeBalance();
+                InitializeBalanceUI ui = new InitializeBalanceUI();
+                ui.InitializeBalance();
                 mainLoop();
                 break;
         }

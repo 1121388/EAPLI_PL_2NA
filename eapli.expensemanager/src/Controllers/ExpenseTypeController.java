@@ -13,7 +13,7 @@ import Persistence.ExpenseTypeRepository;
  */
 public class ExpenseTypeController {
 
-    private ExpenseTypeRepository pRepository = new ExpenseTypeRepository();
+    private ExpenseTypeRepository pRepository = ExpenseTypeRepository.GetInstance();
     
     public ExpenseTypeController() {}
     

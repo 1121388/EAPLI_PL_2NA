@@ -52,6 +52,10 @@ public class Expense {
         return amount;
     }
     
+    public ExpenseType getExpenseType() {
+        return expenseType;
+    }
+    
     public Date getDateOccurred() {
         return dateOccurred;
     }
