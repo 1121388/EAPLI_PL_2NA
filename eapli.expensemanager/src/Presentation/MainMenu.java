@@ -56,8 +56,8 @@ public class MainMenu {
             case 0: 
                 mainLoop();
             case 1:
-                InitializeBalanceUI ui = new InitializeBalanceUI();
-                ui.InitializeBalance();
+                //InitializeBalanceUI ui = new InitializeBalanceUI();
+                //ui.InitializeBalance();
                 mainLoop();
                 break;
         }
