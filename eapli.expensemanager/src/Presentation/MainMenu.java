@@ -22,6 +22,7 @@ public class MainMenu {
         System.out.println("1. Register an expense");
         System.out.println("2. Settings");
         System.out.println("3. Define types expense");
+        System.out.println("4. Expenses of the Week");
         System.out.println("5. Monthy expenses");
         System.out.println("7. Define income types");
         System.out.println("0. Exit\n\n");
@@ -41,6 +42,10 @@ public class MainMenu {
             case 3: 
                 ExpenseTypeUI ui3 = new ExpenseTypeUI();
                 ui3.mainLoop();
+                break;
+            case 4: 
+                ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
+                ui4.main();
                 break;
             case 5: 
                 ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
