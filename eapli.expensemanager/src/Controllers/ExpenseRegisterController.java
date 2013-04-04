@@ -5,35 +5,46 @@
 package Controllers;
 
 import Model.*;
-
+import Persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import Persistence.*;
-
-
 
 /**
  *
  * @author Paulo Gandra Sousa
  */
 public class ExpenseRegisterController {
-
+    
+    ExpenseRepository repo = new ExpenseRepository();
+    ExpenseTypeRepository expenseTypeRepository = new ExpenseTypeRepository();
+    PaymentTypeRepository paymentTypeRepository = new PaymentTypeRepository();
+    
     public ExpenseRegisterController() {
     }
     
     public String ExpenseTypeList(){
-        ExpenseTypeRepository expenseTypeRepository = new ExpenseTypeRepository();
         return expenseTypeRepository.ExpenseTypeList();
     }
     public ExpenseType GetExpenseType(int expenseType){
-        ExpenseTypeRepository expenseTypeRepository = new ExpenseTypeRepository();
         return expenseTypeRepository.GetExpenseType(expenseType);
     }
- 
     
-    public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType) {
-        Expense expense = new Expense( what, date, amount,expenseType);
-        ExpenseRepository repo = new ExpenseRepository();
+    public String listPaymentTypeList(){
+        return paymentTypeRepository.listPaymentTypeList();
+    }
+    public PaymentType GetPaymentType(int paymentType){
+        return paymentTypeRepository.GetPaymentType(paymentType);
+    }
+    
+    public MeansOfPayment meansOfPayment (PaymentType paymentType){
+        return new MeansOfPayment(paymentType);
+    }
+    public MeansOfPayment meansOfPayment (PaymentType paymentType, int nCheck){
+        return new MeansOfPayment(paymentType, nCheck);
+    }
+            
+    public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
+        Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
         repo.save(expense);
     }
     
