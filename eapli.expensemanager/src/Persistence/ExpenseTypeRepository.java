@@ -14,9 +14,16 @@ import java.util.List;
  */
 public class ExpenseTypeRepository {
     
-    private static List<ExpenseType> pExpenseTypeList = new ArrayList<ExpenseType>();
+    private static ExpenseTypeRepository pRepository = null;
+    private List<ExpenseType> pExpenseTypeList = new ArrayList<ExpenseType>();
     
-    public ExpenseTypeRepository() {}
+    private ExpenseTypeRepository() {}
+    
+    public static ExpenseTypeRepository GetInstance() {
+        if (pRepository == null)
+            pRepository = new ExpenseTypeRepository();
+        return pRepository;
+    }
     
     public void SaveExpenseType(ExpenseType aExpenseType) {
         AddExpenseType(aExpenseType);

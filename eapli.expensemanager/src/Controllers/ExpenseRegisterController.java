@@ -16,7 +16,7 @@ import java.util.Date;
 public class ExpenseRegisterController {
     
     ExpenseRepository repo = new ExpenseRepository();
-    ExpenseTypeRepository expenseTypeRepository = new ExpenseTypeRepository();
+    ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
     PaymentTypeRepository paymentTypeRepository = new PaymentTypeRepository();
     
     public ExpenseRegisterController() {
