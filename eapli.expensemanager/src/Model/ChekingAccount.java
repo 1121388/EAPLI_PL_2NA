@@ -21,7 +21,9 @@ public class ChekingAccount {
       
     public void getSaldo(){
     
-    //saldo.add();
+        
+    saldo = BigDecimal.valueOf(14.5);
+
     saldo.add(treceitas);
     saldo.subtract(tdespesas);
     
