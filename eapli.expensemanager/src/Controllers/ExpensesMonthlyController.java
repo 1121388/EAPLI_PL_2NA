@@ -24,7 +24,7 @@ public class ExpensesMonthlyController {
         List<String> result = new ArrayList<String>(); 
         List<BigDecimal> amountList = new ArrayList<BigDecimal>(); 
         
-        List<ExpenseType> typeList = new ExpenseTypeRepository().ExpenseTypeObjectList();
+        List<ExpenseType> typeList = ExpenseTypeRepository.GetInstance().ExpenseTypeObjectList();
         
         for(int i=0; i<typeList.size(); i++)
         {   
