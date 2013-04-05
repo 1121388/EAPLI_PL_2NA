@@ -18,6 +18,7 @@ import java.util.Date;
  */
 class ExpenseRegisterUI {
     public void mainLoop() {
+        
         ExpenseRegisterController controller = new ExpenseRegisterController();
         
         System.out.println("* * *  REGISTER AN EXPENSE  * * *\n");
