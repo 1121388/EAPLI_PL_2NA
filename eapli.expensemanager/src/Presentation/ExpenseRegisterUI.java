@@ -27,8 +27,14 @@ class ExpenseRegisterUI {
         double value = Console.readDouble("Amount:");
         BigDecimal amount = new BigDecimal(value);
         
+        ExpenseTypeSelectorUI SelecionarTipoDespesa = new ExpenseTypeSelectorUI();
+        ExpenseType expenseType = SelecionarTipoDespesa.SelectExpenseType();
+        if (expenseType == null)
+            return;
+        /*
         System.out.println(controller.ExpenseTypeList());
         ExpenseType expenseType = controller.GetExpenseType(Console.readInteger("Type:"));
+        */
         
         System.out.println(controller.listPaymentTypeList());
         PaymentType paymentType = controller.GetPaymentType(Console.readInteger("Type:"));
