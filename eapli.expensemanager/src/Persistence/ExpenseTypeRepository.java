@@ -33,13 +33,18 @@ public class ExpenseTypeRepository {
         pExpenseTypeList.add(aExpenseType);
     }
     
-    public String ExpenseTypeList() {
+    public String ExpenseTypeList(boolean aNumberedList) {
         String List = "";
         if (pExpenseTypeList.size() > 0) {
-            List = "\nExpense types list:\n";
             for (int i = 0; i < pExpenseTypeList.size(); i++) {
-                List = List + "[" + (i + 1) + "] " + pExpenseTypeList.get(i).GetDescription() + "\n";
+                if (aNumberedList)
+                    List = List + "[" + (i + 1) + "] ";
+                else
+                    List = List + "- ";
+                List = List + pExpenseTypeList.get(i).GetDescription() + "\n";
             }
+        } else {
+            List = List + "No items to display!\n";
         }
         return List;
     }
@@ -49,7 +54,10 @@ public class ExpenseTypeRepository {
     }
         
     public ExpenseType GetExpenseType(int aNrObject) {
-        return pExpenseTypeList.get(aNrObject - 1);
+        if (aNrObject > 0 && aNrObject <= pExpenseTypeList.size())
+            return pExpenseTypeList.get(aNrObject - 1);
+        else
+            return null;
     }
     
 }

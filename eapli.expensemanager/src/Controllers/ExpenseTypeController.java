@@ -22,8 +22,12 @@ public class ExpenseTypeController {
         pRepository.SaveExpenseType(pExpenseType);
     }
     
-    public String ExpenseTypeList() {
-        return pRepository.ExpenseTypeList();
+    public String ExpenseTypeList(boolean aNumberedList) {
+        return pRepository.ExpenseTypeList(aNumberedList);
+    }
+    
+    public ExpenseType GetExpenseType(int aNrObject) {
+        return pRepository.GetExpenseType(aNrObject);
     }
     
 }

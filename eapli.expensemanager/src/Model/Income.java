@@ -20,6 +20,8 @@ public class Income {
     
     IncomeType incomeType;
     
+    Date dateOccurred;
+    
     protected Income() {}
     
     public Income( String description, Date dateOccurred, BigDecimal amount, IncomeType incomeType) {
@@ -33,6 +35,8 @@ public class Income {
         this.description = description;
         this.amount = amount;
         this.incomeType = incomeType; 
+        this.dateOccurred = dateOccurred;
+        
     }
     
     public Income( String description, int year, int month, int day, BigDecimal amount, IncomeType incomeType) {

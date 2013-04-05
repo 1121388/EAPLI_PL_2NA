@@ -5,24 +5,33 @@
 package Presentation;
 
 import Controllers.InitializeBalanceController;
-import eapli.util.Console;
+import java.math.BigDecimal;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
  * @author Marco
  */
+public class InitializeBalanceUI {
 
-public class InitializeBalanceUI {    
+    public void InitializeBalance() {
 
-    
-    public void InitializeBalance(){
+        Scanner in = new Scanner(System.in);
+        BigDecimal valor;
         
-        double valor;
-        
-        valor = Console.readDouble("Insert value:");
-        
-        InitializeBalanceController control = new InitializeBalanceController();
-        control.InitializeBalance(valor);
-        
+        try {
+            System.out.print("Insert value: ");
+            valor=in.nextBigDecimal();
+            
+            InitializeBalanceController control = new InitializeBalanceController();
+            control.InitializeBalance(valor);
+
+            System.out.println("Success Initial Balance set to " + valor.setScale(2).toPlainString());
+        } catch (NumberFormatException e) {
+            System.out.println("Incorrect Value please try again!");
+        } catch (InputMismatchException e) {
+            System.out.println("Incorrect Value please try again!");
+        }
     }
 }
