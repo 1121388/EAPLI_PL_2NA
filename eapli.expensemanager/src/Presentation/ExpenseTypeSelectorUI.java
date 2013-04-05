@@ -18,21 +18,28 @@ public class ExpenseTypeSelectorUI {
     
     public ExpenseTypeSelectorUI() {}
     
-    public ExpenseType SelectExpenseType() {
+    public ExpenseType SelectExpenseType(boolean aCancelable) {
         System.out.println("\nExpense types list:");
-        System.out.println("[0] Cancel selection");
+        if (aCancelable) {
+            System.out.println("[0] Cancel selection");
+        }
         System.out.println(pController.ExpenseTypeList(true));
         int option = Console.readInteger("Please choose an expense type");
         while (true) {
             switch (option) {
                 case 0: 
-                    return null;
+                    if (!aCancelable) {
+                        option = Console.readInteger("Option not available! Please choose an expense type");
+                    } else {
+                        return null;
+                    }
                 default:
                     ExpenseType et = pController.GetExpenseType(option);
-                    if (et == null)
-                        option = Console.readInteger("\nOption not available! Please choose an expense type");
-                    else
+                    if (et == null) {
+                        option = Console.readInteger("Option not available! Please choose an expense type");
+                    } else {
                         return et;
+                    }
                     break;
             }
         }
