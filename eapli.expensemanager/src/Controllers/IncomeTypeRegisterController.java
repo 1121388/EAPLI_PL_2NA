@@ -18,12 +18,9 @@ public class IncomeTypeRegisterController {
     
     public IncomeTypeRegisterController() {
         
-        repo = new IncomeTypeRepository();
+        repo = IncomeTypeRepository.getInstance();
         
-    }
-    
-    
-    
+    }    
     
     
 
