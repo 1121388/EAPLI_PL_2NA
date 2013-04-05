@@ -7,17 +7,37 @@ package Controllers;
 
 import Model.IncomeType;
 import Persistence.IncomeTypeRepository;
+import java.util.List;
 /**
  *
  * @author Nuno
  */
 public class IncomeTypeRegisterController {
 
+    private IncomeTypeRepository repo;
+    
+    public IncomeTypeRegisterController() {
+        
+        repo = new IncomeTypeRepository();
+        
+    }
+    
+    
+    
+    
+    
+
     public void registerIncomeType(String description) {
+        
         IncomeType incType = new IncomeType(description);
         
-        IncomeTypeRepository repo = new IncomeTypeRepository();
+        
         repo.save(incType);
+    }
+    
+    public List<IncomeType> getIncomeTypeList(){
+        
+        return repo.getIncomeTypes();
     }
     
 }

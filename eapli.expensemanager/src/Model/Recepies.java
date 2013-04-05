@@ -38,7 +38,7 @@ public class Recepies {
     public BigDecimal getAmount() {
         return amount;
     }
-
+      
     
     
     //kjjnkjnknjknjmknjmkjkjknmkk

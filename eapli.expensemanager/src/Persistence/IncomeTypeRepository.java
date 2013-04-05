@@ -16,7 +16,7 @@ public class IncomeTypeRepository {
     
     
         
-    private static List<IncomeType> listIncomeType= new ArrayList<IncomeType>();
+    private static List<IncomeType> listIncomeType = new ArrayList<IncomeType>();
 
     public IncomeTypeRepository() {}
     
