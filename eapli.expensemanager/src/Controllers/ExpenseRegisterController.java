@@ -23,7 +23,7 @@ public class ExpenseRegisterController {
     }
     
     public String ExpenseTypeList(){
-        return expenseTypeRepository.ExpenseTypeList();
+        return expenseTypeRepository.ExpenseTypeList(false);
     }
     public ExpenseType GetExpenseType(int expenseType){
         return expenseTypeRepository.GetExpenseType(expenseType);
