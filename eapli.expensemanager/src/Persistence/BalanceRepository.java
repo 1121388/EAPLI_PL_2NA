@@ -4,27 +4,30 @@
  */
 package Persistence;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Marco
  */
 public class BalanceRepository {
-    
-    private static BalanceRepository bRepository= null;
-    
-    private double balance;
 
-    public BalanceRepository() {}
+    private BigDecimal initialBalance;
     
-    public double getBalance(){
-        return balance;
-    }
-    
-    public void save(double bal)
-    {
-       balance=bal;
+    private static BalanceRepository uniqueInstance = new BalanceRepository();
+
+    private BalanceRepository() {
+        
     }
 
-    
-    
+    public static BalanceRepository getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new BalanceRepository();
+        }
+        return uniqueInstance;
+    }
+
+    public void setBalance(BigDecimal bal) {
+        initialBalance = bal;
+    }
 }
