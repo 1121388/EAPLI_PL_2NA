@@ -28,7 +28,7 @@ class ExpenseRegisterUI {
         BigDecimal amount = new BigDecimal(value);
         
         ExpenseTypeSelectorUI SelecionarTipoDespesa = new ExpenseTypeSelectorUI();
-        ExpenseType expenseType = SelecionarTipoDespesa.SelectExpenseType();
+        ExpenseType expenseType = SelecionarTipoDespesa.SelectExpenseType(false);
         if (expenseType == null)
             return;
         /*
