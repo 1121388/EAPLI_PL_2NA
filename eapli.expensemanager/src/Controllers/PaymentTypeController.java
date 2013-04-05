@@ -17,8 +17,8 @@ public class PaymentTypeController {
     
     public PaymentTypeController() {}
     
-    public void registerPaymentType(String description) {
-        PaymentType paymentType = new PaymentType(description);
+    public void registerPaymentType(String alias, int cod_sys) {
+        PaymentType paymentType = new PaymentType(alias);
         repository.AddPaymentType(paymentType);
     }
     
