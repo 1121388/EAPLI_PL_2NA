@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import eapli.util.DateTime;
@@ -18,11 +14,11 @@ public class Recepies {
    
     BigDecimal amount;
     
-    ExpenseType expenseType;
+    IncomeType incomeType;
     
     protected Recepies() {}
     
-    public Recepies( String description, Date dateOccurred, BigDecimal amount, ExpenseType expenseType) {
+    public Recepies( String description, Date dateOccurred, BigDecimal amount, IncomeType incomeType) {
         if (description == null || dateOccurred == null || amount == null) {
             throw new IllegalArgumentException();
         }
@@ -32,20 +28,20 @@ public class Recepies {
         }
         this.description = description;
         this.amount = amount;
-        this.expenseType = expenseType; 
+        this.incomeType = incomeType; 
     }
     
-    public Recepies( String description, int year, int month, int day, BigDecimal amount, ExpenseType expenseType) {
-        this( description, DateTime.newDate(year, month, day), amount, expenseType);
+    public Recepies( String description, int year, int month, int day, BigDecimal amount, IncomeType incomeType) {
+        this( description, DateTime.newDate(year, month, day), amount, incomeType);
     }
     
     public BigDecimal getAmount() {
         return amount;
     }
-
+      
     
     
-    
+    //kjjnkjnknjknjmknjmkjkjknmkk
     
     
     
