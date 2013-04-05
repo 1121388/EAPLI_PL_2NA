@@ -26,6 +26,10 @@ public class ExpenseRepository  implements IExpenseRepository
         return repository;
     }
     
+    public List<Expense> getListExpense(){
+        return listExpense;
+    }
+    
     public void save(Expense exp)
     {
         if (exp==null) throw new IllegalArgumentException();
