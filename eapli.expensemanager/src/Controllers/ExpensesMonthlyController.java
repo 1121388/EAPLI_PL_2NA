@@ -26,6 +26,12 @@ public class ExpensesMonthlyController {
         
         List<ExpenseType> typeList = ExpenseTypeRepository.GetInstance().ExpenseTypeObjectList();
         
+        // Verificar a existência de despesas para o mês pretendido.
+        if ( despesas.size() == 0 ) {
+            result.add("Não existem despesas para o mês.");
+            return result;
+        }
+        
         for(int i=0; i<typeList.size(); i++)
         {   
             amountList.add(BigDecimal.ZERO);
@@ -40,6 +46,8 @@ public class ExpensesMonthlyController {
             
             result.add( "Despesa do Tipo: "+typeList.get(i).GetDescription()+" Gasto: "+amountList.get(i)+" €");
         }
+        
+        
         
         return result;
     }
