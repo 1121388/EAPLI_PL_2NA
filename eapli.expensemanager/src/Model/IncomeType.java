@@ -15,6 +15,15 @@ public class IncomeType {
     public IncomeType(String description) {
         this.description = description;
     }
+
+    
+    public String toString() {
+        
+         return "Income type: " + description ;
+    }
+    
+    
+    
     
     
 }

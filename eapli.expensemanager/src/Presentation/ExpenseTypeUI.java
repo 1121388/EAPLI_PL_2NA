@@ -21,7 +21,8 @@ public class ExpenseTypeUI {
         while (true) {
             System.out.println("\n* * *  MANAGE EXPENSE TYPES  * * *");
 
-            System.out.println(pController.ExpenseTypeList());
+            System.out.println("\nExpense types list:");
+            System.out.println(pController.ExpenseTypeList(false));
 
             System.out.println("1. Add an expense type");
             System.out.println("0. Back\n");

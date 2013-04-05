@@ -4,15 +4,21 @@
  */
 package Controllers;
 
+import Persistence.BalanceRepository;
+import eapli.util.Console;
+import java.math.BigDecimal;
+
 /**
  *
  * @author Marco
  */
 public class InitializeBalanceController {
     
-    public void InitializeBalance(double valor){
-
-        //Balance=valor;
+    public void InitializeBalance(BigDecimal valor){
+        
+            BalanceRepository repo = BalanceRepository.getInstance();
+            repo.setBalance(valor);
+               
         
     }
     

@@ -15,17 +15,31 @@ import java.util.List;
 public class IncomeTypeRepository {
     
     
-        
-    private static List<IncomeType> listIncomeType= new ArrayList<IncomeType>();
+    private static IncomeTypeRepository uniqueInstance = null;
+    
+    private static List<IncomeType> listIncomeType = new ArrayList<IncomeType>();
 
-    public IncomeTypeRepository() {}
+    
+    private IncomeTypeRepository() {          
+    
+    }
+    
+    public static IncomeTypeRepository getInstance(){
+        
+        if (uniqueInstance == null )
+            uniqueInstance = new IncomeTypeRepository();
+        
+        return uniqueInstance;        
+    }
+    
+    
     
     public void save(IncomeType inc)
     {
         if (inc==null) throw new IllegalArgumentException();
-        listIncomeType.add(inc);
-      
+        listIncomeType.add(inc);      
     }
+    
     
     public List<IncomeType> getIncomeTypes(){
         return listIncomeType;

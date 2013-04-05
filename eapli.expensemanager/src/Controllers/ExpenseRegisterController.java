@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class ExpenseRegisterController {
     
-    ExpenseRepository repo = new ExpenseRepository();
+    ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
     ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
     PaymentTypeRepository paymentTypeRepository = new PaymentTypeRepository();
     
@@ -23,7 +23,7 @@ public class ExpenseRegisterController {
     }
     
     public String ExpenseTypeList(){
-        return expenseTypeRepository.ExpenseTypeList();
+        return expenseTypeRepository.ExpenseTypeList(false);
     }
     public ExpenseType GetExpenseType(int expenseType){
         return expenseTypeRepository.GetExpenseType(expenseType);
@@ -45,7 +45,7 @@ public class ExpenseRegisterController {
             
     public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
         Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
-        repo.save(expense);
+        expenseRepository.save(expense);
     }
     
 }
