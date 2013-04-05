@@ -15,9 +15,16 @@ import java.util.Date;
 public class ExpenseRepository  implements IExpenseRepository
 {
     // class member
-    private static List<Expense> listExpense= new ArrayList<Expense>();
+    private static ExpenseRepository repository = null;
+    private List<Expense> listExpense= new ArrayList<Expense>();
 
-    public ExpenseRepository() {}
+    private ExpenseRepository() {}
+    
+    public static ExpenseRepository GetInstance() {
+        if (repository == null)
+            repository = new ExpenseRepository();
+        return repository;
+    }
     
     public void save(Expense exp)
     {

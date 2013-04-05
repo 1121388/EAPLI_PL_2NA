@@ -72,12 +72,12 @@ public class MainMenu {
             int option = Console.readInteger("Please choose a option");
             switch (option) {
                 case 0: 
-                    mainLoop();
+                    return;
                 case 1:
                     InitializeBalanceUI ui = new InitializeBalanceUI();
                     ui.InitializeBalance();
-                    mainLoop();
-                    break;
+                    return;
+                   
             }
         }
     }

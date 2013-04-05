@@ -20,7 +20,7 @@ public class ExpensesMonthlyController {
 
     public List<String> consultaDadosMensais(String mes, String ano)
     {
-        List<Expense> despesas = new ExpenseRepository().getMonthlyExpenses( Integer.parseInt(mes), Integer.parseInt(ano));
+        List<Expense> despesas = ExpenseRepository.GetInstance().getMonthlyExpenses( Integer.parseInt(mes), Integer.parseInt(ano));
         List<String> result = new ArrayList<String>(); 
         List<BigDecimal> amountList = new ArrayList<BigDecimal>(); 
         
