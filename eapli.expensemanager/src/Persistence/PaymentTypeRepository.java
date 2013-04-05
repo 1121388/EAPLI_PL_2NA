@@ -1,7 +1,3 @@
- /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Persistence;
 
 import Model.PaymentType;
@@ -10,12 +6,14 @@ import java.util.List;
 
 /**
  *
- * @author Abilio
+ * @author i080649
  */
 public class PaymentTypeRepository {
     
+    //private static PaymentTypeRepository uniquePaymentTypeRepository = new PaymentTypeRepository();
     private static List<PaymentType> PaymentTypeList = new ArrayList<PaymentType>();
     
+    //private PaymentTypeRepository() {}
     public PaymentTypeRepository() {}
     
     public void AddPaymentType(PaymentType paymentType) {
@@ -25,7 +23,7 @@ public class PaymentTypeRepository {
     public String listPaymentTypeList() {
         String list = "\nPayment types list:\n";
             for (int i = 0; i < PaymentTypeList.size(); i++) {
-                list = list + (i + 1) + " -> " + PaymentTypeList.get(i).GetDescription() + "\n";
+                list = list + (i + 1) + " -> " + PaymentTypeList.get(i).getAlias() + "\n";
             }
         return list;
     }

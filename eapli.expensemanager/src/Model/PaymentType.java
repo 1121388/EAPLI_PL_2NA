@@ -1,21 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model; 
 
 /**
  *
- * @author Abilio
+ * @author i080649
  */
 public class PaymentType {
     
-    private String description;
+    private String alias;
+    private int cod_sys;
     
-    public PaymentType(String description) {
-        this.description = description;
+    public PaymentType(String alias) 
+    {
+        this.alias = alias;
+        this.cod_sys = 1337; //nao está a ser utilizado
     }
-    public String GetDescription() {
-        return description;
+    public String getAlias() 
+    {
+        return alias;
     }
 }
