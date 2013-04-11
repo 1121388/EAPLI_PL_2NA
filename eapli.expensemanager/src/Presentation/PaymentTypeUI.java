@@ -12,12 +12,12 @@ public class PaymentTypeUI {
     public void mainLoop(){
         PaymentTypeController pController = new PaymentTypeController();
         while (true) {
-        System.out.println("\n Criar um tipo de Pagamento");
-        System.out.println("\n 1-Dinheiro");
-        System.out.println("\n 2-Cartão de crédito");
-        System.out.println("\n 3-Cheque");
-        System.out.println("\n 4-Paypal");
-        System.out.println("\n 0-Sair");
+        System.out.println("/n Criar um tipo de Pagamento");
+        System.out.println(" 1-Dinheiro");
+        System.out.println(" 2-Cartão de crédito");
+        System.out.println(" 3-Cheque");
+        System.out.println(" 4-Paypal");
+        System.out.println("0-Sair /n");
         int option = Console.readInteger("Please choose a option");
             
         switch(option)

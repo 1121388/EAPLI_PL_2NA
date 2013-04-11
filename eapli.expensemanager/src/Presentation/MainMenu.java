@@ -50,8 +50,8 @@ public class MainMenu {
                     ui3.mainLoop();
                     break;
                 case 4: 
-                    //Define types of payments
-                    System.out.println("Not Finished!!!");
+                    PaymentTypeUI ui2 = new PaymentTypeUI();
+                    ui2.mainLoop();
                     break;
                 case 5: 
                     /*ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
