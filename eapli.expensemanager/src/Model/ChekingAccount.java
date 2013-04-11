@@ -14,14 +14,14 @@ public class ChekingAccount {
     private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
 
     //Devolve o saldo atual
-    public BigDecimal getSaldo() {
-
+    public double getSaldo() {
         saldoatual = BalanceRepository.getInstance().getBalance();
         determinaTotalDespesas();
-//        determinaTotalrendimento();
+        determinaTotalrendimento();
         saldoatual.add(treceitas);
         saldoatual.subtract(tdespesas);
-        return saldoatual;
+        Double d = saldoatual.doubleValue();
+        return d;
     }
 
     //------------------------------ GET´S -------------------------------------
