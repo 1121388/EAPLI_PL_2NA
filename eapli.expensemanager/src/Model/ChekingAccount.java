@@ -1,47 +1,63 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
+import Persistence.BalanceRepository;
+import Persistence.ExpenseRepository;
+import Persistence.IncomeRepository;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-
-/**
- *
- * @author psereno
- */
+import java.util.List;
 
 public class ChekingAccount {
-    
-    BigDecimal saldo, tdespesas, treceitas;
-    
-    ArrayList<Expense> despesas = new ArrayList<Expense>();
-    ArrayList<Recepies> receitas = new ArrayList<Recepies>();
-      
-    public void getSaldo(){
-    
-        
-    saldo = BigDecimal.valueOf(14.5);
 
-    saldo.add(treceitas);
-    saldo.subtract(tdespesas);
-    
+    private BigDecimal saldoatual, tdespesas, treceitas;
+    private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
+    private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
+
+    //Devolve o saldo atual
+    public BigDecimal getSaldo() {
+
+        saldoatual = BalanceRepository.getInstance().getBalance();
+        determinaTotalDespesas();
+        determinaTotalrendimento();
+        saldoatual.add(treceitas);
+        saldoatual.subtract(tdespesas);
+        return saldoatual;
     }
-    
-     public void determinaTotalDespesas(){
-    
-         for (int i = 0; i < despesas.size(); i++) {
-             
-             tdespesas.add((despesas.get(i)).getAmount()); 
-         }
+
+    //------------------------------ GET´S -------------------------------------
+    //Contentor com as despesas todas 
+    public List<Expense> getDespesas() {
+        return despesas;
     }
-     
-     public void determinaTotalrendimento(){
-    
-         for (int i = 0; i < receitas.size(); i++) {
-             
-             treceitas.add((receitas.get(i)).getAmount()); 
-         }
+
+    //Contentor com as receitas todas 
+    public List<Income> getReceitas() {
+        return receitas;
+    }
+
+    //Total das receitas
+    public BigDecimal getTotalReceitas() {
+        determinaTotalrendimento();
+        return treceitas;
+    }
+
+    //Total das despesas
+    public BigDecimal getTotalDespesas() {
+        determinaTotalDespesas();
+        return tdespesas;
+    }
+
+    //-----------------------  Metodos privados --------------------------------
+    private void determinaTotalDespesas() {
+
+        for (int i = 0; i < despesas.size(); i++) {
+            tdespesas.add((despesas.get(i)).getAmount());
+        }
+    }
+
+    private void determinaTotalrendimento() {
+
+        for (int i = 0; i < receitas.size(); i++) {
+            treceitas.add((receitas.get(i)).getAmount());
+        }
     }
 }
