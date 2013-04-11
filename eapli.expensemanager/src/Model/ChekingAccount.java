@@ -49,6 +49,9 @@ public class ChekingAccount {
         determinaTotalDespesas();
         return tdespesas;
     }
+    
+    
+    //--------Obter total de despesas da semana
     public BigDecimal getWeekExpenses() {
 
         BigDecimal texpenses = null;
