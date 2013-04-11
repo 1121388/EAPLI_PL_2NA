@@ -19,6 +19,8 @@ public class ChekingAccount {
     //Devolve o saldo atual
     public double getSaldo() {
         saldoatual = BalanceRepository.getInstance().getBalance();
+        tdespesas = new BigDecimal(0);
+        treceitas = new BigDecimal(0);
         determinaTotalDespesas();
         determinaTotalrendimento();
         saldoatual.add(treceitas);
@@ -49,8 +51,7 @@ public class ChekingAccount {
         determinaTotalDespesas();
         return tdespesas;
     }
-    
-    
+
     //--------Obter total de despesas da semana
     public BigDecimal getWeekExpenses() {
 
@@ -69,9 +70,9 @@ public class ChekingAccount {
         //System.out.println(stdate);
         //System.out.println(lstdate);
 
-        List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate,lstdate);
+        List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate, lstdate);
 
-        for(int i=0; i<1; i++) {
+        for (int i = 0; i < 1; i++) {
             texpenses = texpenses.add(WeekExpenses.get(i).getAmount());
         }
 
@@ -80,7 +81,7 @@ public class ChekingAccount {
         return null;
 
     }
-    
+
     //-----------------------  Metodos privados --------------------------------
     private void determinaTotalDespesas() {
 
