@@ -30,4 +30,8 @@ public class BalanceRepository {
     public void setBalance(BigDecimal bal) {
         initialBalance = bal;
     }
+    
+    public BigDecimal getBalance() {
+        return initialBalance;
+    }
 }
