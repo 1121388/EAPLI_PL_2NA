@@ -17,18 +17,22 @@ import java.util.Date;
  *
  * @author jfoliveira
  */
-public class IncomeRepository {
+public class IncomeRepository implements IIncomeRepository{
 
        // class member
     private static List<Income> listIncome= new ArrayList<Income>();
 
     public IncomeRepository() {}
     
-    public void save(Income exp)
+    public void save(Income inc)
     {
-        if (exp==null) throw new IllegalArgumentException();
-        listIncome.add(exp);
+        if (inc==null) throw new IllegalArgumentException();
+        listIncome.add(inc);
       
+    }
+    
+    public List<Income> getListIncome(){
+        return listIncome;
     }
     
     public List<Income> getMonthlyIncomes(int mes, int ano)
