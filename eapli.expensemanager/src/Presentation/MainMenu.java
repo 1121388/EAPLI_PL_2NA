@@ -29,6 +29,8 @@ public class MainMenu {
             System.out.println("7. Register entrie income");
             System.out.println("8. Settings");
             System.out.println("0. Exit\n\n");
+            //BalanceController bController = new BalanceController();
+            //System.out.printf("Actual Balance: %f", bController.visualizarSaldo());
             
            
             String option1 = Console.readLine("Please choose an option:");
@@ -43,7 +45,7 @@ public class MainMenu {
                     break;
                 case '2':
                     ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
-                    ui4.main();
+                    ui4.mainLoop();
                     break;
                 case '3': 
                     ExpenseTypeUI ui3 = new ExpenseTypeUI();
@@ -63,14 +65,14 @@ public class MainMenu {
                     ui7.mainLoop();
                     break;
                 case '7': 
-                    //Register entrie income
+                    //Register entrie income (está pronto)
                     System.out.println("Not Finished!!!");
                     break;
                 case '8':
                     Settings();
                     break;
                 default:
-                    System.out.println("Invalid Option. Please choose an option:");
+                    System.out.println("Invalid Option. Please choose an option:\n");
                     break;
             }
         }
