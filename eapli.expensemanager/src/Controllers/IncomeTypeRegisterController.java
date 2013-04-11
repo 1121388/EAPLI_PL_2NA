@@ -26,6 +26,9 @@ public class IncomeTypeRegisterController {
 
     public void registerIncomeType(String description) {
         
+        if (repo.getIncomeTypeByDescription(description)==null){
+            
+        }
         IncomeType incType = new IncomeType(description);
         
         
@@ -35,6 +38,24 @@ public class IncomeTypeRegisterController {
     public List<IncomeType> getIncomeTypeList(){
         
         return repo.getIncomeTypes();
+    }
+    public List<String> getIncomeTypeListStrings(){
+        
+        return repo.getIncomeTypesStrings();
+    }
+    
+    public IncomeType getIncomeTypeByDescription(String desc){
+       
+        return repo.getIncomeTypeByDescription(desc);
+
+    }
+    
+    public boolean existsIncomeTypeByDescription(String description){
+        
+            if (getIncomeTypeByDescription(description)==null)
+                return false;
+            else
+                return true;
     }
     
 }
