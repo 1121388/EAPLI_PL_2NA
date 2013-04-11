@@ -4,6 +4,9 @@ import Persistence.BalanceRepository;
 import Persistence.ExpenseRepository;
 import Persistence.IncomeRepository;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +49,35 @@ public class ChekingAccount {
         determinaTotalDespesas();
         return tdespesas;
     }
+    public BigDecimal getWeekExpenses() {
 
+        BigDecimal texpenses = null;
+
+        //----- Obter dias do mês
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date stdate, lstdate;
+        stdate = c.getTime();
+        c.add(Calendar.DATE, 6);
+        lstdate = c.getTime();
+
+        //System.out.println(stdate);
+        //System.out.println(lstdate);
+
+        List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate,lstdate);
+
+        for(int i=0; i<1; i++) {
+            texpenses = texpenses.add(WeekExpenses.get(i).getAmount());
+        }
+
+        //System.out.println(texpenses);
+
+        return null;
+
+    }
+    
     //-----------------------  Metodos privados --------------------------------
     private void determinaTotalDespesas() {
 
