@@ -31,43 +31,46 @@ public class MainMenu {
             System.out.println("0. Exit\n\n");
             
            
-
-            int option = Console.readInteger("Please choose a option");
+            String option1 = Console.readLine("Please choose an option:");
+            char option = option1.charAt(0);
             switch (option) {
-                case 0: 
+                case '0': 
                     System.out.println("bye bye ...");
                     return;
-                case 1: 
+                case '1': 
                     ExpenseRegisterUI ui1 = new ExpenseRegisterUI();
                     ui1.mainLoop();
                     break;
-                case 2:
+                case '2':
                     ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
                     ui4.main();
                     break;
-                case 3: 
+                case '3': 
                     ExpenseTypeUI ui3 = new ExpenseTypeUI();
                     ui3.mainLoop();
                     break;
-                case 4: 
+                case '4': 
                     PaymentTypeUI ui2 = new PaymentTypeUI();
                     ui2.mainLoop();
                     break;
-                case 5: 
+                case '5': 
                     ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
                     ui5.mainLoop();
                     //System.out.println("Not Finished!!!");
                     break; 
-                case 6: 
+                case '6': 
                     IncomeTypeRegisterUI ui7 = new IncomeTypeRegisterUI();
                     ui7.mainLoop();
                     break;
-                case 7: 
+                case '7': 
                     //Register entrie income
                     System.out.println("Not Finished!!!");
                     break;
-                case 8:
+                case '8':
                     Settings();
+                    break;
+                default:
+                    System.out.println("Invalid Option. Please choose an option:");
                     break;
             }
         }
