@@ -25,8 +25,13 @@ public class ExpenseTypeRepository {
         return pRepository;
     }
     
-    public void SaveExpenseType(ExpenseType aExpenseType) {
-        AddExpenseType(aExpenseType);
+    public boolean SaveExpenseType(ExpenseType aExpenseType) {
+        if (pRepository.CheckIfNotExist(aExpenseType)) {
+            AddExpenseType(aExpenseType);
+            return true;
+        } else {
+            return false;
+        }
     }
     
     private void AddExpenseType(ExpenseType aExpenseType) {
@@ -58,6 +63,13 @@ public class ExpenseTypeRepository {
             return pExpenseTypeList.get(aNrObject - 1);
         else
             return null;
+    }
+    
+    public boolean CheckIfNotExist(ExpenseType aExpenseType) {
+        for (int i = 0; i < pExpenseTypeList.size(); i++)
+            if (pExpenseTypeList.get(i).GetDescription().equals(aExpenseType.GetDescription()))
+                return false;
+        return true;
     }
     
 }

@@ -13,17 +13,18 @@ import java.util.ArrayList;
  *
  * @author i111051
  */
-public class ExpensesOfTheWeekController {
+public class ExpensesOfTheMonthController {
     
     Model.ChekingAccount conta;
     
-    public ExpensesOfTheWeekController(){
+    public ExpensesOfTheMonthController(){
         conta = new ChekingAccount ();
     }
 
-    public BigDecimal currentlyWeekExpenses()
+    public BigDecimal currentlyMonthExpenses()
     {
-        //return conta.getWeekExpenses();
+        //return conta.getMonthExpenses();
         return null;
+        
     }
 }
