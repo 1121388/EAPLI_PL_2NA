@@ -19,14 +19,18 @@ public class MainMenu {
             System.out.println("===================");
             System.out.println("  EXPENSE MANAGER  ");
             System.out.println("===================\n");
-
             System.out.println("1. Register an expense");
-            System.out.println("2. Settings");
+            System.out.println("2. Expenses of the Week");
             System.out.println("3. Define types expense");
-            System.out.println("4. Expenses of the Week");
-            System.out.println("5. Monthy expenses");
-            System.out.println("7. Define income types");
+            System.out.println("4. Define types payments");
+            //System.out.println("5. Preview monthly expenses"); sempre visivel
+            System.out.println("5. Consultation monthly expenses");
+            System.out.println("6. Define income types");
+            System.out.println("7. Register entrie income");
+            System.out.println("8. Settings");
             System.out.println("0. Exit\n\n");
+            
+           
 
             int option = Console.readInteger("Please choose a option");
             switch (option) {
@@ -37,24 +41,33 @@ public class MainMenu {
                     ExpenseRegisterUI ui1 = new ExpenseRegisterUI();
                     ui1.mainLoop();
                     break;
-                case 2: 
-                    Settings();
+                case 2:
+                    ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
+                    ui4.main();
                     break;
                 case 3: 
                     ExpenseTypeUI ui3 = new ExpenseTypeUI();
                     ui3.mainLoop();
                     break;
                 case 4: 
-                    ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
-                    ui4.main();
+                    //Define types of payments
+                    System.out.println("Not Finished!!!");
                     break;
                 case 5: 
-                    ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
-                    ui5.mainLoop();
-                    break;   
-                case 7: 
+                    /*ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
+                    ui5.mainLoop();*/
+                    System.out.println("Not Finished!!!");
+                    break; 
+                case 6: 
                     IncomeTypeRegisterUI ui7 = new IncomeTypeRegisterUI();
                     ui7.mainLoop();
+                    break;
+                case 7: 
+                    //Register entrie income
+                    System.out.println("Not Finished!!!");
+                    break;
+                case 8:
+                    Settings();
                     break;
             }
         }
