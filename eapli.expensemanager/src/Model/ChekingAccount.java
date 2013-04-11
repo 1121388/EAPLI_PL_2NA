@@ -12,14 +12,14 @@ public class ChekingAccount {
 
     private BigDecimal saldoatual, tdespesas, treceitas;
     private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
-    private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
+    //private List<Income> receitas = IncomeRepository.;
 
     //Devolve o saldo atual
     public BigDecimal getSaldo() {
 
         saldoatual = BalanceRepository.getInstance().getBalance();
         determinaTotalDespesas();
-        determinaTotalrendimento();
+//        determinaTotalrendimento();
         saldoatual.add(treceitas);
         saldoatual.subtract(tdespesas);
         return saldoatual;
@@ -32,15 +32,15 @@ public class ChekingAccount {
     }
 
     //Contentor com as receitas todas 
-    public List<Income> getReceitas() {
-        return receitas;
-    }
+    //public List<Income> getReceitas() {
+      //  return receitas;
+    //}
 
     //Total das receitas
-    public BigDecimal getTotalReceitas() {
-        determinaTotalrendimento();
-        return treceitas;
-    }
+//    public BigDecimal getTotalReceitas() {
+//        determinaTotalrendimento();
+//        return treceitas;
+//    }
 
     //Total das despesas
     public BigDecimal getTotalDespesas() {
