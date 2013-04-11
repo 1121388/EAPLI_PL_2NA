@@ -56,12 +56,12 @@ public class ChekingAccount {
         }
     }
 
-    private void determinaTotalrendimento() {
-
-        for (int i = 0; i < receitas.size(); i++) {
-            treceitas.add((receitas.get(i)).getAmount());
-        }
-    }
+    //private void determinaTotalrendimento() {
+//
+//        for (int i = 0; i < receitas.size(); i++) {
+//            treceitas.add((receitas.get(i)).getAmount());
+//        }
+//    }
     
     //--------- Método a ser usado pelas funções que necessitem de despesas por periodo de tempo.
     public List<Expense> getExpensesByPeriod(Date start, Date end) {
