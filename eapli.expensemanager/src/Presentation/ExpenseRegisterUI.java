@@ -39,7 +39,7 @@ class ExpenseRegisterUI {
         System.out.println(controller.listPaymentTypeList());
         PaymentType paymentType = controller.GetPaymentType(Console.readInteger("Type:"));
         MeansOfPayment meansOfPayment;
-        if(paymentType.getAlias().equalsIgnoreCase("cheque")){
+        if(paymentType instanceof Cheque){
             int checkNumber = Console.readInteger("Please enter the check number: ");
             meansOfPayment = controller.meansOfPayment(paymentType, checkNumber);
         } else {
