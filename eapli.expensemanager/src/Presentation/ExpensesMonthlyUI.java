@@ -16,7 +16,7 @@ import java.util.TimeZone;
  */
 public class ExpensesMonthlyUI {
         public void mainLoop() {
-        System.out.println("***  6. CONSULTA DE GASTOS MENSAIS   ***\n");
+        System.out.println("***  5. CONSULTA DE GASTOS MENSAIS   ***\n");
         
         Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
         int currentYear = localCalendar.get(Calendar.YEAR);

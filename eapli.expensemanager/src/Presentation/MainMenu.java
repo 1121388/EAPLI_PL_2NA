@@ -54,9 +54,9 @@ public class MainMenu {
                     ui2.mainLoop();
                     break;
                 case 5: 
-                    /*ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
-                    ui5.mainLoop();*/
-                    System.out.println("Not Finished!!!");
+                    ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
+                    ui5.mainLoop();
+                    //System.out.println("Not Finished!!!");
                     break; 
                 case 6: 
                     IncomeTypeRegisterUI ui7 = new IncomeTypeRegisterUI();

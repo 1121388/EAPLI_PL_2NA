@@ -83,6 +83,8 @@ public class ChekingAccount {
     public List<Expense> getMonthlyExpenses(Date inicio, Date fim)  {
           List<Expense> _resultado = this.getExpensesByPeriod(inicio, fim);
          
+         
+          
           return _resultado;
     }
 }
