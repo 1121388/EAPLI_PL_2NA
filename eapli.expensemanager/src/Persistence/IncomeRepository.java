@@ -20,15 +20,15 @@ import java.util.Date;
 public class IncomeRepository implements IIncomeRepository{
 
        // class member
-    private static List<Income> listIncome= new ArrayList<Income>();
+    private static IncomeRepository repository = null;
+    private List<Income> listIncome= new ArrayList<Income>();
 
-    public IncomeRepository() {}
+    private IncomeRepository() {}
     
-    public void save(Income inc)
-    {
-        if (inc==null) throw new IllegalArgumentException();
-        listIncome.add(inc);
-      
+    public static IncomeRepository GetInstance() {
+        if (repository == null)
+            repository = new IncomeRepository();
+        return repository;
     }
     
     public List<Income> getListIncome(){
@@ -53,6 +53,13 @@ public class IncomeRepository implements IIncomeRepository{
                 data.add(listIncome.get(i));
         }*/
         return data;
+    }
+
+    public void save(Income inc)
+    {
+        if (inc==null) throw new IllegalArgumentException();
+        listIncome.add(inc);
+      
     }
     
     
