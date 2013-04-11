@@ -27,12 +27,18 @@ public class IncomeTypeRegisterUI {
       
           while (true) {
             System.out.println("\n* * *  MANAGE INCOME TYPES  * * *\n");
-            System.out.println("\n* * *  CURRENT INCOME TYPES  * * *\n");
-            for(IncomeType inc:controller.getIncomeTypeList()){
-                System.out.println(inc.toString());
+            System.out.println("\n* * *  CURRENT INCOME TYPES  * * *");
+//            for(IncomeType inc:controller.getIncomeTypeList()){
+//                System.out.println(inc.toString());
+//            }
+            int i=1;
+            for(String desc:controller.getIncomeTypeListStrings()){
+                
+                System.out.println(i + " - "+desc);
+                i++;
             }
             
-            System.out.println("1. Add an income type");
+            System.out.println("\n1. Add an income type");
             System.out.println("0. Return\n");
             int option = Console.readInteger("Please choose a option");
             switch (option) {
@@ -48,9 +54,24 @@ public class IncomeTypeRegisterUI {
     
     private void IncomeTypeRequest() {
         System.out.println("* * *  REGISTER AN INCOME TYPE  * * *\n");
-        String description = Console.readLine("Description:");
-        controller.registerIncomeType(description);
-        System.out.println("Income Type Recorded.");
+        String description;
+        System.out.println("Description: ");
+        do{
+            
+            description = Console.readLine("");
+            
+        }while(description.isEmpty());
+                
+        if(!controller.existsIncomeTypeByDescription(description))
+        {
+            controller.registerIncomeType(description);
+            System.out.println("Income Type Recorded.");
+        }
+        else
+        {
+            System.out.println("Income Type already exists!");
+        }
+        
     }
         
 

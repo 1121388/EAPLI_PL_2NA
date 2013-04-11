@@ -45,4 +45,27 @@ public class IncomeTypeRepository {
         return listIncomeType;
     }
     
+    public List<String> getIncomeTypesStrings(){
+        
+        List<String> list=new ArrayList<String>();
+        
+        for (IncomeType inc:listIncomeType)
+            list.add(inc.getDescription());
+        
+        return list;
+    }
+    
+    public IncomeType getIncomeTypeByDescription(String desc){
+       
+        for (IncomeType inc:listIncomeType)
+        {
+            if (inc.getDescription().equals(desc))
+                return inc;
+                
+        }
+
+    return null;
+
+    }
+    
 }
