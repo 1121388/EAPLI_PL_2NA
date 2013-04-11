@@ -23,7 +23,6 @@ public class ExpensesOfTheWeekController {
 
     public BigDecimal currentlyWeekExpenses()
     {
-        //return conta.getWeekExpenses();
-        return null;
+        return conta.getWeekExpenses();
     }
 }
