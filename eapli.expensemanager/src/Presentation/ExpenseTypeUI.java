@@ -39,9 +39,15 @@ public class ExpenseTypeUI {
     }
     
     private void DataRequest() {
-        String pDescription = Console.readLine("Description:");
-        pController.RegisterExpenseType(pDescription);
-        System.out.println("Expense type added!\n");
+        while (true) {
+            String pDescription = Console.readLine("Description:");
+            if (pController.RegisterExpenseType(pDescription)) {
+                System.out.println("Expense type added!\n");
+                break;
+            } else {
+                System.out.println("Expense type description already exist. Please choose another!");
+            }
+        }
     }
     
 }
