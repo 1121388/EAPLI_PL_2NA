@@ -72,13 +72,13 @@ public class ChekingAccount {
 
         List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate, lstdate);
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 6; i++) {
             texpenses = texpenses.add(WeekExpenses.get(i).getAmount());
         }
 
         //System.out.println(texpenses);
 
-        return null;
+        return texpenses;
 
     }
 
