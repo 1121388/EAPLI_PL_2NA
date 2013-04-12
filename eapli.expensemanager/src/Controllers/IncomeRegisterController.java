@@ -44,10 +44,11 @@ public class IncomeRegisterController {
     public MeansOfPayment meansOfPayment (PaymentType paymentType, int nCheck){
         return new MeansOfPayment(paymentType, nCheck);
     }
-            
-    public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
-        Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
-        expenseRepository.save(expense);
+     */       
+    public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {
+        Income income = new Income( what, date, amount, incomeType);
+        incomeRepository.save(income);
     }
-    */
+    
+    
 }

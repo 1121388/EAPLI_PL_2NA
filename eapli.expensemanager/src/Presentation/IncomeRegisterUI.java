@@ -24,7 +24,7 @@ class IncomeRegisterUI {
         Date date = Console.readDate("When:");
         double value = Console.readDouble("Amount:");
         BigDecimal amount = new BigDecimal(value);
-  /*    
+     
         IncomeTypeSelectorUI SelecionarTipoRendimento = new IncomeTypeSelectorUI();
         IncomeType incomeType = SelecionarTipoRendimento.SelectIncomeType(false);
         if (incomeType == null)
@@ -33,7 +33,7 @@ class IncomeRegisterUI {
         System.out.println(controller.ExpenseTypeList());
         ExpenseType expenseType = controller.GetExpenseType(Console.readInteger("Type:"));
         */
-       /* 
+       /*
         System.out.println(controller.listPaymentTypeList());
         PaymentType paymentType = controller.GetPaymentType(Console.readInteger("Type:"));
         MeansOfPayment meansOfPayment;
@@ -43,10 +43,11 @@ class IncomeRegisterUI {
         } else {
             meansOfPayment = controller.meansOfPayment(paymentType);
         }
-       *//*
+       */
         controller.registerIncome(what, date, amount, incomeType);
         System.out.println("income recorded.");
-    */
+    
+            
    
 }
     
