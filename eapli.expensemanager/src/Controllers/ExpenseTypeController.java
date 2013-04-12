@@ -17,9 +17,9 @@ public class ExpenseTypeController {
     
     public ExpenseTypeController() {}
     
-    public void RegisterExpenseType(String aDescription) {
+    public boolean RegisterExpenseType(String aDescription) {
         ExpenseType pExpenseType = new ExpenseType(aDescription);
-        pRepository.SaveExpenseType(pExpenseType);
+        return pRepository.SaveExpenseType(pExpenseType);
     }
     
     public String ExpenseTypeList(boolean aNumberedList) {

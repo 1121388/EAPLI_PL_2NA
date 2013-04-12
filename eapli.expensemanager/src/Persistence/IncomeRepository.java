@@ -17,18 +17,22 @@ import java.util.Date;
  *
  * @author jfoliveira
  */
-public class IncomeRepository {
+public class IncomeRepository implements IIncomeRepository{
 
        // class member
-    private static List<Income> listIncome= new ArrayList<Income>();
+    private static IncomeRepository repository = null;
+    private List<Income> listIncome= new ArrayList<Income>();
 
-    public IncomeRepository() {}
+    private IncomeRepository() {}
     
-    public void save(Income exp)
-    {
-        if (exp==null) throw new IllegalArgumentException();
-        listIncome.add(exp);
-      
+    public static IncomeRepository GetInstance() {
+        if (repository == null)
+            repository = new IncomeRepository();
+        return repository;
+    }
+    
+    public List<Income> getListIncome(){
+        return listIncome;
     }
     
     public List<Income> getMonthlyIncomes(int mes, int ano)
@@ -49,6 +53,13 @@ public class IncomeRepository {
                 data.add(listIncome.get(i));
         }*/
         return data;
+    }
+
+    public void save(Income inc)
+    {
+        if (inc==null) throw new IllegalArgumentException();
+        listIncome.add(inc);
+      
     }
     
     

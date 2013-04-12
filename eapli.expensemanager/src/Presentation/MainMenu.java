@@ -8,12 +8,12 @@ import Controllers.*;
 import Presentation.*;
 import eapli.util.Console;
 
-
 /**
  *
  * @author Paulo Gandra Sousa
  */
 public class MainMenu {
+
     public void mainLoop() {
         while (true) {
             System.out.println("===================");
@@ -29,48 +29,50 @@ public class MainMenu {
             System.out.println("7. Register entrie income");
             System.out.println("8. Settings");
             System.out.println("0. Exit\n\n");
-            
-           
+            BalanceController bController = new BalanceController();
+            System.out.println("Actual Balance: " + bController.visualizarSaldo() + "\n");
+
+
             String option1 = Console.readLine("Please choose an option:");
             char option = option1.charAt(0);
             switch (option) {
-                case '0': 
+                case '0':
                     System.out.println("bye bye ...");
                     return;
-                case '1': 
+                case '1':
                     ExpenseRegisterUI ui1 = new ExpenseRegisterUI();
                     ui1.mainLoop();
                     break;
                 case '2':
                     ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
-                    ui4.main();
+                    ui4.mainLoop();
                     break;
-                case '3': 
+                case '3':
                     ExpenseTypeUI ui3 = new ExpenseTypeUI();
                     ui3.mainLoop();
                     break;
-                case '4': 
+                case '4':
                     PaymentTypeUI ui2 = new PaymentTypeUI();
                     ui2.mainLoop();
                     break;
-                case '5': 
+                case '5':
                     ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
                     ui5.mainLoop();
                     //System.out.println("Not Finished!!!");
-                    break; 
-                case '6': 
+                    break;
+                case '6':
                     IncomeTypeRegisterUI ui7 = new IncomeTypeRegisterUI();
                     ui7.mainLoop();
                     break;
-                case '7': 
-                    //Register entrie income
+                case '7':
+                    //Register entrie income (está pronto)
                     System.out.println("Not Finished!!!");
                     break;
                 case '8':
                     Settings();
                     break;
                 default:
-                    System.out.println("Invalid Option. Please choose an option:");
+                    System.out.println("Invalid Option. Please choose an option:\n");
                     break;
             }
         }
@@ -87,15 +89,14 @@ public class MainMenu {
 
             int option = Console.readInteger("Please choose a option");
             switch (option) {
-                case 0: 
+                case 0:
                     return;
                 case 1:
                     InitializeBalanceUI ui = new InitializeBalanceUI();
                     ui.InitializeBalance();
                     return;
-                   
+
             }
         }
     }
-    
 }
