@@ -4,13 +4,21 @@
  */
 package Presentation;
 
+import Controllers.ExpensesOfTheWeekController;
+import java.math.BigDecimal;
+
 /**
  *
  * @author i111051
  */
 public class ExpensesOfTheWeekUI {
-     
-    public void main() {
-        System.out.println("* * *  CONSULTA DO TOTAL DOS GASTOS SEMANAIS  * * *\n");
+    
+    private Controllers.ExpensesOfTheWeekController controller;
+    
+    public ExpensesOfTheWeekUI(){
+         controller = new ExpensesOfTheWeekController();
+     }
+    public void mainLoop() {
+        System.out.println(controller.currentlyWeekExpenses());
     }
 }

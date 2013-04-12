@@ -11,16 +11,12 @@ import Model.ChekingAccount;
  * @author pseeno
  */
 public class BalanceController {
-    
-    Model.ChekingAccount conta = new ChekingAccount ();
-  
-    
-    public void visualizarSaldo(){
-    
-    conta.getSaldo();
-    
+
+    Model.ChekingAccount conta = new ChekingAccount();
+
+    public double visualizarSaldo() {
+
+        return conta.getSaldo();
+
     }
-    
-    
-    
 }

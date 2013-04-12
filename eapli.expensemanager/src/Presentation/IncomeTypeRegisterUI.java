@@ -26,11 +26,9 @@ public class IncomeTypeRegisterUI {
         
       
           while (true) {
-            System.out.println("\n* * *  MANAGE INCOME TYPES  * * *\n");
+            System.out.println("\n* * *  MANAGE INCOME TYPES  * * *");
             System.out.println("\n* * *  CURRENT INCOME TYPES  * * *");
-//            for(IncomeType inc:controller.getIncomeTypeList()){
-//                System.out.println(inc.toString());
-//            }
+
             int i=1;
             for(String desc:controller.getIncomeTypeListStrings()){
                 
@@ -53,8 +51,8 @@ public class IncomeTypeRegisterUI {
 
     
     private void IncomeTypeRequest() {
-        System.out.println("* * *  REGISTER AN INCOME TYPE  * * *\n");
         String description;
+        System.out.println("* * *  REGISTER AN INCOME TYPE  * * *\n");
         System.out.println("Description: ");
         do{
             
