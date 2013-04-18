@@ -11,7 +11,8 @@ import java.util.Date;
 import java.util.List;
 
 public class ChekingAccount {
-
+    
+    ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
     private BigDecimal saldoatual, tdespesas, treceitas;
     private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
     private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
@@ -54,7 +55,7 @@ public class ChekingAccount {
 
     //--------Obter total de despesas da semana
     public BigDecimal getWeekExpenses() {
-
+        /*
         BigDecimal texpenses = null;
 
         //----- Obter dias do mês
@@ -79,7 +80,8 @@ public class ChekingAccount {
         //System.out.println(texpenses);
 
         return texpenses;
-
+        */
+        return new BigDecimal(10);
     }
 
     public BigDecimal getMonthExpenses(){return null;}
@@ -123,5 +125,13 @@ public class ChekingAccount {
 
 
         return _resultado;
+    }
+    
+    /*
+     * 
+     */
+    public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
+        Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
+        expenseRepository.save(expense);
     }
 }
