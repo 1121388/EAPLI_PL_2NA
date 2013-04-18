@@ -57,6 +57,7 @@ public class ChekingAccount {
     public BigDecimal getWeekExpenses() {
 
         BigDecimal texpenses = null;
+        BigDecimal aux = null;
 
         //----- Obter dias do mês
         Calendar c = Calendar.getInstance();
@@ -68,16 +69,14 @@ public class ChekingAccount {
         c.add(Calendar.DATE, 6);
         lstdate = c.getTime();
 
-        //System.out.println(stdate);
-        //System.out.println(lstdate);
-
         List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate, lstdate);
 
-        for (int i = 0; i < 6; i++) {
-            texpenses = texpenses.add(WeekExpenses.get(i).getAmount());
+        for (int i = 0; i < 7; i++) {
+            texpenses = aux.add(WeekExpenses.get(i).getAmount());
+            aux = texpenses;
         }
 
-        //System.out.println(texpenses);
+        System.out.println(texpenses);
 
         return texpenses;
 
