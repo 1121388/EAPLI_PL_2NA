@@ -82,6 +82,7 @@ public class ChekingAccount {
 
     }
 
+    public BigDecimal getMonthExpenses(){return null;}
     //-----------------------  Metodos privados --------------------------------
     private void determinaTotalDespesas() {
 

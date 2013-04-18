@@ -44,8 +44,8 @@ public class MainMenu {
                     ui1.mainLoop();
                     break;
                 case '2':
-                    ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
-                    ui4.mainLoop();
+                    //ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
+                    //ui4.mainLoop();
                     break;
                 case '3':
                     ExpenseTypeUI ui3 = new ExpenseTypeUI();

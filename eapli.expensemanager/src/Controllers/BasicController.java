@@ -5,24 +5,32 @@
 package Controllers;
 
 import Model.ChekingAccount;
-import Model.Expense;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 /**
  *
  * @author i111051
  */
-public class ExpensesOfTheWeekController {
+public class BasicController {
     
     Model.ChekingAccount conta;
     
-    public ExpensesOfTheWeekController(){
+    public BasicController(){
         conta = new ChekingAccount ();
     }
-
-    public BigDecimal currentlyWeekExpenses()
+    public BigDecimal currentMonthExpenses()
+    {
+        return conta.getMonthExpenses();
+        
+    }
+    public BigDecimal currentWeekExpenses()
     {
         return conta.getWeekExpenses();
+    }
+    
+    public Double currentBalance() //se calhar BigDecimal?
+    { 
+        
+        return conta.getSaldo();
     }
 }
