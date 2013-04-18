@@ -108,7 +108,7 @@ public class ChekingAccount {
         }
 
         for (; index > 0; index--) {
-            if (despesas.get(index).dateOccurred.after(start) && despesas.get(index).dateOccurred.before(end)) {
+            if (despesas.get(index).getDateOccurred().after(start) && despesas.get(index).getDateOccurred().before(end)) {
                 _resultado.add(despesas.get(index));
             }
         }

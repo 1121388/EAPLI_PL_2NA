@@ -37,7 +37,7 @@ public class ExpensesMonthlyUI {
                         
         List<String> lista = controller.consultaDadosMensais(dados[0], dados[1]);
                 
-        for(int i=0; i<lista.size(); i++)
+        for(int i=0; i<=lista.size(); i++)
         {
             System.out.println(lista.get(i).toString());
         }
