@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package Presentation;
+import Controllers.BasicController;
 import Controllers.IncomeTypeRegisterController;
 import Model.IncomeType;
 import eapli.util.Console;
@@ -73,6 +74,16 @@ public class IncomeTypeRegisterUI extends BasicUI{
         }
         
     }        
+
+    @Override
+    public String getTitle() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public BasicController getController() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
       
 }
 
