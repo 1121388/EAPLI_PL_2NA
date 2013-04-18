@@ -61,12 +61,12 @@ public class MainMenu {
                     //System.out.println("Not Finished!!!");
                     break;
                 case '6':
-                    IncomeTypeRegisterUI ui7 = new IncomeTypeRegisterUI();
-                    ui7.mainLoop();
+                    IncomeTypeRegisterUI ui6 = new IncomeTypeRegisterUI();
+                    ui6.mainLoop();
                     break;
                 case '7':
-                    //Register entrie income (está pronto)
-                    System.out.println("Not Finished!!!");
+                    IncomeRegisterUI ui7 = new IncomeRegisterUI();
+                    ui7.mainLoop();
                     break;
                 case '8':
                     Settings();
