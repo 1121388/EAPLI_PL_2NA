@@ -13,6 +13,7 @@ import java.util.List;
 public class ChekingAccount {
     
     ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
+    IncomeRepository incomeRepository = IncomeRepository.GetInstance();
     private BigDecimal saldoatual, tdespesas, treceitas;
     private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
     private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
@@ -132,5 +133,10 @@ public class ChekingAccount {
     public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
         Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
         expenseRepository.save(expense);
+    }
+    
+     public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {
+        Income income = new Income( what, date, amount, incomeType);
+        incomeRepository.save(income);
     }
 }
