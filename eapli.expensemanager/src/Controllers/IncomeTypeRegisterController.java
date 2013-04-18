@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Nuno
  */
-public class IncomeTypeRegisterController {
+public class IncomeTypeRegisterController extends BasicController {
 
     private IncomeTypeRepository repo;
     

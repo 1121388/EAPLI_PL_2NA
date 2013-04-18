@@ -6,6 +6,7 @@ package Presentation;
 
 import Controllers.ExpensesMonthlyController;
 import eapli.util.Console;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
@@ -35,12 +36,9 @@ public class ExpensesMonthlyUI {
         ExpensesMonthlyController controller = new ExpensesMonthlyController();
         
                         
-        List<String> lista = controller.consultaDadosMensais(dados[0], dados[1]);
-                
-        for(int i=0; i<=lista.size(); i++)
-        {
-            System.out.println(lista.get(i).toString());
-        }
+        BigDecimal montante = controller.consultaDadosMensais(dados[0], dados[1]);
+        
+        System.out.println("Os gastos mensais foram : "+montante+" €");
                   
         System.out.println("Pressione «enter» para regressar ao menu principal.");
         new java.util.Scanner(System.in).nextLine();
