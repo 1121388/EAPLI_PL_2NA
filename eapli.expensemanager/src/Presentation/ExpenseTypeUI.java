@@ -20,28 +20,19 @@ public class ExpenseTypeUI extends BasicUI {
     
     @Override
     public String getTitle() {
-        return "MANAGE EXPENSE TYPE";
+        return "REGISTER EXPENSE TYPE";
     }
-    
-    public void mainLoop() {
-        while (true) {
-            getHeader();
-            
-            System.out.println("\nExpense types list:");
-            System.out.println(pController.ExpenseTypeList(false));
-
-            System.out.println("1. Add an expense type");
-            System.out.println("0. Back\n");
         
-            int option = Console.readInteger("Please choose a option");
-            switch (option) {
-                case 0: 
-                    return;
-                case 1: 
-                    DataRequest();
-                    break;
-            }
-        }
+    @Override
+    public BasicController getController() {
+        return pController;
+    }
+
+    @Override
+    public void getBody() {
+        System.out.println("Expense types list:");
+        System.out.println(pController.ExpenseTypeList(false));
+        DataRequest();
     }
     
     private void DataRequest() {
@@ -55,9 +46,5 @@ public class ExpenseTypeUI extends BasicUI {
             }
         }
     }
-    
-    @Override
-    public BasicController getController() {
-        return pController;
-    }
+
 }

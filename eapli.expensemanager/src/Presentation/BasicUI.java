@@ -12,8 +12,17 @@ import Controllers.BasicController;
  */
 public abstract class BasicUI {
     
-    void getHeader() {
-        System.out.println(formatTitle() + "\n");
+    public void show() {
+        getHeader();
+        getBody();
+        getFooter();
+    }
+    
+    private void getHeader() {
+        System.out.println("\n" + formatTitle() + "\n");
+    }
+    
+    private void getFooter() {
         BasicController bController = getController();
         System.out.println("    Week Expenses: " + bController.currentWeekExpenses().toString());
         System.out.println("   Month Expenses: " + bController.currentWeekExpenses().toString());
@@ -32,9 +41,6 @@ public abstract class BasicUI {
         pResultado += "+\n | ";
         int pEspacosEsquerda = (int)((pEspacamento - pTitulo.length() - 2) / 2);
         int pEspacosDireita = pEspacamento - pEspacosEsquerda - pTitulo.length() - 1;            
-        /*for (int i = 0; i < pEspacamento - 1 - pTitulo.length(); i++) {
-            pResultado += " ";
-        }*/
         for (int i = 0; i < pEspacosEsquerda; i++) {
             pResultado += " ";
         }
@@ -49,6 +55,8 @@ public abstract class BasicUI {
         pResultado += "+";
         return pResultado;
     }
+    
+    public abstract void getBody();
     
     public abstract String getTitle();
     
