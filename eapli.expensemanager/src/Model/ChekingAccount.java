@@ -15,20 +15,25 @@ public class ChekingAccount {
     ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
     IncomeRepository incomeRepository = IncomeRepository.GetInstance();
     private BigDecimal saldoatual, tdespesas, treceitas;
+    private double dtdespesas=0, dtreceitas=0, dsaldoatual=0;
     private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
     private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
 
     //Devolve o saldo atual
     public double getSaldo() {
         saldoatual = BalanceRepository.getInstance().getBalance();
-        tdespesas = new BigDecimal(0);
-        treceitas = new BigDecimal(0);
+        //tdespesas = new BigDecimal(0);
+        //treceitas = new BigDecimal(0);
         determinaTotalDespesas();
         determinaTotalrendimento();
-        saldoatual.add(treceitas);
-        saldoatual.subtract(tdespesas);
-        Double d = saldoatual.doubleValue();
-        return d;
+        //saldoatual.add(treceitas);
+        //saldoatual.subtract(tdespesas);
+        dsaldoatual=saldoatual.doubleValue();
+        dsaldoatual+=dtreceitas;
+        dsaldoatual-=dtdespesas;
+        saldoatual= new BigDecimal(dsaldoatual);
+        //Double d = saldoatual.doubleValue();
+        return dsaldoatual;
     }
 
     //------------------------------ GET´S -------------------------------------
@@ -89,15 +94,23 @@ public class ChekingAccount {
     private void determinaTotalDespesas() {
 
         for (int i = 0; i < despesas.size(); i++) {
-            tdespesas.add((despesas.get(i)).getAmount());
+            dtdespesas += (despesas.get(i).getAmount()).doubleValue();
+            //tdespesas.add((despesas.get(i)).getAmount());
+            //System.out.println("Despesa~valor:\n" + despesas.get(i).getAmount());
+            //System.out.println("Tdespesas:" + tdespesas);
         }
+        System.out.println("dtdespesas: "+ dtdespesas);
+        tdespesas = new BigDecimal(dtdespesas);
+        System.out.println("tdespesas: "+ tdespesas);
     }
 
     private void determinaTotalrendimento() {
 
         for (int i = 0; i < receitas.size(); i++) {
-            treceitas.add((receitas.get(i)).getAmount());
+             dtreceitas += (receitas.get(i).getAmount()).doubleValue();
+            //treceitas.add((receitas.get(i)).getAmount());
         }
+        treceitas = new BigDecimal(dtreceitas);
     }
 
     //--------- Método a ser usado pelas funções que necessitem de despesas por periodo de tempo.
