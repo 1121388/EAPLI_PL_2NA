@@ -56,7 +56,7 @@ public class ChekingAccount {
 
     //--------Obter total de despesas da semana
     public BigDecimal getWeekExpenses() {
-
+        /*
         BigDecimal texpenses = null;
 
         //----- Obter dias do mês
@@ -81,7 +81,8 @@ public class ChekingAccount {
         //System.out.println(texpenses);
 
         return texpenses;
-
+        */
+        return new BigDecimal(10);
     }
 
     public BigDecimal getMonthExpenses(){return null;}

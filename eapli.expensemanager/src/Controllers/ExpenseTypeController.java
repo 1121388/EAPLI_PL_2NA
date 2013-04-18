@@ -11,7 +11,7 @@ import Persistence.ExpenseTypeRepository;
  *
  * @author Raul.Lima
  */
-public class ExpenseTypeController {
+public class ExpenseTypeController extends BasicController {
 
     private ExpenseTypeRepository pRepository = ExpenseTypeRepository.GetInstance();
     
@@ -21,7 +21,6 @@ public class ExpenseTypeController {
         ExpenseType pExpenseType = new ExpenseType(aDescription);
         return pRepository.SaveExpenseType(pExpenseType);
     }
-    
     public String ExpenseTypeList(boolean aNumberedList) {
         return pRepository.ExpenseTypeList(aNumberedList);
     }
