@@ -36,28 +36,5 @@ public class ExpenseRepository  implements IExpenseRepository
         listExpense.add(exp);
       
     }
-    /** 
-     * Função utilizada para devolver uma lista da despesas relativa a um mês 
-     * Hugo Silva
-     * 22/03/2013
-     */
-    public List<Expense> getMonthlyExpenses(int mes, int ano)
-    {        
-        List<Expense> data = new ArrayList<Expense>();
-        
-        Date dini = new Date(ano, mes, 1);
-        Date dfim;
-        
-        if(mes==12)
-            dfim = new Date(ano+1, 1, 1);
-        else
-            dfim = new Date(ano, mes+1, 1);
 
-        for (int i=0; i<listExpense.size();i++)
-        {
-            if(dini.compareTo(listExpense.get(i).getDateOccurred()) * listExpense.get(i).getDateOccurred().compareTo(dfim) > 0)
-                data.add(listExpense.get(i));
-        }
-        return data;
-    }
 }

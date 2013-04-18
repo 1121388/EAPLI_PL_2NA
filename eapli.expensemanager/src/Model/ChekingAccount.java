@@ -11,7 +11,8 @@ import java.util.Date;
 import java.util.List;
 
 public class ChekingAccount {
-
+    
+    ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
     private BigDecimal saldoatual, tdespesas, treceitas;
     private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
     private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
@@ -109,7 +110,7 @@ public class ChekingAccount {
         }
 
         for (; index > 0; index--) {
-            if (despesas.get(index).dateOccurred.after(start) && despesas.get(index).dateOccurred.before(end)) {
+            if (despesas.get(index).getDateOccurred().after(start) && despesas.get(index).getDateOccurred().before(end)) {
                 _resultado.add(despesas.get(index));
             }
         }
@@ -124,5 +125,13 @@ public class ChekingAccount {
 
 
         return _resultado;
+    }
+    
+    /*
+     * 
+     */
+    public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
+        Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
+        expenseRepository.save(expense);
     }
 }
