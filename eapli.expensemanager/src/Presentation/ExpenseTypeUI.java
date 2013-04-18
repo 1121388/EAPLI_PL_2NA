@@ -4,6 +4,7 @@
  */
 package Presentation;
 
+import Controllers.BasicController;
 import Controllers.ExpenseTypeController;
 import eapli.util.Console;
 
@@ -11,16 +12,21 @@ import eapli.util.Console;
  *
  * @author Raul.Lima
  */
-public class ExpenseTypeUI {
+public class ExpenseTypeUI extends BasicUI {
 
     ExpenseTypeController pController = new ExpenseTypeController();
     
     public ExpenseTypeUI() {}
     
+    @Override
+    public String getTitle() {
+        return "MANAGE EXPENSE TYPE";
+    }
+    
     public void mainLoop() {
         while (true) {
-            System.out.println("\n* * *  MANAGE EXPENSE TYPES  * * *");
-
+            getHeader();
+            
             System.out.println("\nExpense types list:");
             System.out.println(pController.ExpenseTypeList(false));
 
@@ -50,4 +56,8 @@ public class ExpenseTypeUI {
         }
     }
     
+    @Override
+    public BasicController getController() {
+        return pController;
+    }
 }

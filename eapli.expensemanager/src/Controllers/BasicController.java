@@ -12,25 +12,32 @@ import java.math.BigDecimal;
  * @author i111051
  */
 public class BasicController {
+    Model.ChekingAccount conta = null;
     
-    Model.ChekingAccount conta;
-    
-    public BasicController(){
-        conta = new ChekingAccount ();
+    public BasicController()
+    {
+        conta = new ChekingAccount();
     }
+    
     public BigDecimal currentMonthExpenses()
     {
+        if (conta == null)
+            conta = new ChekingAccount();
         return conta.getMonthExpenses();
         
     }
+    
     public BigDecimal currentWeekExpenses()
     {
+        if (conta == null)
+            conta = new ChekingAccount();
         return conta.getWeekExpenses();
     }
     
     public Double currentBalance() //se calhar BigDecimal?
     { 
-        
+        if (conta == null)
+            conta = new ChekingAccount();
         return conta.getSaldo();
     }
 }
