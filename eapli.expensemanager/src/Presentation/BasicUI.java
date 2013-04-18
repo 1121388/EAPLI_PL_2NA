@@ -24,29 +24,29 @@ public abstract class BasicUI {
         int pEspacamento = 50;
         String pTitulo = getTitle();
         String pResultado = " +";
+        if (pTitulo.length() + 2 > pEspacamento)
+            pEspacamento = pTitulo.length() + 2;
         for (int i = 0; i < pEspacamento; i++) {
             pResultado += "-";
         }
         pResultado += "+\n | ";
-        if (!(pTitulo.length() + 2 > pEspacamento)) {
-            int pEspacosEsquerda = (int)((pEspacamento - pTitulo.length() - 2) / 2);
-            int pEspacosDireita = pEspacamento - pEspacosEsquerda - pTitulo.length() - 1;            
-            /*for (int i = 0; i < pEspacamento - 1 - pTitulo.length(); i++) {
-                pResultado += " ";
-            }*/
-            for (int i = 0; i < pEspacosEsquerda; i++) {
-                pResultado += " ";
-            }
-            pResultado += pTitulo;
-            for (int i = 0; i < pEspacosDireita; i++) {
-                pResultado += " ";
-            }
+        int pEspacosEsquerda = (int)((pEspacamento - pTitulo.length() - 2) / 2);
+        int pEspacosDireita = pEspacamento - pEspacosEsquerda - pTitulo.length() - 1;            
+        /*for (int i = 0; i < pEspacamento - 1 - pTitulo.length(); i++) {
+            pResultado += " ";
+        }*/
+        for (int i = 0; i < pEspacosEsquerda; i++) {
+            pResultado += " ";
+        }
+        pResultado += pTitulo;
+        for (int i = 0; i < pEspacosDireita; i++) {
+            pResultado += " ";
         }
         pResultado += "|\n +";
         for (int i = 0; i < pEspacamento; i++) {
             pResultado += "-";
         }
-        pResultado += "|";
+        pResultado += "+";
         return pResultado;
     }
     
