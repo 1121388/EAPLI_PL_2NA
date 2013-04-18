@@ -28,8 +28,10 @@ public class IncomeRegisterController {
         
     }
     public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {
-        Income income = new Income( what, date, amount, incomeType);
-        incomeRepository.save(income);
+        new ChekingAccount().registerIncome( what, date, amount,incomeType);
+         
+        //Income income = new Income( what, date, amount, incomeType);
+        //incomeRepository.save(income);
     }
     
     
