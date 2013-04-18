@@ -11,14 +11,12 @@ import java.math.BigDecimal;
  *
  * @author Marco
  */
-public class InitializeBalanceController {
+public class InitializeBalanceController extends BasicController{
     
-    public void InitializeBalance(BigDecimal valor){
+    public void InitializeBalance(BigDecimal valor){ 
         
             BalanceRepository repo = BalanceRepository.getInstance();
-            repo.setBalance(valor);
-               
-        
+            repo.setBalance(valor);     
     }
     
 }
