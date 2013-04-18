@@ -49,7 +49,7 @@ public class MainMenu {
                     break;
                 case '3':
                     ExpenseTypeUI ui3 = new ExpenseTypeUI();
-                    ui3.mainLoop();
+                    ui3.show();
                     break;
                 case '4':
                     PaymentTypeUI ui2 = new PaymentTypeUI();
