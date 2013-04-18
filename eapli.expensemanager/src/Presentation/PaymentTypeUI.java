@@ -1,5 +1,6 @@
 package Presentation;
 
+import Controllers.BasicController;
 import Controllers.PaymentTypeController;
 import eapli.util.Console;
 
@@ -7,14 +8,16 @@ import eapli.util.Console;
  *
  * @author Iã
  */
-public class PaymentTypeUI {
-
+public class PaymentTypeUI extends BasicUI{
+private PaymentTypeController pController = new PaymentTypeController();
     public void mainLoop() {
-        PaymentTypeController pController = new PaymentTypeController();
+        
         while (true) {
-            System.out.println("==============================");
-            System.out.println("  Criar um tipo de Pagamento  ");
-            System.out.println("==============================\n");
+            
+//            System.out.println("==============================");
+//            System.out.println("  Criar um tipo de Pagamento  ");
+//            System.out.println("==============================\n");
+            getHeader();
             System.out.println(" 1-Dinheiro");
             System.out.println(" 2-Cartão de crédito");
             System.out.println(" 3-Cheque");
@@ -48,4 +51,16 @@ public class PaymentTypeUI {
             }
         }
     }
+    
+    @Override
+    public String getTitle(){
+        return  "Criar um tipo de Pagamento";
+    }
+
+    @Override
+    public BasicController getController() {
+        return pController;
+    }
+    
+    
 }
