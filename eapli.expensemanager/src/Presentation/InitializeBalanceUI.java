@@ -4,6 +4,7 @@
  */
 package Presentation;
 
+import Controllers.BasicController;
 import Controllers.InitializeBalanceController;
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
@@ -13,25 +14,36 @@ import java.util.Scanner;
  *
  * @author Marco
  */
-public class InitializeBalanceUI {
+public class InitializeBalanceUI extends BasicUI{
 
+    private InitializeBalanceController initBalanceControl = new InitializeBalanceController();
+    
     public void InitializeBalance() {
 
         Scanner in = new Scanner(System.in);
         BigDecimal valor;
-        
+        super.getHeader();
         try {
+            
             System.out.print("Insert value: ");
             valor=in.nextBigDecimal();
             
-            InitializeBalanceController control = new InitializeBalanceController();
-            control.InitializeBalance(valor);
-
-            System.out.println("Success Initial Balance set to " + valor.setScale(2).toPlainString());
+            initBalanceControl.InitializeBalance(valor);
+            System.out.println("Success Initial Balance set to " + valor.setScale(2).toPlainString() + "\n");
         } catch (NumberFormatException e) {
-            System.out.println("Incorrect Value please try again!");
+            System.out.println("Incorrect Value please try again!" + "\n");
         } catch (InputMismatchException e) {
-            System.out.println("Incorrect Value please try again!");
+            System.out.println("Incorrect Value please try again!" + "\n");
         }
+    }
+
+    @Override
+    public String getTitle() {
+        return "Initialize Balance";
+    }
+
+    @Override
+    public BasicController getController() {
+        return initBalanceControl;
     }
 }

@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package Presentation;
+import Controllers.BasicController;
 import Controllers.IncomeTypeRegisterController;
 import Model.IncomeType;
 import eapli.util.Console;
@@ -14,7 +15,7 @@ import java.util.Date;
  *
  * @author Nuno
  */
-public class IncomeTypeRegisterUI {
+public class IncomeTypeRegisterUI extends BasicUI{
     private IncomeTypeRegisterController controller;
     
     public IncomeTypeRegisterUI() {
@@ -25,9 +26,10 @@ public class IncomeTypeRegisterUI {
     public void mainLoop() {
         
       
-          while (true) {
+          while (true) {            
             System.out.println("\n* * *  MANAGE INCOME TYPES  * * *");
             System.out.println("\n* * *  CURRENT INCOME TYPES  * * *");
+            System.out.println("\n\t\t\t\t\tCurrent Balance:   " + controller.currentBalance());
 
             int i=1;
             for(String desc:controller.getIncomeTypeListStrings()){
@@ -53,7 +55,8 @@ public class IncomeTypeRegisterUI {
     private void IncomeTypeRequest() {
         String description;
         System.out.println("* * *  REGISTER AN INCOME TYPE  * * *\n");
-        System.out.println("Description: ");
+        //System.out.println("\t\t\t\t\tCurrent Balance:   " + controller.currentBalance());
+        System.out.println("\nDescription: ");
         do{
             
             description = Console.readLine("");
@@ -70,11 +73,17 @@ public class IncomeTypeRegisterUI {
             System.out.println("Income Type already exists!");
         }
         
+    }        
+
+    @Override
+    public String getTitle() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-        
 
-
-    
-     
+    @Override
+    public BasicController getController() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+      
 }
 

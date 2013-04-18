@@ -13,6 +13,8 @@ import java.util.List;
 /**
  *
  * @author Nuno
+ * The main objective of this class is to provide a selector UI
+ * It returns the IncomeType selected by its index
  */
 public class IncomeTypeSelectorUI {
     
@@ -27,9 +29,15 @@ public class IncomeTypeSelectorUI {
         }
         int i=0;
         List<String> listIncomeTypes = controller.getIncomeTypeListStrings();
+        if(listIncomeTypes.isEmpty())
+        {
+            //System.out.println("There are no income types defined!\nPlease go to main menu\n");
+            return null;
+            
+        }
         for(String desc:listIncomeTypes){
                 
-                System.out.println(i + " - "+desc);
+                System.out.println(i+1 + " - "+desc);
                 i++;
         }
         
@@ -41,13 +49,17 @@ public class IncomeTypeSelectorUI {
                         return null;
                     
                 default:
-                    IncomeType inc = controller.getIncomeTypeByDescription(listIncomeTypes.get(i));
-                    if (inc == null) {
-                        option = Console.readInteger("Option not available! Please choose an expense type");
-                    } else {
+                    if (option < 0 || option > listIncomeTypes.size())
+                    {
+                        option = Console.readInteger("Please choose an income type");
+                        continue;
+                    }else{
+                        IncomeType inc = controller.getIncomeTypeByDescription(listIncomeTypes.get(i-1));
                         return inc;
+                        
                     }
-                    break;
+                                   
+                    
             }
         }
     }
