@@ -22,7 +22,6 @@ public class MainMenu {
             System.out.println("1. Register an expense");
             System.out.println("2. Define types expense");
             System.out.println("3. Define types payments");
-            //System.out.println("5. Preview monthly expenses"); sempre visivel
             System.out.println("4. Consultation monthly expenses");
             System.out.println("5. Define income types");
             System.out.println("6. Register entrie income");
@@ -52,7 +51,6 @@ public class MainMenu {
                 case '4':
                     ExpensesMonthlyUI ui4 = new ExpensesMonthlyUI();
                     ui4.show();
-                    //System.out.println("Not Finished!!!");
                     break;
                 case '5':
                     IncomeTypeRegisterUI ui5 = new IncomeTypeRegisterUI();
