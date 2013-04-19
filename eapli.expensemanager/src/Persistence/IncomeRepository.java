@@ -34,26 +34,6 @@ public class IncomeRepository implements IIncomeRepository{
     public List<Income> getListIncome(){
         return listIncome;
     }
-    
-    public List<Income> getMonthlyIncomes(int mes, int ano)
-    {        
-        List<Income> data = new ArrayList<Income>();
-        
-        Date dini = new Date(ano, mes, 1);
-        Date dfim;
-        
-        if(mes==12)
-            dfim = new Date(ano+1, 1, 1);
-        else
-            dfim = new Date(ano, mes+1, 1);
-/*
-        for (int i=0; i<listIncome.size();i++)
-        {
-            if(dini.compareTo(listIncome.get(i).getDateOccurred()) * listIncome.get(i).getDateOccurred().compareTo(dfim) > 0)
-                data.add(listIncome.get(i));
-        }*/
-        return data;
-    }
 
     public void save(Income inc)
     {
