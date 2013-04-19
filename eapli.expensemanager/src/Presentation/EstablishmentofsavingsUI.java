@@ -1,23 +1,33 @@
 package Presentation;
 
 import Controllers.BasicController;
+import Controllers.EstablishmentofsavingsController;
+import eapli.util.Console;
+import java.util.Date;
 
 
 public class EstablishmentofsavingsUI extends BasicUI{
+    
+    private EstablishmentofsavingsController controller = new EstablishmentofsavingsController();
 
     @Override
     public void getBody() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String description = Console.readLine("Description: ");
+        double value = Console.readDouble("Amount: ");
+        String alias = Console.readLine("Alias: ");
+        Date data = new Date();
+        
+        controller.createsavings(description,value,data,alias);
     }
 
     @Override
     public String getTitle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Establishment Of Saving";
     }
 
     @Override
-    public BasicController getController() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public BasicController getController() {        
+        return controller;
     }
     
 }
