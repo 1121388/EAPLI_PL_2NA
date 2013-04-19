@@ -25,7 +25,7 @@ public abstract class BasicUI {
     private void getFooter() {
         BasicController bController = getController();
         System.out.println("    Week Expenses: " + bController.currentWeekExpenses().toString());
-        System.out.println("   Month Expenses: " + bController.currentWeekExpenses().toString());
+        System.out.println("   Month Expenses: " + bController.currentMonthExpenses().toString());
         System.out.println("          Balance: " + bController.currentBalance().toString());
     }
     

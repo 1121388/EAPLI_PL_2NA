@@ -89,7 +89,28 @@ public class ChekingAccount {
         return new BigDecimal(10);
     }
 
-    public BigDecimal getMonthExpenses(){return null;}
+    public BigDecimal getMonthExpenses()
+    {    
+        Calendar cal = Calendar.getInstance();  
+        int year = cal.get(cal.YEAR);  
+        int month = cal.get(cal.MONTH)+1;
+        Date inicio = new Date(year, month, 1);
+        Date fim = new Date(year, month, Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH));
+        List<Expense> despesas = new ChekingAccount().getExpensesByPeriod(inicio, fim);
+        BigDecimal amount = BigDecimal.ZERO; 
+        
+        // Verificar a existência de despesas para o mês pretendido.
+        if ( despesas == null) {
+            return amount;
+        }
+        
+        for(int i=0; i<despesas.size(); i++)
+        {
+            amount = amount.add(despesas.get(i).getAmount());
+        }
+        
+        return amount;
+    }
     //-----------------------  Metodos privados --------------------------------
     private void determinaTotalDespesas() {
 
