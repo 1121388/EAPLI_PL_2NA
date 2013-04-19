@@ -4,10 +4,9 @@ import Persistence.BalanceRepository;
 import Persistence.ExpenseRepository;
 import Persistence.IncomeRepository;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class ChekingAccount {
@@ -15,25 +14,21 @@ public class ChekingAccount {
     ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
     IncomeRepository incomeRepository = IncomeRepository.GetInstance();
     private BigDecimal saldoatual, tdespesas, treceitas;
-    private double dtdespesas=0, dtreceitas=0, dsaldoatual=0;
+//    private double dtdespesas=0, dtreceitas=0, dsaldoatual=0;
     private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
     private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
 
     //Devolve o saldo atual
     public double getSaldo() {
         saldoatual = BalanceRepository.getInstance().getBalance();
-        //tdespesas = new BigDecimal(0);
-        //treceitas = new BigDecimal(0);
+        tdespesas = new BigDecimal(0);
+        treceitas = new BigDecimal(0);
         determinaTotalDespesas();
         determinaTotalrendimento();
-        //saldoatual.add(treceitas);
-        //saldoatual.subtract(tdespesas);
-        dsaldoatual=saldoatual.doubleValue();
-        dsaldoatual+=dtreceitas;
-        dsaldoatual-=dtdespesas;
-        saldoatual= new BigDecimal(dsaldoatual);
-        //Double d = saldoatual.doubleValue();
-        return dsaldoatual;
+        saldoatual = saldoatual.add(treceitas);
+        saldoatual = saldoatual.subtract(tdespesas);
+        Double d = saldoatual.doubleValue();
+        return d;
     }
 
     //------------------------------ GET´S -------------------------------------
@@ -115,50 +110,58 @@ public class ChekingAccount {
     private void determinaTotalDespesas() {
 
         for (int i = 0; i < despesas.size(); i++) {
-            dtdespesas += (despesas.get(i).getAmount()).doubleValue();
-            //tdespesas.add((despesas.get(i)).getAmount());
-            //System.out.println("Despesa~valor:\n" + despesas.get(i).getAmount());
-            //System.out.println("Tdespesas:" + tdespesas);
+            tdespesas=tdespesas.add((despesas.get(i)).getAmount());
         }
-        System.out.println("dtdespesas: "+ dtdespesas);
-        tdespesas = new BigDecimal(dtdespesas);
-        System.out.println("tdespesas: "+ tdespesas);
     }
 
     private void determinaTotalrendimento() {
 
         for (int i = 0; i < receitas.size(); i++) {
-             dtreceitas += (receitas.get(i).getAmount()).doubleValue();
-            //treceitas.add((receitas.get(i)).getAmount());
+            treceitas = treceitas.add((receitas.get(i)).getAmount());
         }
-        treceitas = new BigDecimal(dtreceitas);
     }
 
     //--------- Método a ser usado pelas funções que necessitem de despesas por periodo de tempo.
     public List<Expense> getExpensesByPeriod(Date start, Date end) {
         List<Expense> _resultado = null;
         int index = despesas.size();
-
-        if (index == 0) {
+        if (index == 0) 
             return _resultado;
-        }
+        
 
-        for (; index > 0; index--) {
-            if (despesas.get(index).getDateOccurred().after(start) && despesas.get(index).getDateOccurred().before(end)) {
-                _resultado.add(despesas.get(index));
+        for (int i=0; i<index;i++) {
+            if (despesas.get(i).getDateOccurred().after(start) && despesas.get(i).getDateOccurred().before(end)) {
+                _resultado.add(despesas.get(i));
             }
         }
 
         return _resultado;
     }
 
-    //----------- Obter a lista de despesas, agrupadas por tipo, de um determinado mês
-    public List<Expense> getMonthlyExpenses(Date inicio, Date fim) {
+    //----------- Obter a lista de despesas, agrupadas por tipo, de um determinado mês (1030066)
+    public HashMap<String,BigDecimal> getMonthlyExpenses(Date inicio, Date fim) {
         List<Expense> _resultado = this.getExpensesByPeriod(inicio, fim);
 
+              System.out.println(inicio.toString());
+        //System.out.println(lstdate);
 
+        HashMap<String,BigDecimal> _resumo = new HashMap<String, BigDecimal>();
+        if ( _resultado != null && _resultado.size() > 0 ) {
+            for(int i=0;i<_resultado.size();i++) {
+                Expense _temp = _resultado.get(i);
+                String _key = _temp.expenseType.GetDescription();
 
-        return _resultado;
+                if ( _resumo.containsKey(_key)) {
+                    BigDecimal _tempvalor =  (BigDecimal)_resumo.get(_key);
+                    _tempvalor.add(_temp.getAmount());
+                    _resumo.put(_key, _tempvalor);
+                } else {
+                    _resumo.put(_key, _temp.getAmount());
+                }
+            }
+        }
+
+        return _resumo;
     }
     
     /*

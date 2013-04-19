@@ -16,13 +16,13 @@ public class MainMenu {
 
     public void mainLoop() {
         while (true) {
-            System.out.println("===================");
-            System.out.println("  EXPENSE MANAGER  ");
-            System.out.println("===================\n");
+//            System.out.println("===================");
+//            System.out.println("  EXPENSE MANAGER  ");
+//            System.out.println("===================\n");
+            System.out.println(formatTitle("EXPENSE MANAGER"));
             System.out.println("1. Register an expense");
             System.out.println("2. Define types expense");
             System.out.println("3. Define types payments");
-            //System.out.println("5. Preview monthly expenses"); sempre visivel
             System.out.println("4. Consultation monthly expenses");
             System.out.println("5. Define income types");
             System.out.println("6. Register entrie income");
@@ -52,7 +52,6 @@ public class MainMenu {
                 case '4':
                     ExpensesMonthlyUI ui4 = new ExpensesMonthlyUI();
                     ui4.show();
-                    //System.out.println("Not Finished!!!");
                     break;
                 case '5':
                     IncomeTypeRegisterUI ui5 = new IncomeTypeRegisterUI();
@@ -74,10 +73,10 @@ public class MainMenu {
 
     public void Settings() {
         while (true) {
-            System.out.println("====================");
-            System.out.println("      Settings      ");
-            System.out.println("====================\n");
-
+//            System.out.println("====================");
+//            System.out.println("      Settings      ");
+//            System.out.println("====================\n");
+            System.out.println(formatTitle("Settings"));
             System.out.println("1. Initialize Balance");
             System.out.println("0. Back to main menu\n\n");
 
@@ -92,5 +91,32 @@ public class MainMenu {
 
             }
         }
+    }
+    
+    private String formatTitle(String titulo) {
+        int pEspacamento = 50;
+        String pTitulo = titulo;
+        String pResultado = " +";
+        if (pTitulo.length() + 2 > pEspacamento)
+            pEspacamento = pTitulo.length() + 2;
+        for (int i = 0; i < pEspacamento; i++) {
+            pResultado += "-";
+        }
+        pResultado += "+\n | ";
+        int pEspacosEsquerda = (int)((pEspacamento - pTitulo.length() - 2) / 2);
+        int pEspacosDireita = pEspacamento - pEspacosEsquerda - pTitulo.length() - 1;            
+        for (int i = 0; i < pEspacosEsquerda; i++) {
+            pResultado += " ";
+        }
+        pResultado += pTitulo;
+        for (int i = 0; i < pEspacosDireita; i++) {
+            pResultado += " ";
+        }
+        pResultado += "|\n +";
+        for (int i = 0; i < pEspacamento; i++) {
+            pResultado += "-";
+        }
+        pResultado += "+";
+        return pResultado;
     }
 }
