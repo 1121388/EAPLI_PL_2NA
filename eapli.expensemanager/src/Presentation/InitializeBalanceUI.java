@@ -18,16 +18,15 @@ public class InitializeBalanceUI extends BasicUI{
 
     private InitializeBalanceController initBalanceControl = new InitializeBalanceController();
     
-    public void InitializeBalance() {
-
+    @Override
+    public void getBody() {
+        
         Scanner in = new Scanner(System.in);
         BigDecimal valor;
-        super.getHeader();
         try {
             
             System.out.print("Insert value: ");
             valor=in.nextBigDecimal();
-            
             initBalanceControl.InitializeBalance(valor);
             System.out.println("Success Initial Balance set to " + valor.setScale(2).toPlainString() + "\n");
         } catch (NumberFormatException e) {
