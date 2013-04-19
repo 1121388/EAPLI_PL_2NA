@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author Paulo Gandra Sousa
  */
-public class ExpenseRegisterController {
+public class ExpenseRegisterController extends BasicController{
     
     ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
     PaymentTypeRepository paymentTypeRepository = new PaymentTypeRepository();

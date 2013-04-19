@@ -20,17 +20,15 @@ public class MainMenu {
             System.out.println("  EXPENSE MANAGER  ");
             System.out.println("===================\n");
             System.out.println("1. Register an expense");
-            System.out.println("2. Expenses of the Week");
-            System.out.println("3. Define types expense");
-            System.out.println("4. Define types payments");
+            System.out.println("2. Define types expense");
+            System.out.println("3. Define types payments");
             //System.out.println("5. Preview monthly expenses"); sempre visivel
-            System.out.println("5. Consultation monthly expenses");
-            System.out.println("6. Define income types");
-            System.out.println("7. Register entrie income");
-            System.out.println("8. Settings");
+            System.out.println("4. Consultation monthly expenses");
+            System.out.println("5. Define income types");
+            System.out.println("6. Register entrie income");
+            System.out.println("7. Settings");
             System.out.println("0. Exit\n\n");
-            BalanceController bController = new BalanceController();
-            System.out.println("Actual Balance: " + bController.visualizarSaldo() + "\n");
+        
 
 
             String option1 = Console.readLine("Please choose an option:");
@@ -41,34 +39,30 @@ public class MainMenu {
                     return;
                 case '1':
                     ExpenseRegisterUI ui1 = new ExpenseRegisterUI();
-                    ui1.mainLoop();
+                    ui1.show();
                     break;
                 case '2':
-                    //ExpensesOfTheWeekUI ui4 = new ExpensesOfTheWeekUI();
-                    //ui4.mainLoop();
-                    break;
-                case '3':
                     ExpenseTypeUI ui3 = new ExpenseTypeUI();
                     ui3.show();
                     break;
-                case '4':
+                case '3':
                     PaymentTypeUI ui2 = new PaymentTypeUI();
-                    ui2.mainLoop();
+                    ui2.show();
                     break;
-                case '5':
+                case '4':
                     ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
-                    ui5.mainLoop();
+                    ui5.show();
                     //System.out.println("Not Finished!!!");
                     break;
-                case '6':
+                case '5':
                     IncomeTypeRegisterUI ui6 = new IncomeTypeRegisterUI();
-                    ui6.mainLoop();
+                    ui6.show();
+                    break;
+                case '6':
+                    IncomeRegisterUI ui7 = new IncomeRegisterUI();
+                    ui7.show();
                     break;
                 case '7':
-                    IncomeRegisterUI ui7 = new IncomeRegisterUI();
-                    ui7.mainLoop();
-                    break;
-                case '8':
                     Settings();
                     break;
                 default:
@@ -93,7 +87,7 @@ public class MainMenu {
                     return;
                 case 1:
                     InitializeBalanceUI ui = new InitializeBalanceUI();
-                    ui.InitializeBalance();
+                    ui.show();
                     return;
 
             }
