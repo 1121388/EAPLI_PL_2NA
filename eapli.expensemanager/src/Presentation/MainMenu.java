@@ -53,7 +53,7 @@ public class MainMenu {
                     break;
                 case '4':
                     PaymentTypeUI ui2 = new PaymentTypeUI();
-                    ui2.mainLoop();
+                    ui2.show();
                     break;
                 case '5':
                     ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();

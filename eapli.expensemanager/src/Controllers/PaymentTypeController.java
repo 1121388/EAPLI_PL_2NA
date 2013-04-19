@@ -11,7 +11,7 @@ import Persistence.PaymentTypeRepository;
  *
  * @author Abilio
  */
-public class PaymentTypeController {
+public class PaymentTypeController extends BasicController{
     
     private PaymentTypeRepository repository = new PaymentTypeRepository();
     
