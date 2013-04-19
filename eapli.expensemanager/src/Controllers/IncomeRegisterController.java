@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author jfoliveira
  */
-public class IncomeRegisterController {
+public class IncomeRegisterController extends BasicController{
     
         
     IncomeRepository incomeRepository = IncomeRepository.GetInstance();
