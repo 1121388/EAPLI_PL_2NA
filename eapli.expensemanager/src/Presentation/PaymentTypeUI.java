@@ -5,29 +5,32 @@ import Controllers.PaymentTypeController;
 import eapli.util.Console;
 
 /**
- *
  * @author Iã
+ * @modifications Nuno Tomé, Duarte Pina
  */
 public class PaymentTypeUI extends BasicUI{
-private PaymentTypeController pController = new PaymentTypeController();
-    public void mainLoop() {
+
+    private PaymentTypeController pController = new PaymentTypeController();
+    
+    @Override
+    public void getBody()
+    {
         
-        while (true) {
-            
-//            System.out.println("==============================");
-//            System.out.println("  Criar um tipo de Pagamento  ");
-//            System.out.println("==============================\n");
-            getHeader();
-            System.out.println(" 1-Dinheiro");
-            System.out.println(" 2-Cartão de crédito");
+        while (true) 
+        {
+            //getHeader();
+            System.out.println(" 1-Cash");
+            System.out.println(" 2-Credit/Debit Card");
             System.out.println(" 3-Cheque");
             System.out.println(" 4-Paypal");
-            System.out.println(" 0-Sair \n");
+            System.out.println(" 0-Exit \n");
             int option = Console.readInteger("Please choose a option");
 
-            switch (option) {
+            switch (option) 
+            {
                 case 1:
-                    String currency = Console.readLine("Indique a moeda");
+                    String alias = Console.readLine("Please type the name of the new payment type.");
+                    String currency = Console.readLine("Please type the currency type.");
                     pController.registerCash("Dinheiro", currency);
                     return;
                 case 2:
@@ -53,14 +56,15 @@ private PaymentTypeController pController = new PaymentTypeController();
     }
     
     @Override
-    public String getTitle(){
+    public String getTitle()
+    {
         return  "Criar um tipo de Pagamento";
     }
 
     @Override
-    public BasicController getController() {
+    public BasicController getController() 
+    {
         return pController;
     }
-    
-    
+     
 }
