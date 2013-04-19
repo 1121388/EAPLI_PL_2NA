@@ -4,10 +4,9 @@ import Persistence.BalanceRepository;
 import Persistence.ExpenseRepository;
 import Persistence.IncomeRepository;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class ChekingAccount {
@@ -126,27 +125,43 @@ public class ChekingAccount {
     public List<Expense> getExpensesByPeriod(Date start, Date end) {
         List<Expense> _resultado = null;
         int index = despesas.size();
-
-        if (index == 0) {
+        if (index == 0) 
             return _resultado;
-        }
+        
 
-        for (; index > 0; index--) {
-            if (despesas.get(index).getDateOccurred().after(start) && despesas.get(index).getDateOccurred().before(end)) {
-                _resultado.add(despesas.get(index));
+        for (int i=0; i<index;i++) {
+            if (despesas.get(i).getDateOccurred().after(start) && despesas.get(i).getDateOccurred().before(end)) {
+                _resultado.add(despesas.get(i));
             }
         }
 
         return _resultado;
     }
 
-    //----------- Obter a lista de despesas, agrupadas por tipo, de um determinado mês
-    public List<Expense> getMonthlyExpenses(Date inicio, Date fim) {
+    //----------- Obter a lista de despesas, agrupadas por tipo, de um determinado mês (1030066)
+    public HashMap<String,BigDecimal> getMonthlyExpenses(Date inicio, Date fim) {
         List<Expense> _resultado = this.getExpensesByPeriod(inicio, fim);
 
+              System.out.println(inicio.toString());
+        //System.out.println(lstdate);
 
+        HashMap<String,BigDecimal> _resumo = new HashMap<String, BigDecimal>();
+        if ( _resultado != null && _resultado.size() > 0 ) {
+            for(int i=0;i<_resultado.size();i++) {
+                Expense _temp = _resultado.get(i);
+                String _key = _temp.expenseType.GetDescription();
 
-        return _resultado;
+                if ( _resumo.containsKey(_key)) {
+                    BigDecimal _tempvalor =  (BigDecimal)_resumo.get(_key);
+                    _tempvalor.add(_temp.getAmount());
+                    _resumo.put(_key, _tempvalor);
+                } else {
+                    _resumo.put(_key, _temp.getAmount());
+                }
+            }
+        }
+
+        return _resumo;
     }
     
     /*

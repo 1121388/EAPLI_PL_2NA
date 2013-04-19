@@ -58,7 +58,7 @@ public class MainMenu {
                     break;
                 case '6':
                     IncomeRegisterUI ui6 = new IncomeRegisterUI();
-                    ui6.show();
+                    //ui6.show();
                     break;
                 case '7':
                     Settings();
