@@ -11,6 +11,7 @@ import eapli.util.Console;
 public class PaymentTypeUI extends BasicUI{
 
     private PaymentTypeController pController = new PaymentTypeController();
+    private String alias, bank_name;
     
     @Override
     public void getBody()
@@ -26,27 +27,30 @@ public class PaymentTypeUI extends BasicUI{
         switch (option) 
         {
             case 1:
-                String alias = Console.readLine("Please type the name of the new payment type.");
+                alias = Console.readLine("Please type the name of the new payment type.");
                 String currency = Console.readLine("Please type the currency type.");
                 pController.registerCash(alias, currency);
                 return;
             case 2:
-                String bank_name = Console.readLine("Indique o nome do banco");
-                int card_nr = Console.readInteger("Indique o numero do cartão");
-                pController.registerCard("Cartão", card_nr, bank_name);
+                alias = Console.readLine("Please type the name of the new payment type.");
+                bank_name = Console.readLine("Please type the name of the bank.");
+                int card_nr = Console.readInteger("Please type the number of the card.");
+                pController.registerCard(alias, card_nr, bank_name);
                 return;
             case 3:
-                String bank_name1 = Console.readLine("Indique o nome do banco");
-                pController.registerCheque("Cheque", bank_name1);
+                alias = Console.readLine("Please type the name of the new payment type.");
+                bank_name = Console.readLine("Please type the name of the bank.");
+                pController.registerCheque(alias, bank_name);
                 return;
             case 4:
-                String user = Console.readLine("Indique o nome do utilizador");
-                pController.registerPaypal("Paypal", user);
+                alias = Console.readLine("Please type the name of the new payment type.");
+                String user = Console.readLine("Please type the name of the user.");
+                pController.registerPaypal(alias, user);
                 return;
             case 0:
                 return;
             default:
-                System.out.println("Invalid Option");
+                System.out.println("Invalid Option!");
                 break;
         }
     }
@@ -54,7 +58,7 @@ public class PaymentTypeUI extends BasicUI{
     @Override
     public String getTitle()
     {
-        return  "Criar um tipo de Pagamento";
+        return  "Create new payment type";
     }
 
     @Override
