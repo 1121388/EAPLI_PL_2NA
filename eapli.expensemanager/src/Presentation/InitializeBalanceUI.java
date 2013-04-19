@@ -20,13 +20,9 @@ public class InitializeBalanceUI extends BasicUI{
     
     @Override
     public void getBody() {
-        
-        Scanner in = new Scanner(System.in);
-        BigDecimal valor;
+
         try {
-            
-            System.out.print("Insert value: ");
-            valor=in.nextBigDecimal();
+            BigDecimal valor=insertValue();
             initBalanceControl.InitializeBalance(valor);
             System.out.println("Success Initial Balance set to " + valor.setScale(2).toPlainString() + "\n");
         } catch (NumberFormatException e) {
@@ -44,5 +40,16 @@ public class InitializeBalanceUI extends BasicUI{
     @Override
     public BasicController getController() {
         return initBalanceControl;
+    }
+    
+    private BigDecimal insertValue() throws NumberFormatException,InputMismatchException{
+        
+        Scanner in = new Scanner(System.in);
+        BigDecimal valor;
+        System.out.print("Insert value: ");
+        valor=in.nextBigDecimal();
+        initBalanceControl.InitializeBalance(valor);
+        
+        return valor;
     }
 }
