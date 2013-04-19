@@ -84,6 +84,11 @@ public class IncomeTypeRegisterUI extends BasicUI{
     public BasicController getController() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public void getBody() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
       
 }
 
