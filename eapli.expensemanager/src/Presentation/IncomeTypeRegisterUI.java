@@ -9,6 +9,7 @@ import Model.IncomeType;
 import eapli.util.Console;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
     
 /**
@@ -54,8 +55,8 @@ public class IncomeTypeRegisterUI extends BasicUI{
     
     private void IncomeTypeRequest() {
         String description;
-        System.out.println("* * *  REGISTER AN INCOME TYPE  * * *\n");
-        //System.out.println("\t\t\t\t\tCurrent Balance:   " + controller.currentBalance());
+     /*   System.out.println("* * *  REGISTER AN INCOME TYPE  * * *\n");
+        //System.out.println("\t\t\t\t\tCurrent Balance:   " + controller.currentBalance());*/
         System.out.println("\nDescription: ");
         do{
             
@@ -77,17 +78,31 @@ public class IncomeTypeRegisterUI extends BasicUI{
 
     @Override
     public String getTitle() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Income Type Register Submenu";
     }
 
     @Override
     public BasicController getController() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return controller;
     }
 
     @Override
     public void getBody() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        /*A decidir se faz sentido mostrar a lista*/
+        List<String> lista = controller.getIncomeTypeListStrings() ;
+        if (lista.size()>0){
+            System.out.println("Currently defined income types");
+            int i=1;
+            for(String desc:lista){
+                System.out.println(i + " - "+desc);
+                i++;
+            }
+        }
+         
+        IncomeTypeRequest();
+            
+
     }
       
 }
