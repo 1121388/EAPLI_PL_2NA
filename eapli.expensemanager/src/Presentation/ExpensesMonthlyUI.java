@@ -40,6 +40,10 @@ public class ExpensesMonthlyUI extends BasicUI {
         mainLoop();
     }
     
+    public void show() {
+        mainLoop();
+    }
+    
     public void mainLoop() {        
         Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
         int currentYear = localCalendar.get(Calendar.YEAR);
