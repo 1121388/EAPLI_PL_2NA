@@ -42,25 +42,25 @@ public class MainMenu {
                     ui1.show();
                     break;
                 case '2':
-                    ExpenseTypeUI ui3 = new ExpenseTypeUI();
-                    ui3.show();
-                    break;
-                case '3':
-                    PaymentTypeUI ui2 = new PaymentTypeUI();
+                    ExpenseTypeUI ui2 = new ExpenseTypeUI();
                     ui2.show();
                     break;
+                case '3':
+                    PaymentTypeUI ui3 = new PaymentTypeUI();
+                    ui3.show();
+                    break;
                 case '4':
-                    ExpensesMonthlyUI ui5 = new ExpensesMonthlyUI();
-                    ui5.show();
+                    ExpensesMonthlyUI ui4 = new ExpensesMonthlyUI();
+                    ui4.show();
                     //System.out.println("Not Finished!!!");
                     break;
                 case '5':
-                    IncomeTypeRegisterUI ui6 = new IncomeTypeRegisterUI();
-                    ui6.show();
+                    IncomeTypeRegisterUI ui5 = new IncomeTypeRegisterUI();
+                    ui5.show();
                     break;
                 case '6':
-                    IncomeRegisterUI ui7 = new IncomeRegisterUI();
-                    ui7.show();
+                    IncomeRegisterUI ui6 = new IncomeRegisterUI();
+                    ui6.show();
                     break;
                 case '7':
                     Settings();
