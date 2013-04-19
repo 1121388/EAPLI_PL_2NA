@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class EstablishmentofsavingsController extends BasicController {
 
-    EstablishmentofsavingsController() {
+    public EstablishmentofsavingsController() {
     }
 
     public void createsavings(String desc, double valor, Date data, String Alias) {
