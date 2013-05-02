@@ -9,11 +9,6 @@ public class SavingGoalController extends BasicController {
     }
 
     public SavingGoal CreateSavingGoal(String desc, Double valor, Date data, String alias) {
-        SavingGoal sav = new SavingGoal();
-        //sav.
-
-
-
-        return sav;
+        return new SavingGoal(desc, valor, data, alias);
     }
 }
