@@ -7,6 +7,7 @@ package Controllers;
 
 import Model.IncomeType;
 import Persistence.IncomeTypeRepository;
+import Persistence.PersistenceFactory;
 import java.util.List;
 /**
  *
@@ -14,13 +15,18 @@ import java.util.List;
  */
 public class IncomeTypeRegisterController extends BasicController {
 
-    private IncomeTypeRepository repo;
+    //private IncomeTypeRepository repo;
+    private IncomeTypeRepository repo = PersistenceFactory.buildPersistenceFactory().incomeTypeRepository(); //alterado
     
-    public IncomeTypeRegisterController() {
-        
-        repo = IncomeTypeRepository.getInstance();
-        
-    }    
+    
+    
+    
+    
+//    public IncomeTypeRegisterController() {
+//        
+//        repo = IncomeTypeRepository.getInstance();   //getInstance n funciona por causa de ser interface
+//        
+//    }    
     
     
 
