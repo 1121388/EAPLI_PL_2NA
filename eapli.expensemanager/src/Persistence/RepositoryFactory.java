@@ -12,9 +12,6 @@ public interface RepositoryFactory {
     
  //    ExpenseRepository expenseRepository();
 
-
-    ExpenseTypeRepository expenseTypeRepository();
-    IncomeTypeRepository incomeTypeRepository();   
+    ExpenseTypeRepository expenseTypeRepository(); 
     LimitRepository LimitRepository();   
-
 }
