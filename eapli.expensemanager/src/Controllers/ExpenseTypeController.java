@@ -6,6 +6,7 @@ package Controllers;
 
 import Model.ExpenseType;
 import Persistence.ExpenseTypeRepository;
+import Persistence.PersistenceFactory;
 
 /**
  *
@@ -13,13 +14,16 @@ import Persistence.ExpenseTypeRepository;
  */
 public class ExpenseTypeController extends BasicController {
 
-    private ExpenseTypeRepository pRepository = ExpenseTypeRepository.GetInstance();
+    //private ExpenseTypeRepository pRepository = ExpenseTypeRepository.GetInstance();
+    private ExpenseTypeRepository pRepository = PersistenceFactory.buildPersistenceFactory().expenseTypeRepository();
+
     
     public ExpenseTypeController() {}
     
-    public boolean RegisterExpenseType(String aDescription) {
-        ExpenseType pExpenseType = new ExpenseType(aDescription);
-        return pRepository.SaveExpenseType(pExpenseType);
+    public ExpenseType RegisterExpenseType(String aDescription) {
+        //ToDo - necessário pedir mais um input
+        ExpenseType pExpenseType = new ExpenseType(aDescription, aDescription);
+        return pRepository.save(pExpenseType);
     }
     public String ExpenseTypeList(boolean aNumberedList) {
         return pRepository.ExpenseTypeList(aNumberedList);

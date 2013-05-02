@@ -15,7 +15,9 @@ import java.util.Date;
  */
 public class ExpenseRegisterController extends BasicController{
     
-    ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
+    //ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
+     ExpenseTypeRepository expenseTypeRepository = PersistenceFactory.buildPersistenceFactory().expenseTypeRepository();
+
     PaymentTypeRepository paymentTypeRepository = new PaymentTypeRepository();
     
     public ExpenseRegisterController() {

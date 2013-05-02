@@ -4,20 +4,31 @@
  */
 package Model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Raul.Lima
  */
-public class ExpenseType {
-        
-    private String pDescription;
+@Entity
+public class ExpenseType implements Serializable  {
+    @Id
+     String name;
+     String longName;
+     
+     //Rocha - retirei pDescription 
     
-    public ExpenseType(String aDescription) {
-        this.pDescription = aDescription;
+     private ExpenseType() {}
+    
+    public ExpenseType(String aName, String aLongName) {
+        this.name = aName;
+        this.longName = aLongName;
     }
     
     public String GetDescription() {
-        return pDescription;
+        return name;
     }
     
 }
