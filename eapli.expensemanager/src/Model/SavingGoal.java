@@ -1,20 +1,27 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
 
-public class SavingGoal {
+@Entity
+public class SavingGoal implements Serializable {
 
-    String desc, alias;
+    @Id
+    String descricao, Aalias;
     double valor;
-    Date data;
-
-    public SavingGoal() {
-    }
+    @Temporal(javax.persistence.TemporalType.DATE)
+    Date Ddata;
 
     public SavingGoal(String desc, double valor, Date data, String alias) {
-        this.desc = desc;
+        this.descricao = desc;
         this.valor = valor;
-        this.data = data;
-        this.alias = alias;
+        this.Ddata = data;
+        this.Aalias = alias;
+    }
+
+    public SavingGoal() {
     }
 }
