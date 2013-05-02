@@ -20,7 +20,7 @@ public class ExpenseType implements Serializable  {
      
      //Rocha - retirei pDescription 
     
-     private ExpenseType() {}
+    protected ExpenseType() {}
     
     public ExpenseType(String aName, String aLongName) {
         this.name = aName;
