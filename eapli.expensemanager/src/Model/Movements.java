@@ -5,20 +5,39 @@
 package Model;
 
 import eapli.util.DateTime;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author MNLyle
  */
-public class Movements {
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Movements implements Serializable{
     
+    @Id
+    @GeneratedValue
+    private int id;
     String description;
+    
+    
    
     private BigDecimal amount;
     
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
+
+    protected Movements() {
+    }
     
     public Movements(String description, BigDecimal amount,Date date){
         if (description == null || date == null || amount == null) {
