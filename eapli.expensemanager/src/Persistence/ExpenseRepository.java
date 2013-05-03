@@ -4,37 +4,19 @@
  */
 package Persistence;
 import Model.*;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
+
+
 /**
  *
- * @author losa
+ * @author MNLyle
  */
-public class ExpenseRepository  implements IExpenseRepository
-{
-    // class member
-    private static ExpenseRepository repository = null;
-    private List<Expense> listExpense= new ArrayList<Expense>();
-
-    private ExpenseRepository() {}
+public interface ExpenseRepository {
     
-    public static ExpenseRepository GetInstance() {
-        if (repository == null)
-            repository = new ExpenseRepository();
-        return repository;
-    }
+    public abstract ExpenseRepository GetInstance();
     
-    public List<Expense> getListExpense(){
-        return listExpense;
-    }
+    public abstract List<Expense> getListExpense();
     
-    public void save(Expense exp)
-    {
-        if (exp==null) throw new IllegalArgumentException();
-        listExpense.add(exp);
-      
-    }
-
+    public abstract void save(Expense exp);
+    
 }
