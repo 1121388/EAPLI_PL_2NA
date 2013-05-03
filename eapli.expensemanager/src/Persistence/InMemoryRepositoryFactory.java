@@ -31,4 +31,14 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public IncomeRepository incomeRepository(){
+        return new Persistence.InMemory.IncomeRepositoryImpl();
+    }
+    
+    @Override
+    public GeographicZoneRepository geographicZoneRepository(){
+        return new Persistence.InMemory.GeographicZoneRepositoryImpl();
+    }
+    
 }

@@ -3,6 +3,7 @@ package Model;
 import Persistence.BalanceRepository;
 import Persistence.ExpenseRepository;
 import Persistence.IncomeRepository;
+import Persistence.PersistenceFactory;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,11 +13,12 @@ import java.util.List;
 public class ChekingAccount {
     
     ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
-    IncomeRepository incomeRepository = IncomeRepository.GetInstance();
+    IncomeRepository incomeRepository = PersistenceFactory.buildPersistenceFactory().incomeRepository();
     private BigDecimal saldoatual, tdespesas, treceitas;
 //    private double dtdespesas=0, dtreceitas=0, dsaldoatual=0;
     private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
-    private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
+    //private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
+    private List<Income> receitas =PersistenceFactory.buildPersistenceFactory().incomeRepository().IncomeObjectList();
 
     //Devolve o saldo atual
     public double getSaldo() {

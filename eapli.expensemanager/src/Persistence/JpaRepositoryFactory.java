@@ -12,15 +12,12 @@ package Persistence;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
- 
 class JpaRepositoryFactory implements RepositoryFactory {
 
 //    @Override
 //    public ExpenseRepository expenseRepository() {
 //        return new expensemanager.persistence.jpa.ExpenseRepositoryImpl();
 //    }
-
     @Override
     public ExpenseTypeRepository expenseTypeRepository() {
         return new Persistence.JPA.ExpenseTypeRepositoryImpl();
@@ -33,11 +30,15 @@ class JpaRepositoryFactory implements RepositoryFactory {
 
     @Override
     public IncomeTypeRepository incomeTypeRepository() {
-        return new Persistence.JPA.IncomeTypeRepositoryImpl();    }
+        return new Persistence.JPA.IncomeTypeRepositoryImpl();
+    }
 
     @Override
     public GeographicZoneRepository geographicZoneRepository() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
 
+    public IncomeRepository incomeRepository() {
+        return new Persistence.JPA.IncomeRepositoryImpl();
+    }
+}
