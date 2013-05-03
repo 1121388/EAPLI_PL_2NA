@@ -26,7 +26,8 @@ public class MainMenu {
             System.out.println("4. Consultation monthly expenses");
             System.out.println("5. Define income types");
             System.out.println("6. Register entrie income");
-            System.out.println("7. Settings");
+            System.out.println("7. Establishment of savings");
+            System.out.println("8. Settings");
             System.out.println("0. Exit\n\n");
         
 
@@ -62,6 +63,10 @@ public class MainMenu {
                     ui6.show();
                     break;
                 case '7':
+                    SavingGoalUI ui7 = new SavingGoalUI();
+                    ui7.show();
+                    break;
+                case '8':
                     Settings();
                     break;
                 default:
