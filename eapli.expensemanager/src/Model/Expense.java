@@ -7,18 +7,24 @@ package Model;
 import eapli.util.DateTime;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 
 /**
  *
  * @author Paulo Gandra Sousa
  */
-
+@Entity
 public class Expense extends Movements{
     
+    @OneToOne
     ExpenseType expenseType;
-        
+    
+    @OneToOne   
     MeansOfPayment meansOfPayment;
+
+    protected Expense() { }
         
     public Expense( String description, Date dateOccurred, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
         
