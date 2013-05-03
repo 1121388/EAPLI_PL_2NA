@@ -149,7 +149,7 @@ public class ChekingAccount {
         if ( _resultado != null && _resultado.size() > 0 ) {
             for(int i=0;i<_resultado.size();i++) {
                 Expense _temp = _resultado.get(i);
-                String _key = _temp.expenseType.GetDescription();
+                String _key = _temp.expenseType.GetName();
 
                 if ( _resumo.containsKey(_key)) {
                     BigDecimal _tempvalor =  (BigDecimal)_resumo.get(_key);

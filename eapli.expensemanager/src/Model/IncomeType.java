@@ -4,14 +4,19 @@
  */
 package Model;
 
-/**
- *
- * @author Nuno
- */
-public class IncomeType {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity
+public class IncomeType implements Serializable{
     
-    private String description;
+    @Id
+    String description;
     
+    
+    protected IncomeType() {}
 
     public IncomeType(String description) {
         this.description = description;
@@ -20,8 +25,8 @@ public class IncomeType {
     public String getDescription(){
         return description;
     }
-    public String toString() {
-        
+    
+    public String toString() {        
          return "Income type: " + description ;
     }
     

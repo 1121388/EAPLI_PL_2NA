@@ -13,7 +13,7 @@ import java.util.List;
  * @author arocha
  */
 public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
-     private static ExpenseTypeRepository pRepository = null;
+    private static ExpenseTypeRepository pRepository = null;
     private static List<ExpenseType> pExpenseTypeList = new ArrayList<ExpenseType>();
       
     public static ExpenseTypeRepository GetInstance() {
@@ -23,6 +23,7 @@ public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
         return pRepository;
     }
     
+    @Override
     public ExpenseType save(ExpenseType aExpenseType) {
         //To Do - estava a retornar true or false. Colocar exceções...
 //        if (GetInstance().CheckIfNotExist(aExpenseType)) {
@@ -40,6 +41,7 @@ public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
         pExpenseTypeList.add(aExpenseType);
     }
     
+    @Override
     public String ExpenseTypeList(boolean aNumberedList) {
         String List = "";
         if (pExpenseTypeList.size() > 0) {
@@ -48,7 +50,7 @@ public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
                     List = List + "[" + (i + 1) + "] ";
                 else
                     List = List + "- ";
-                List = List + pExpenseTypeList.get(i).GetDescription() + "\n";
+                List = List + pExpenseTypeList.get(i).GetName() + " - " + pExpenseTypeList.get(i).GetLongName() + "\n";
             }
         } else {
             List = List + "No items to display!\n";
@@ -56,10 +58,12 @@ public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
         return List;
     }
 
+    @Override
     public List<ExpenseType> ExpenseTypeObjectList() {
         return pExpenseTypeList;
     }
-        
+
+    @Override
     public ExpenseType GetExpenseType(int aNrObject) {
         if (aNrObject > 0 && aNrObject <= pExpenseTypeList.size())
             return pExpenseTypeList.get(aNrObject - 1);
@@ -67,9 +71,10 @@ public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
             return null;
     }
     
+    @Override
     public boolean CheckIfNotExist(ExpenseType aExpenseType) {
         for (int i = 0; i < pExpenseTypeList.size(); i++)
-            if (pExpenseTypeList.get(i).GetDescription().equals(aExpenseType.GetDescription()))
+            if (pExpenseTypeList.get(i).GetName().equals(aExpenseType.GetName()))
                 return false;
         return true;
     }
