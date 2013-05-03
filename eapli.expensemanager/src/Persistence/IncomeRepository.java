@@ -17,30 +17,37 @@ import java.util.Date;
  *
  * @author jfoliveira
  */
-public class IncomeRepository implements IIncomeRepository{
+public interface IncomeRepository {
 
-       // class member
-    private static IncomeRepository repository = null;
-    private List<Income> listIncome= new ArrayList<Income>();
-
-    private IncomeRepository() {}
+// class member
+//    private static IncomeRepository repository = null;
+//    private List<Income> listIncome= new ArrayList<Income>();
     
-    public static IncomeRepository GetInstance() {
-        if (repository == null)
-            repository = new IncomeRepository();
-        return repository;
-    }
-    
-    public List<Income> getListIncome(){
-        return listIncome;
-    }
+    public Income save(Income aIncome);
+    public String IncomeList(boolean aNumberedList);
+    public List<Income> IncomeObjectList();
+    public Income GetIncome(int aNrObject);
+    public boolean CheckIfNotExist(Income aIncome);
+//    public List<Income> getListIncome();
 
-    public void save(Income inc)
-    {
-        if (inc==null) throw new IllegalArgumentException();
-        listIncome.add(inc);
-      
-    }
+//    private IncomeRepository() {}
+    
+//    public static IncomeRepository GetInstance() {
+//        if (repository == null)
+//            repository = new IncomeRepository();
+//        return repository;
+//    }
+    
+//    public List<Income> getListIncome(){
+//        return listIncome;
+//    }
+
+//    public void save(Income inc)
+//    {
+//        if (inc==null) throw new IllegalArgumentException();
+//        listIncome.add(inc);
+//      
+//    }
     
     
     

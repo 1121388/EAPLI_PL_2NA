@@ -31,4 +31,8 @@ public class Income extends Movements{
     public BigDecimal getAmount() {
        return this.getMAmount();
     }
+    
+    public String GetDescription(){
+        return this.getMDescription();
+    }
 }
