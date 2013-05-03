@@ -14,16 +14,14 @@ import Persistence.PersistenceFactory;
  */
 public class ExpenseTypeController extends BasicController {
 
-    //private ExpenseTypeRepository pRepository = ExpenseTypeRepository.GetInstance();
     private ExpenseTypeRepository pRepository = PersistenceFactory.buildPersistenceFactory().expenseTypeRepository();
 
     
     public ExpenseTypeController() {}
     
-    public ExpenseType RegisterExpenseType(String aDescription) {
-        //ToDo - necessário pedir mais um input
-        ExpenseType pExpenseType = new ExpenseType(aDescription, aDescription);
-        return pRepository.save(pExpenseType);
+    public boolean RegisterExpenseType(String aName, String aLongName) {
+        ExpenseType pExpenseType = new ExpenseType(aName, aLongName);
+        return pRepository.SaveExpenseType(pExpenseType);
     }
     public String ExpenseTypeList(boolean aNumberedList) {
         return pRepository.ExpenseTypeList(aNumberedList);

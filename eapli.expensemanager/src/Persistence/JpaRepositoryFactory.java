@@ -34,5 +34,10 @@ class JpaRepositoryFactory implements RepositoryFactory {
     @Override
     public IncomeTypeRepository incomeTypeRepository() {
         return new Persistence.JPA.IncomeTypeRepositoryImpl();    }
+
+    @Override
+    public GeographicZoneRepository geographicZoneRepository() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 

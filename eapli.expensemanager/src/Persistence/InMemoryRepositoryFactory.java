@@ -21,4 +21,14 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
         return new Persistence.InMemory.ExpenseTypeRepositoryImpl();
     }
 
+    @Override
+    public Persistence.LimitRepository LimitRepository() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public IncomeTypeRepository incomeTypeRepository() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

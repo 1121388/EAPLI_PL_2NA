@@ -37,18 +37,14 @@ public class ExpenseTypeUI extends BasicUI {
     
     private void DataRequest() {
         while (true) {
-            String pDescription = Console.readLine("Description:");
-            //ToDo - tratamento de excecões e retorno
-            pController.RegisterExpenseType(pDescription);
-             System.out.println("Expense type added!\n");
-             break;
-                 
-//            if (pController.RegisterExpenseType(pDescription)) {
-//                System.out.println("Expense type added!\n");
-//                break;
-//            } else {
-//                System.out.println("Expense type description already exist. Please choose another!");
-//            }
+            String pName = Console.readLine("Name:");
+            String pLongName = Console.readLine("Long Name:");
+            if (pController.RegisterExpenseType(pName, pLongName)) {
+                System.out.println("Expense type added!\n");
+                break;
+            } else {
+                System.out.println("Expense type name already exist. Please choose another!");
+            }
         }
     }
 

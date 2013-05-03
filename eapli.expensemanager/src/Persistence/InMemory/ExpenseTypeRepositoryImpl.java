@@ -17,28 +17,19 @@ public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
     private static List<ExpenseType> pExpenseTypeList = new ArrayList<ExpenseType>();
       
     public static ExpenseTypeRepository GetInstance() {
-        //ToDo
         if (pRepository == null)
             pRepository = new ExpenseTypeRepositoryImpl();
         return pRepository;
     }
     
     @Override
-    public ExpenseType save(ExpenseType aExpenseType) {
-        //To Do - estava a retornar true or false. Colocar exceções...
-//        if (GetInstance().CheckIfNotExist(aExpenseType)) {
-//            AddExpenseType(aExpenseType);
-//            return aExpenseType;
-//        } else {
-//            return aExpenseType;
-//        }
-        
-        AddExpenseType(aExpenseType);
-        return aExpenseType;
-    }
-    
-    private void AddExpenseType(ExpenseType aExpenseType) {
-        pExpenseTypeList.add(aExpenseType);
+    public boolean SaveExpenseType(ExpenseType aExpenseType) {
+        if (CheckIfNotExist(aExpenseType)) {
+            pExpenseTypeList.add(aExpenseType);
+            return true;
+        } else {
+            return false;
+        }
     }
     
     @Override
@@ -71,8 +62,7 @@ public class ExpenseTypeRepositoryImpl implements ExpenseTypeRepository {
             return null;
     }
     
-    @Override
-    public boolean CheckIfNotExist(ExpenseType aExpenseType) {
+    private boolean CheckIfNotExist(ExpenseType aExpenseType) {
         for (int i = 0; i < pExpenseTypeList.size(); i++)
             if (pExpenseTypeList.get(i).GetName().equals(aExpenseType.GetName()))
                 return false;

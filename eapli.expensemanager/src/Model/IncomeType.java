@@ -13,10 +13,16 @@ import javax.persistence.Id;
 public class IncomeType implements Serializable{
     
     @Id
+    String shortid;
     String description;
     
     
     protected IncomeType() {}
+
+    public IncomeType(String shortid, String description) {
+        this.shortid = shortid;
+        this.description = description;
+    }
 
     public IncomeType(String description) {
         this.description = description;
@@ -26,12 +32,12 @@ public class IncomeType implements Serializable{
         return description;
     }
     
-    public String toString() {        
-         return "Income type: " + description ;
+    public String getShortID(){
+        return shortid;
     }
     
-    
-    
-    
+    public String toString() {        
+         return "id: " + description + ", description:" + description ;
+    }
     
 }
