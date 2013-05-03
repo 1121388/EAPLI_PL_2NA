@@ -37,10 +37,9 @@ public class ExpenseTypeRepositoryImpl extends JpaRepository<ExpenseType, String
         }
         return expenseType;
     }   
-    
-    
-    
-      public String ExpenseTypeList(boolean aNumberedList) {
+
+    @Override
+    public String ExpenseTypeList(boolean aNumberedList) {
         String List = "1-xx";
         
         // To Do - rever código abaixo.
@@ -59,12 +58,14 @@ public class ExpenseTypeRepositoryImpl extends JpaRepository<ExpenseType, String
         return List;
     }
 
+    @Override
     public List<ExpenseType> ExpenseTypeObjectList() {
         // ToDo
         //return pExpenseTypeList;
         return null;
     }
         
+    @Override
     public ExpenseType GetExpenseType(int aNrObject) {
 //        if (aNrObject > 0 && aNrObject <= pExpenseTypeList.size())
 //            return pExpenseTypeList.get(aNrObject - 1);
@@ -74,6 +75,7 @@ public class ExpenseTypeRepositoryImpl extends JpaRepository<ExpenseType, String
         return null;
     }
     
+    @Override
     public boolean CheckIfNotExist(ExpenseType aExpenseType) {
 //        for (int i = 0; i < pExpenseTypeList.size(); i++)
 //            if (pExpenseTypeList.get(i).GetDescription().equals(aExpenseType.GetDescription()))
