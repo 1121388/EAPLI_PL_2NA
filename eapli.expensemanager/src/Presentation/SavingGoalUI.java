@@ -3,7 +3,6 @@ package Presentation;
 import Controllers.BasicController;
 import Controllers.SavingGoalController;
 import eapli.util.Console;
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class SavingGoalUI extends BasicUI {
