@@ -27,8 +27,12 @@ public class ExpenseType implements Serializable  {
         this.longName = aLongName;
     }
     
-    public String GetDescription() {
+    public String GetName() {
         return name;
+    }
+    
+    public String GetLongName() {
+        return longName;
     }
     
 }
