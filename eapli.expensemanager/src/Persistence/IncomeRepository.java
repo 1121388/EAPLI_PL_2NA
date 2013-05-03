@@ -28,6 +28,8 @@ public interface IncomeRepository {
     public List<Income> IncomeObjectList();
     public Income GetIncome(int aNrObject);
     public boolean CheckIfNotExist(Income aIncome);
+    
+    
 //    public List<Income> getListIncome();
 
 //    private IncomeRepository() {}

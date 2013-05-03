@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author PT1050
+ * @author vcosta
  */
 public class IncomeRepositoryImpl implements IncomeRepository {
     private static IncomeRepository pRepository = null;

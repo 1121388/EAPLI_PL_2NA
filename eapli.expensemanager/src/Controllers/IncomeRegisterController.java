@@ -13,11 +13,11 @@ import java.util.List;
 /**
  *
  * @author jfoliveira
+ * @author vcosta
  */
 public class IncomeRegisterController extends BasicController {
 
-//    IncomeRepository incomeRepository = IncomeRepository.GetInstance();
-//    IncomeTypeRepository incomeTypeRepository = IncomeTypeRepository.getInstance();
+
     IncomeTypeRepository incomeTypeRepository = PersistenceFactory.buildPersistenceFactory().incomeTypeRepository();
 
     public List<String> IncomeTypeList() {
