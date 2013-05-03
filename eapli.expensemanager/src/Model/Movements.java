@@ -63,5 +63,9 @@ public class Movements implements Serializable{
         return date;
     }
     
+     public String getMDescription(){
+        return description;
+    }
+    
     
 }
