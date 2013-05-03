@@ -25,5 +25,14 @@ class JpaRepositoryFactory implements RepositoryFactory {
     public ExpenseTypeRepository expenseTypeRepository() {
         return new Persistence.JPA.ExpenseTypeRepositoryImpl();
     }
+
+    @Override
+    public Persistence.LimitRepository LimitRepository() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public IncomeTypeRepository incomeTypeRepository() {
+        return new Persistence.JPA.IncomeTypeRepositoryImpl();    }
 }
 
