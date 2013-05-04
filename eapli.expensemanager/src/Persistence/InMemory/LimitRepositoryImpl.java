@@ -2,40 +2,41 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Persistence;
+package Persistence.InMemory;
 
 import Model.Limit;
+import Persistence.LimitRepository;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Hugo Silva
+ * @author arocha
  */
-public interface LimitRepository {
-    public List<Limit> getListLimit();
-    public Limit save(Limit l);
-/*    
-    // class member
+public class LimitRepositoryImpl implements LimitRepository {
+
     private static LimitRepository repository = null;
     private List<Limit> listLimit= new ArrayList<Limit>();
-
-    private LimitRepository() {}
     
     public static LimitRepository GetInstance() {
         if (repository == null)
-            repository = new LimitRepository();
+            repository = new LimitRepositoryImpl();
         return repository;
     }
     
+    @Override
     public List<Limit> getListLimit(){
         return listLimit;
     }
     
-    public void save(Limit l)
-    {
-        if (l==null) throw new IllegalArgumentException();
-        listLimit.add(l);
-      
+    @Override
+    public Limit save(Limit l)
+    {  
+        AddLimit(l);
+        return l;
     }
-*/ 
+    
+    private void AddLimit(Limit a) {
+        listLimit.add(a);
+    }
 }

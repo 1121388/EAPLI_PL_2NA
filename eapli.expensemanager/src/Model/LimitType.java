@@ -4,17 +4,39 @@
  */
 package Model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Hugo Silva
  */
-public class LimitType {
+@Entity
+public class LimitType implements Serializable {
     
-    Integer id;
-    String name;
+    @Id
+    private Integer id;
+    private String name;
+    
+    public LimitType() {}
     
     public LimitType(Integer i, String n) {
         this.id = i;
         this.name = n;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
     }
 }
