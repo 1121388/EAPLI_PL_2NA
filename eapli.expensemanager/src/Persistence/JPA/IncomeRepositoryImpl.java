@@ -12,7 +12,9 @@ import Model.Income;
 import Persistence.IncomeRepository;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 public class IncomeRepositoryImpl extends JpaRepository<Income, String> implements IncomeRepository {
@@ -110,6 +112,29 @@ public class IncomeRepositoryImpl extends JpaRepository<Income, String> implemen
 //        return true;
 //    }
 
+    public boolean saveIncome(Income aIncome) {
+        if (aIncome == null) {
+            return false;
+        }
+        boolean SaveResult = false;
+        EntityManager em = getEntityManager();
+        assert em != null;
+        try {
+            EntityTransaction tx = em.getTransaction();
+            try {
+                tx.begin();
+                em.persist(aIncome);
+                tx.commit();
+                SaveResult = true;
+            } catch (PersistenceException ex) {
+            }
+        } finally {
+            em.close();
+        }
+        return SaveResult;
+    }
+    
+    
     @Override
     public String IncomeList(boolean aNumberedList) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
