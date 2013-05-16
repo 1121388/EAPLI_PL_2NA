@@ -25,7 +25,7 @@ public class IncomeRepositoryImpl implements IncomeRepository {
     }
     
     @Override
-    public Income saveIncome(Income aIncome) {
+    public boolean saveIncome(Income aIncome) {
         //To Do - estava a retornar true or false. Colocar exceções...
 //        if (GetInstance().CheckIfNotExist(aExpenseType)) {
 //            AddExpenseType(aExpenseType);
@@ -35,7 +35,7 @@ public class IncomeRepositoryImpl implements IncomeRepository {
 //        }
         
         AddIncome(aIncome);
-        return aIncome;
+        return true;
     }
     
     private void AddIncome(Income aIncome) {
@@ -72,11 +72,11 @@ public class IncomeRepositoryImpl implements IncomeRepository {
             return null;
     }
     
-    @Override
-    public boolean CheckIfNotExist(Income aIncome) {
-        for (int i = 0; i < pIncomeList.size(); i++)
-            if (pIncomeList.get(i).GetDescription().equals(aIncome.GetDescription()))
-                return false;
-        return true;
-    }
+//    @Override
+//    public boolean CheckIfNotExist(Income aIncome) {
+//        for (int i = 0; i < pIncomeList.size(); i++)
+//            if (pIncomeList.get(i).GetDescription().equals(aIncome.GetDescription()))
+//                return false;
+//        return true;
+//    }
 }
