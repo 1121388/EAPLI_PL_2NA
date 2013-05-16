@@ -1,12 +1,18 @@
 package Model; 
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author i080649
  */
-public class PaymentType {
+@Entity
+public class PaymentType implements Serializable{
     
     private String alias;
+    @Id
     private int cod_sys;
     
     public PaymentType(String alias) 
