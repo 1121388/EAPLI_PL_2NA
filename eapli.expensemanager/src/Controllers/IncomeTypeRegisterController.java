@@ -38,7 +38,7 @@ public class IncomeTypeRegisterController extends BasicController {
         IncomeType incType = new IncomeType(description);
         
         
-        repo.save(incType);
+        repo.SaveIncomeType(incType);
     }
     
     public List<IncomeType> getIncomeTypeList(){

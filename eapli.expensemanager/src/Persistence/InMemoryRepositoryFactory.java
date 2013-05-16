@@ -17,6 +17,11 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
 //    }
 
     @Override
+    public ExpenseRepository expenseRepository() {
+        return new Persistence.InMemory.ExpenseRepositoryImpl();
+    }
+    
+    @Override
     public ExpenseTypeRepository expenseTypeRepository() {
         return new Persistence.InMemory.ExpenseTypeRepositoryImpl();
     }
@@ -40,5 +45,7 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
     public GeographicZoneRepository geographicZoneRepository(){
         return new Persistence.InMemory.GeographicZoneRepositoryImpl();
     }
+
+    
     
 }

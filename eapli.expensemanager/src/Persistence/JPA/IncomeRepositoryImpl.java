@@ -12,7 +12,9 @@ import Model.Income;
 import Persistence.IncomeRepository;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 public class IncomeRepositoryImpl extends JpaRepository<Income, String> implements IncomeRepository {
@@ -110,23 +112,61 @@ public class IncomeRepositoryImpl extends JpaRepository<Income, String> implemen
 //        return true;
 //    }
 
+    public boolean saveIncome(Income aIncome) {
+        if (aIncome == null) {
+            return false;
+        }
+        boolean SaveResult = false;
+        EntityManager em = getEntityManager();
+        assert em != null;
+        try {
+            EntityTransaction tx = em.getTransaction();
+            try {
+                tx.begin();
+                em.persist(aIncome);
+                tx.commit();
+                SaveResult = true;
+            } catch (PersistenceException ex) {
+            }
+        } finally {
+            em.close();
+        }
+        return SaveResult;
+    }
+    
     @Override
     public String IncomeList(boolean aNumberedList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String List = "";
+        List<Income> ListaObjectos = IncomeObjectList();
+        if (ListaObjectos.size() > 0) {
+            for (int i = 0; i < ListaObjectos.size(); i++) {
+                if (aNumberedList)
+                    List = List + "[" + (i + 1) + "] ";
+                else
+                    List = List + "- ";
+                List = List + ListaObjectos.get(i).GetDescription() + " - " + ListaObjectos.get(i).getAmount() + "\n";
+            }
+        } else {
+            List = List + "No items to display!\n";
+        }
+        return List;
     }
+   
 
     @Override
     public List<Income> IncomeObjectList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return all();
     }
 
     @Override
     public Income GetIncome(int aNrObject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Income> ListaObjectos = IncomeObjectList();
+        if (aNrObject > 0 && aNrObject <= ListaObjectos.size())
+            return ListaObjectos.get(aNrObject - 1);
+        else
+            return null;
     }
 
-    @Override
-    public boolean CheckIfNotExist(Income aIncome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
 }
