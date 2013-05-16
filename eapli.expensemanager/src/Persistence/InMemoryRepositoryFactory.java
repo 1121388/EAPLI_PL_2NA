@@ -46,6 +46,11 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
         return new Persistence.InMemory.GeographicZoneRepositoryImpl();
     }
 
+    @Override
+    public PaymentTypeRepository paymentTypeRepository() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     
     
 }
