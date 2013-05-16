@@ -14,6 +14,7 @@ public interface RepositoryFactory {
     GeographicZoneRepository geographicZoneRepository(); 
     
     LimitRepository LimitRepository();
+    LimitTypeRepository LimitTypeRepository();
     IncomeTypeRepository incomeTypeRepository();
     IncomeRepository incomeRepository();
     PaymentTypeRepository paymentTypeRepository();

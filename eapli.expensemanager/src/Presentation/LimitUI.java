@@ -29,7 +29,7 @@ public class LimitUI extends BasicUI{
         double v_m_y = Console.readDouble("Monthly Limit Yellow Value: ");
         double v_m_r = Console.readDouble("Monthly Limit Red Value: ");
         
-        controller.creatLimit(0, value_week_yellow, value_week_red);
+        controller.createLimit(0, value_week_yellow, value_week_red);
     }
 
     @Override

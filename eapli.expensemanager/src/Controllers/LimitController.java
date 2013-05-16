@@ -23,7 +23,7 @@ public class LimitController extends BasicController {
     public LimitController() {
     }
     
-    public void creatLimit(Integer id, BigDecimal v1, BigDecimal v2) {
+    public void createLimit(Integer id, BigDecimal v1, BigDecimal v2) {
         LimitType t = new LimitType(id, null);
         Limit tmp = new Limit( t, v1, v2);
         repo.save(tmp);
