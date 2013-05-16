@@ -176,6 +176,6 @@ public class ChekingAccount {
     
      public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {
         Income income = new Income( what, date, amount, incomeType);
-        incomeRepository.save(income);
+        incomeRepository.saveIncome(income);
     }
 }
