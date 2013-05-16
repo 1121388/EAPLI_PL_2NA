@@ -23,7 +23,7 @@ public interface IncomeRepository {
 //    private static IncomeRepository repository = null;
 //    private List<Income> listIncome= new ArrayList<Income>();
     
-    public Income save(Income aIncome);
+    public Income saveIncome(Income aIncome);
     public String IncomeList(boolean aNumberedList);
     public List<Income> IncomeObjectList();
     public Income GetIncome(int aNrObject);
