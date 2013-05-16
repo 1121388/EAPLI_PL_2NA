@@ -12,11 +12,12 @@ import java.util.List;
  *
  * @author MNLyle
  */
-public class ExpenseRepositoryImpl implements ExpenseRepository{
+public class ExpenseRepositoryImpl implements ExpenseRepository {
 
     @Override
     public ExpenseRepository GetInstance() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
@@ -28,5 +29,4 @@ public class ExpenseRepositoryImpl implements ExpenseRepository{
     public void save(Expense exp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

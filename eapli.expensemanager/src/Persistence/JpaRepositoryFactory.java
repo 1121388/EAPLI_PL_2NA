@@ -18,6 +18,12 @@ class JpaRepositoryFactory implements RepositoryFactory {
 //    public ExpenseRepository expenseRepository() {
 //        return new expensemanager.persistence.jpa.ExpenseRepositoryImpl();
 //    }
+    
+    @Override
+    public ExpenseRepository expenseRepository() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     @Override
     public ExpenseTypeRepository expenseTypeRepository() {
         return new Persistence.JPA.ExpenseTypeRepositoryImpl();

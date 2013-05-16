@@ -16,4 +16,5 @@ public interface RepositoryFactory {
     LimitRepository LimitRepository();
     IncomeTypeRepository incomeTypeRepository();
     IncomeRepository incomeRepository();
+    PaymentTypeRepository paymentTypeRepository();
 }
