@@ -16,7 +16,7 @@ public interface IncomeTypeRepository {     //alterado de class para interface
     
     
     
-    public IncomeType save(IncomeType inc);
+    public boolean SaveIncomeType(IncomeType inc);
     public List<IncomeType> getIncomeTypes();
     public List<String> getIncomeTypesStrings();
     public IncomeType getIncomeTypeByDescription(String desc);

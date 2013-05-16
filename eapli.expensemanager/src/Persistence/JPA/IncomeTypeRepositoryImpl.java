@@ -6,6 +6,7 @@ package Persistence.JPA;
 
 import Model.IncomeType;
 import Persistence.IncomeTypeRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -16,6 +17,9 @@ import javax.persistence.Query;
  * @author nunovsilva
  */
 public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> implements IncomeTypeRepository {
+    
+    private static IncomeTypeRepository pRepository = null;
+    private static List<IncomeType> pIncomeTypeList = new ArrayList<IncomeType>();
 
     public IncomeType findOrCreate(String key, String description) {
         if (key == null || key.trim().length() == 0) {
@@ -36,7 +40,26 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
             save(incomeType);           
         }
         return incomeType;
-    }   
+    }
+    
+    
+    public static IncomeTypeRepository GetInstance() {
+        if (pRepository == null)
+            pRepository = new IncomeTypeRepositoryImpl();
+        return pRepository;
+    }
+    
+    
+    @Override
+    public boolean SaveIncomeType(IncomeType aIncomeType) {
+        if (CheckIfNotExist(aIncomeType)) {
+            pIncomeTypeList.add(aIncomeType);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
 //    @Override
 //    public String IncomeTypeList(boolean aNumberedList) {
@@ -74,17 +97,13 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
 ////        //ToDo
 ////        return null;
 ////    }
-//    
-//    @Override
-//    public boolean CheckIfNotExist(ExpenseType aExpenseType) {
-////        for (int i = 0; i < pExpenseTypeList.size(); i++)
-////            if (pExpenseTypeList.get(i).GetDescription().equals(aExpenseType.GetDescription()))
-////                return false;
-////        return true;
-//        
-//        //ToDo
-//        return false;
-//    }
+        
+    public boolean CheckIfNotExist(IncomeType aIncomeType) {
+        for (int i = 0; i < pIncomeTypeList.size(); i++)
+            if ((pIncomeTypeList.get(i).getDescription()).equals(aIncomeType.getDescription()))
+                return false;
+        return true; 
+    }
 
     @Override
     public IncomeType save(IncomeType inc) {
