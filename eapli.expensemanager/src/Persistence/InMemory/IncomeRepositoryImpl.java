@@ -25,7 +25,7 @@ public class IncomeRepositoryImpl implements IncomeRepository {
     }
     
     @Override
-    public Income save(Income aIncome) {
+    public Income saveIncome(Income aIncome) {
         //To Do - estava a retornar true or false. Colocar exceções...
 //        if (GetInstance().CheckIfNotExist(aExpenseType)) {
 //            AddExpenseType(aExpenseType);
