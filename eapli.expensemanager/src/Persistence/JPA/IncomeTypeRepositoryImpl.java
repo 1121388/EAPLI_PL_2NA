@@ -60,6 +60,38 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
         }
     }
     
+    
+    @Override
+    public String IncomeTypeList(boolean aNumberedList) {
+        String List = "";
+        if (pIncomeTypeList.size() > 0) {
+            for (int i = 0; i < pIncomeTypeList.size(); i++) {
+                if (aNumberedList)
+                    List = List + "[" + (i + 1) + "] ";
+                else
+                    List = List + "- ";
+                List = List + pIncomeTypeList.get(i).getShortID() + " - " + pIncomeTypeList.get(i).getDescription() + "\n";
+            }
+        } else {
+            List = List + "No items to display!\n";
+        }
+        return List;
+    }
+    
+    
+    @Override
+    public List<IncomeType> IncomeTypeObjectList() {
+        return pIncomeTypeList;
+    }
+    
+    
+    @Override
+    public IncomeType GetIncomeType(int aNrObject) {
+        if (aNrObject > 0 && aNrObject <= pIncomeTypeList.size())
+            return pIncomeTypeList.get(aNrObject - 1);
+        else
+            return null;
+    }
 
 //    @Override
 //    public String IncomeTypeList(boolean aNumberedList) {
@@ -88,15 +120,7 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
 //        return null;
 //    }
 //        
-//    @Override
-//    public IncomeType GetIncomeType(int aNrObject) {
-////        if (aNrObject > 0 && aNrObject <= pExpenseTypeList.size())
-////            return pExpenseTypeList.get(aNrObject - 1);
-////        else
-//////            return null;
-////        //ToDo
-////        return null;
-////    }
+
         
     public boolean CheckIfNotExist(IncomeType aIncomeType) {
         for (int i = 0; i < pIncomeTypeList.size(); i++)
