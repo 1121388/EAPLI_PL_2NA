@@ -6,9 +6,6 @@ package Persistence;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.lang.reflect.*;
 import java.util.Scanner;
 
 public class PersistenceFactory {
@@ -24,7 +21,6 @@ public class PersistenceFactory {
             String name = searchRepo();
             Class clazz = Class.forName(name);
             repo = clazz.newInstance();
-
         } catch (FileNotFoundException ex) {
             System.out.println("Error:Config File not found!");
         } catch (ClassNotFoundException ex) {
@@ -33,21 +29,22 @@ public class PersistenceFactory {
             System.out.println("Error: Instantiation attempted failed");
         } catch (IllegalAccessException ex) {
             System.out.println("Error:IllegalAccess");
+        } finally{
+            return (RepositoryFactory) repo;
         }
-        return (RepositoryFactory) repo;
     }
 
     private static String searchRepo() throws FileNotFoundException {
 
         Scanner file = new Scanner(new File("config.txt"));
-        String aux = "noconfig";
-        while ((aux = file.nextLine()) != null) {
-            String[] linhas = aux.split(":");
+        String linha="";
+        while ((linha=file.nextLine()) !=  null) {
+            String[] linhas = linha.split(":");
             if (linhas[0].equalsIgnoreCase("BD")) {
-                aux = linhas[1];
+                return linhas[1]; 
             }
-        }
+       }
         file.close();
-        return aux;
+        return "noconfig";
     }
 }

@@ -12,13 +12,15 @@ import java.util.List;
 
 public class ChekingAccount {
     
-    ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
+//    ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
+    ExpenseRepository expenseRepository = PersistenceFactory.buildPersistenceFactory().expenseRepository();
     IncomeRepository incomeRepository = PersistenceFactory.buildPersistenceFactory().incomeRepository();
     private BigDecimal saldoatual, tdespesas, treceitas;
 //    private double dtdespesas=0, dtreceitas=0, dsaldoatual=0;
-    private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
+//    private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
     //private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
-    private List<Income> receitas =PersistenceFactory.buildPersistenceFactory().incomeRepository().IncomeObjectList();
+    private List<Expense> despesas = PersistenceFactory.buildPersistenceFactory().expenseRepository().getListExpense();
+    private List<Income> receitas = PersistenceFactory.buildPersistenceFactory().incomeRepository().IncomeObjectList();
 
     //Devolve o saldo atual
     public double getSaldo() {
@@ -176,6 +178,6 @@ public class ChekingAccount {
     
      public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {
         Income income = new Income( what, date, amount, incomeType);
-        incomeRepository.save(income);
+        incomeRepository.saveIncome(income);
     }
 }

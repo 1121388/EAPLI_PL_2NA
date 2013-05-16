@@ -9,9 +9,7 @@ package Persistence;
  * @author arocha
  */
 public interface RepositoryFactory {
-    
- //    ExpenseRepository expenseRepository();
-
+    ExpenseRepository expenseRepository(); 
     ExpenseTypeRepository expenseTypeRepository(); 
     GeographicZoneRepository geographicZoneRepository(); 
     
