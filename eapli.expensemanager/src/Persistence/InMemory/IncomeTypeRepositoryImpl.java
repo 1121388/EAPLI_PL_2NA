@@ -76,7 +76,7 @@ public class IncomeTypeRepositoryImpl implements IncomeTypeRepository {
 
     @Override
     public List<IncomeType> getIncomeTypes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pIncomeTypeList;
     }
 
     @Override

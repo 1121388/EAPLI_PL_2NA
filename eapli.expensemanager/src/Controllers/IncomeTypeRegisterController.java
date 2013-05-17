@@ -15,22 +15,12 @@ import java.util.List;
  */
 public class IncomeTypeRegisterController extends BasicController {
 
-    //private IncomeTypeRepository repo;
-    private IncomeTypeRepository repo = PersistenceFactory.buildPersistenceFactory().incomeTypeRepository(); //alterado
-    
-    
-    
-    
-    
-//    public IncomeTypeRegisterController() {
-//        
-//        repo = IncomeTypeRepository.getInstance();   //getInstance n funciona por causa de ser interface
-//        
-//    }    
-    
-    
 
-    public void registerIncomeType(String description) {
+    
+    private IncomeTypeRepository repo = PersistenceFactory.buildPersistenceFactory().incomeTypeRepository(); //alterado
+     
+
+    public void registerIncomeType(String shortName, String description) {
         
         if (repo.getIncomeTypeByDescription(description)==null){
             

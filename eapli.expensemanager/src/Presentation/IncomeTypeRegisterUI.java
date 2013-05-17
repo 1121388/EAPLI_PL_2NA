@@ -55,18 +55,26 @@ public class IncomeTypeRegisterUI extends BasicUI{
     
     private void IncomeTypeRequest() {
         String description;
+        String shortName;
      /*   System.out.println("* * *  REGISTER AN INCOME TYPE  * * *\n");
         //System.out.println("\t\t\t\t\tCurrent Balance:   " + controller.currentBalance());*/
+        System.out.println("\nShort Name: ");
+        do{
+            
+            shortName = Console.readLine("");
+            
+        }while(shortName.isEmpty());
+        
         System.out.println("\nDescription: ");
         do{
             
             description = Console.readLine("");
             
         }while(description.isEmpty());
-                
+              
         if(!controller.existsIncomeTypeByDescription(description))
         {
-            controller.registerIncomeType(description);
+            controller.registerIncomeType(shortName,description);
             System.out.println("Income Type Recorded.");
         }
         else
