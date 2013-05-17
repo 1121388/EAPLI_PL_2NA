@@ -114,14 +114,12 @@ public class ChekingAccount implements Serializable {
 
     //--------Obter total de despesas da semana
     public BigDecimal getWeekExpenses() {
-        /*
          BigDecimal texpenses = null;
          BigDecimal aux = null;
 
          //----- Obter dias do mês
          Calendar c = Calendar.getInstance();
          c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
          Date stdate, lstdate;
          stdate = c.getTime();
@@ -134,12 +132,7 @@ public class ChekingAccount implements Serializable {
          texpenses = aux.add(WeekExpenses.get(i).getAmount());
          aux = texpenses;
          }
-
-         System.out.println(texpenses);
-
          return texpenses;
-         */
-        return new BigDecimal(10);
     }
 
     public BigDecimal getMonthExpenses() {
