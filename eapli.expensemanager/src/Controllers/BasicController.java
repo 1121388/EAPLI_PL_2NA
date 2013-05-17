@@ -5,39 +5,40 @@
 package Controllers;
 
 import Model.ChekingAccount;
+import Persistence.ChekingAccountRepository;
+import Persistence.PersistenceFactory;
 import java.math.BigDecimal;
 
 /**
  *
- * @author i111051
+ * @author i111051 && raul lima
  */
 public class BasicController {
-    Model.ChekingAccount conta = null;
+    private ChekingAccountRepository pConta= 
+            PersistenceFactory.buildPersistenceFactory().chekingAccountRepository();
     
-    public BasicController()
-    {
-        conta = new ChekingAccount();
-    }
+    public BasicController(){}
     
     public BigDecimal currentMonthExpenses()
     {
-        if (conta == null)
-            conta = new ChekingAccount();
-        return conta.getMonthExpenses();
+        if (pConta.GetChekingAccount() == null) {
+            return( (new ChekingAccount()).getMonthExpenses());
+        }
+        return pConta.GetChekingAccount().getMonthExpenses();
         
     }
     
     public BigDecimal currentWeekExpenses()
     {
-        if (conta == null)
-            conta = new ChekingAccount();
-        return conta.getWeekExpenses();
+        if (pConta.GetChekingAccount() == null)
+            return( (new ChekingAccount()).getWeekExpenses());
+        return pConta.GetChekingAccount().getWeekExpenses();
     }
     
-    public Double currentBalance() //se calhar BigDecimal?
+    public Double currentBalance() 
     { 
-        if (conta == null)
-            conta = new ChekingAccount();
-        return conta.getSaldo();
+        if (pConta.GetChekingAccount() == null)
+            return( (new ChekingAccount()).getSaldo());
+        return pConta.GetChekingAccount().getSaldo();
     }
 }
