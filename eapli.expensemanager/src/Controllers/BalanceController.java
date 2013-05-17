@@ -4,7 +4,7 @@ public class BalanceController extends BasicController {
 
     public double visualizarSaldo() {
 
-        return conta.getSaldo();
+        return currentBalance();
 
     }
 }
