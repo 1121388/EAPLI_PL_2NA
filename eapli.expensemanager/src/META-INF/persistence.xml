@@ -3,6 +3,17 @@
   <persistence-unit name="expensemanagerPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Model.ExpenseType</class>
+    <class>Model.ChekingAccount</class>
+    <class>Model.Expense</class>
+    <class>Model.GeographicZone</class>
+    <class>Model.Income</class>
+    <class>Model.IncomeType</class>
+    <class>Model.Limit</class>
+    <class>Model.LimitType</class>
+    <class>Model.MeansOfPayment</class>
+    <class>Model.Movements</class>
+    <class>Model.PaymentType</class>
+    <class>Model.SavingGoal</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost//data//expensemanager2NA"/>
       <property name="javax.persistence.jdbc.password" value=""/>
