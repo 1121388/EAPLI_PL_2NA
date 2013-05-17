@@ -51,6 +51,11 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public Persistence.LimitTypeRepository LimitTypeRepository() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     
     
 }

@@ -17,6 +17,6 @@ public interface ExpenseRepository {
     
     public abstract List<Expense> getListExpense();
     
-    public abstract void save(Expense exp);
+    public abstract void saveExpense(Expense exp);
     
 }

@@ -173,7 +173,7 @@ public class ChekingAccount {
      */
     public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
         Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
-        expenseRepository.save(expense);
+        expenseRepository.saveExpense(expense);
     }
     
      public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {

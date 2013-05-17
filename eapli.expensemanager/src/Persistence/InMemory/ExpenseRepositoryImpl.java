@@ -11,7 +11,7 @@ import java.util.List;
 public class ExpenseRepositoryImpl implements ExpenseRepository {
 
     private static ExpenseRepositoryImpl repository = null;
-    private List<Expense> listExpense= new ArrayList<Expense>();
+    private List<Expense> listExpense = new ArrayList<Expense>();
     
     
     @Override
@@ -27,7 +27,7 @@ public class ExpenseRepositoryImpl implements ExpenseRepository {
     }
     
     @Override
-    public void save(Expense exp)
+    public void saveExpense(Expense exp)
     {
         if (exp==null) throw new IllegalArgumentException();
         listExpense.add(exp);

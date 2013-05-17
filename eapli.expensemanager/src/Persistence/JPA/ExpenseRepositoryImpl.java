@@ -7,26 +7,48 @@ package Persistence.JPA;
 import Model.Expense;
 import Persistence.ExpenseRepository;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
+import javax.persistence.Query;
+
 
 /**
  *
  * @author MNLyle
  */
-public class ExpenseRepositoryImpl implements ExpenseRepository {
+public class ExpenseRepositoryImpl extends JpaRepository<Expense, String> implements ExpenseRepository {
 
     @Override
     public ExpenseRepository GetInstance() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
+        throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    @Override
+    public List<Expense> getListExpense() { 
+        return all();
+    }
+    
 
     @Override
-    public List<Expense> getListExpense() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void saveExpense(Expense exp) {
+
+        EntityManager em = getEntityManager();
+        assert em != null;
+        try {
+            EntityTransaction tx = em.getTransaction();
+            try {
+                tx.begin();
+                em.persist(exp);
+                tx.commit();
+
+            } catch (PersistenceException ex) {
+            }
+        } finally {
+            em.close();
+        }
+ 
     }
 
-    @Override
-    public void save(Expense exp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

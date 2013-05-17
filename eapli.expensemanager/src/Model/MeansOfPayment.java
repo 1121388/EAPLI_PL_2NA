@@ -4,14 +4,27 @@
  */
 package Model;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 /**
  *
  * @author Abilio
  */
-public class MeansOfPayment {
+@Entity
+public class MeansOfPayment implements Serializable {
     
+    @Id
+    @GeneratedValue
+    @OneToOne
     PaymentType paymenType;
     int nCheck;
+
+    public MeansOfPayment() {
+    }
     
     public MeansOfPayment(PaymentType paymenType){
         this.paymenType = paymenType;
