@@ -28,6 +28,7 @@ public class MainMenu {
             System.out.println("6. Register entrie income");
             System.out.println("7. Establishment of savings");
             System.out.println("8. Settings");
+            System.out.println("17. Definition of Limit");
             System.out.println("0. Exit\n\n");
         
 

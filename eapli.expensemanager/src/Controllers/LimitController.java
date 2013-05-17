@@ -8,8 +8,10 @@ import Model.Expense;
 import Model.Limit;
 import Model.LimitType;
 import Persistence.LimitRepository;
+import Persistence.LimitTypeRepository;
 import Persistence.PersistenceFactory;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  *
@@ -17,15 +19,17 @@ import java.math.BigDecimal;
  */
 public class LimitController extends BasicController {
     
-    //LimitRepository repo = LimitRepository.GetInstance();
     LimitRepository repo = PersistenceFactory.buildPersistenceFactory().LimitRepository();
+    LimitTypeRepository repoType = PersistenceFactory.buildPersistenceFactory().LimitTypeRepository();
     
-    public LimitController() {
+    public LimitController() {}
+    
+    public void createLimit(LimitType id, BigDecimal v1, BigDecimal v2) {
+        Limit tmp = new Limit( id, v1, v2);
+        repo.save(tmp);
     }
     
-    public void createLimit(Integer id, BigDecimal v1, BigDecimal v2) {
-        LimitType t = new LimitType(id, null);
-        Limit tmp = new Limit( t, v1, v2);
-        repo.save(tmp);
+    public List<LimitType> getLimitTypeList() {
+        return repoType.getListLimit();
     }
 }

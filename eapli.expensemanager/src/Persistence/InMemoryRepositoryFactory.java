@@ -28,7 +28,7 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
 
     @Override
     public Persistence.LimitRepository LimitRepository() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Persistence.InMemory.LimitRepositoryImpl();
     }
 
     @Override
@@ -53,7 +53,7 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
 
     @Override
     public Persistence.LimitTypeRepository LimitTypeRepository() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new Persistence.InMemory.LimitTypeRepositoryImpl();
     }
 
     @Override
