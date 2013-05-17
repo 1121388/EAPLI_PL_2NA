@@ -56,6 +56,11 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public ChekingAccountRepository chekingAccountRepository() {
+        return new Persistence.InMemory.ChekingAccountRepositoryImpl();
+    }
+
     
     
 }

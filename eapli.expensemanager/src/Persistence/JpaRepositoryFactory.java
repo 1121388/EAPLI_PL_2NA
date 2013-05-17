@@ -21,7 +21,7 @@ class JpaRepositoryFactory implements RepositoryFactory {
     
     @Override
     public ExpenseRepository expenseRepository() {
-       return new Persistence.JPA.ExpenseRepositoryImpl();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     @Override
@@ -56,6 +56,11 @@ class JpaRepositoryFactory implements RepositoryFactory {
     @Override
     public Persistence.LimitTypeRepository LimitTypeRepository() {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ChekingAccountRepository chekingAccountRepository() {
+         return new Persistence.JPA.ChekingAccountRepositoryImpl();
     }
 
 }

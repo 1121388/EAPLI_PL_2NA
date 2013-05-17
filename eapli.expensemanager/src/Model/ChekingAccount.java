@@ -1,30 +1,84 @@
 package Model;
 
-import Persistence.BalanceRepository;
 import Persistence.ExpenseRepository;
 import Persistence.IncomeRepository;
 import Persistence.PersistenceFactory;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
-public class ChekingAccount {
-    
+@Entity
+public class ChekingAccount implements Serializable {
+
+    @Id
+    private String id;
+    private String ownerName;
+    private BigDecimal saldoinicial;
 //    ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
-    ExpenseRepository expenseRepository = PersistenceFactory.buildPersistenceFactory().expenseRepository();
-    IncomeRepository incomeRepository = PersistenceFactory.buildPersistenceFactory().incomeRepository();
+    @Transient/*non persistent*/
+    private static ExpenseRepository expenseRepository = PersistenceFactory.buildPersistenceFactory().expenseRepository();
+   
+    @Transient/*non persistent*/
+    private static IncomeRepository incomeRepository = PersistenceFactory.buildPersistenceFactory().incomeRepository();
+    
+    @Transient/*non persistent*/
     private BigDecimal saldoatual, tdespesas, treceitas;
 //    private double dtdespesas=0, dtreceitas=0, dsaldoatual=0;
 //    private List<Expense> despesas = ExpenseRepository.GetInstance().getListExpense();
     //private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
+    
+    @Transient/*non persistent*/
     private List<Expense> despesas = PersistenceFactory.buildPersistenceFactory().expenseRepository().getListExpense();
+    
+    @Transient/*non persistent*/
     private List<Income> receitas = PersistenceFactory.buildPersistenceFactory().incomeRepository().IncomeObjectList();
+
+    public ChekingAccount() {
+
+    }
+
+    public ChekingAccount(String id, String oname) {
+        this.id = id;
+        this.ownerName = oname;
+        this.saldoinicial = new BigDecimal(0);
+        this.saldoatual = saldoinicial;
+        this.tdespesas = new BigDecimal(0);
+        this.treceitas = new BigDecimal(0);
+    }
+
+    public void setSaldoInicial(BigDecimal saldo) {
+        this.saldoinicial = saldo;
+    }
+
+    public BigDecimal getSaldoInicial() {
+        return saldoinicial;
+    }
+
+    public void setOwnerName(String name) {
+        this.ownerName = name;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setId(String identificacao) {
+        this.id = identificacao;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     //Devolve o saldo atual
     public double getSaldo() {
-        saldoatual = BalanceRepository.getInstance().getBalance();
+        saldoatual = saldoinicial;
         tdespesas = new BigDecimal(0);
         treceitas = new BigDecimal(0);
         determinaTotalDespesas();
@@ -61,60 +115,59 @@ public class ChekingAccount {
     //--------Obter total de despesas da semana
     public BigDecimal getWeekExpenses() {
         /*
-        BigDecimal texpenses = null;
-        BigDecimal aux = null;
+         BigDecimal texpenses = null;
+         BigDecimal aux = null;
 
-        //----- Obter dias do mês
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+         //----- Obter dias do mês
+         Calendar c = Calendar.getInstance();
+         c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-        Date stdate, lstdate;
-        stdate = c.getTime();
-        c.add(Calendar.DATE, 6);
-        lstdate = c.getTime();
+         Date stdate, lstdate;
+         stdate = c.getTime();
+         c.add(Calendar.DATE, 6);
+         lstdate = c.getTime();
 
-        List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate, lstdate);
+         List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate, lstdate);
 
-        for (int i = 0; i < 7; i++) {
-            texpenses = aux.add(WeekExpenses.get(i).getAmount());
-            aux = texpenses;
-        }
+         for (int i = 0; i < 7; i++) {
+         texpenses = aux.add(WeekExpenses.get(i).getAmount());
+         aux = texpenses;
+         }
 
-        System.out.println(texpenses);
+         System.out.println(texpenses);
 
-        return texpenses;
-        */
+         return texpenses;
+         */
         return new BigDecimal(10);
     }
 
-    public BigDecimal getMonthExpenses()
-    {    
-        Calendar cal = Calendar.getInstance();  
-        int year = cal.get(cal.YEAR);  
-        int month = cal.get(cal.MONTH)+1;
+    public BigDecimal getMonthExpenses() {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(cal.YEAR);
+        int month = cal.get(cal.MONTH) + 1;
         Date inicio = new Date(year, month, 1);
         Date fim = new Date(year, month, Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH));
         List<Expense> despesas = new ChekingAccount().getExpensesByPeriod(inicio, fim);
-        BigDecimal amount = BigDecimal.ZERO; 
-        
+        BigDecimal amount = BigDecimal.ZERO;
+
         // Verificar a existência de despesas para o mês pretendido.
-        if ( despesas == null) {
+        if (despesas == null) {
             return amount;
         }
-        
-        for(int i=0; i<despesas.size(); i++)
-        {
+
+        for (int i = 0; i < despesas.size(); i++) {
             amount = amount.add(despesas.get(i).getAmount());
         }
-        
+
         return amount;
     }
     //-----------------------  Metodos privados --------------------------------
+
     private void determinaTotalDespesas() {
 
         for (int i = 0; i < despesas.size(); i++) {
-            tdespesas=tdespesas.add((despesas.get(i)).getAmount());
+            tdespesas = tdespesas.add((despesas.get(i)).getAmount());
         }
     }
 
@@ -129,11 +182,12 @@ public class ChekingAccount {
     public List<Expense> getExpensesByPeriod(Date start, Date end) {
         List<Expense> _resultado = null;
         int index = despesas.size();
-        if (index == 0) 
+        if (index == 0) {
             return _resultado;
-        
+        }
 
-        for (int i=0; i<index;i++) {
+
+        for (int i = 0; i < index; i++) {
             if (despesas.get(i).getDateOccurred().after(start) && despesas.get(i).getDateOccurred().before(end)) {
                 _resultado.add(despesas.get(i));
             }
@@ -143,20 +197,20 @@ public class ChekingAccount {
     }
 
     //----------- Obter a lista de despesas, agrupadas por tipo, de um determinado mês (1030066)
-    public HashMap<String,BigDecimal> getMonthlyExpenses(Date inicio, Date fim) {
+    public HashMap<String, BigDecimal> getMonthlyExpenses(Date inicio, Date fim) {
         List<Expense> _resultado = this.getExpensesByPeriod(inicio, fim);
 
-              System.out.println(inicio.toString());
+        System.out.println(inicio.toString());
         //System.out.println(lstdate);
 
-        HashMap<String,BigDecimal> _resumo = new HashMap<String, BigDecimal>();
-        if ( _resultado != null && _resultado.size() > 0 ) {
-            for(int i=0;i<_resultado.size();i++) {
+        HashMap<String, BigDecimal> _resumo = new HashMap<String, BigDecimal>();
+        if (_resultado != null && _resultado.size() > 0) {
+            for (int i = 0; i < _resultado.size(); i++) {
                 Expense _temp = _resultado.get(i);
                 String _key = _temp.expenseType.GetName();
 
-                if ( _resumo.containsKey(_key)) {
-                    BigDecimal _tempvalor =  (BigDecimal)_resumo.get(_key);
+                if (_resumo.containsKey(_key)) {
+                    BigDecimal _tempvalor = (BigDecimal) _resumo.get(_key);
                     _tempvalor.add(_temp.getAmount());
                     _resumo.put(_key, _tempvalor);
                 } else {
@@ -167,17 +221,17 @@ public class ChekingAccount {
 
         return _resumo;
     }
-    
+
     /*
      * 
      */
     public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
-        Expense expense = new Expense( what, date, amount, expenseType, meansOfPayment);
+        Expense expense = new Expense(what, date, amount, expenseType, meansOfPayment);
         expenseRepository.saveExpense(expense);
     }
-    
-     public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {
-        Income income = new Income( what, date, amount, incomeType);
+
+    public void registerIncome(String what, Date date, BigDecimal amount, IncomeType incomeType) {
+        Income income = new Income(what, date, amount, incomeType);
         incomeRepository.saveIncome(income);
     }
 }

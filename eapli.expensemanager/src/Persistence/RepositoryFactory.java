@@ -18,4 +18,5 @@ public interface RepositoryFactory {
     IncomeTypeRepository incomeTypeRepository();
     IncomeRepository incomeRepository();
     PaymentTypeRepository paymentTypeRepository();
+    ChekingAccountRepository chekingAccountRepository();
 }
