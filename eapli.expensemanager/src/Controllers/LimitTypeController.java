@@ -13,7 +13,6 @@ import Persistence.PersistenceFactory;
  */
 public class LimitTypeController extends BasicController {
     
-
     private LimitTypeRepository pRepository = PersistenceFactory.buildPersistenceFactory().LimitTypeRepository();
 
     public LimitTypeController() {}

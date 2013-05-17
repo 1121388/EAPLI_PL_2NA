@@ -5,11 +5,11 @@
 package Presentation;
 
 import Controllers.BasicController;
-import Controllers.EstablishmentofsavingsController;
 import Controllers.LimitController;
+import Model.LimitType;
 import eapli.util.Console;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -21,15 +21,25 @@ public class LimitUI extends BasicUI{
 
     @Override
     public void getBody() {
-        double v_w_y = Console.readDouble("Weekly Limit Yellow Value: ");
-        double v_w_r = Console.readDouble("Weekly Limit Red Value: ");
-        BigDecimal value_week_yellow = new BigDecimal(v_w_y);
-        BigDecimal value_week_red = new BigDecimal(v_w_r);
         
-        double v_m_y = Console.readDouble("Monthly Limit Yellow Value: ");
-        double v_m_r = Console.readDouble("Monthly Limit Red Value: ");
+        List<LimitType> list = controller.getLimitTypeList();
+        int select = 0;
+        for (LimitType item : list)
+        {
+            System.out.println(select + " - " + item.getName());
+            select++;
+        }
         
-        controller.createLimit(0, value_week_yellow, value_week_red);
+        Integer selected = Console.readInteger("Select the limit type: ");
+        
+        double v_yel = Console.readDouble("Limit Yellow Value: ");
+        double v_red = Console.readDouble("Limit Red Value: ");
+        BigDecimal value_yellow = new BigDecimal(v_yel);
+        BigDecimal value_red = new BigDecimal(v_red);
+        
+        LimitType n = list.get(selected);
+        
+        controller.createLimit(n, value_yellow, value_red);
     }
 
     @Override

@@ -31,7 +31,7 @@ class JpaRepositoryFactory implements RepositoryFactory {
 
     @Override
     public Persistence.LimitRepository LimitRepository() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new Persistence.JPA.LimitRepositoryImpl();
     }
 
     @Override
@@ -55,7 +55,7 @@ class JpaRepositoryFactory implements RepositoryFactory {
 
     @Override
     public Persistence.LimitTypeRepository LimitTypeRepository() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new Persistence.JPA.LimitTypeRepositoryImpl();
     }
 
     @Override
