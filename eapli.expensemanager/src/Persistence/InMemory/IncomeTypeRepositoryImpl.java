@@ -81,14 +81,34 @@ public class IncomeTypeRepositoryImpl implements IncomeTypeRepository {
 
     @Override
     public List<String> getIncomeTypesStrings() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<String> list=new ArrayList<String>();
+        
+        for (IncomeType inc:pIncomeTypeList)
+            list.add(inc.getDescription());
+        
+        return list;
+    
     }
+
 
     @Override
+
     public IncomeType getIncomeTypeByDescription(String desc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+       
+        for (IncomeType inc:pIncomeTypeList)
+        {
+            if (inc.getDescription().equals(desc))
+                return inc;
+                
+        }
+
+    return null;
+
     }
+    
+}
 
   
-}
+
 

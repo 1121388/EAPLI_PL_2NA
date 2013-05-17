@@ -33,7 +33,7 @@ class InMemoryRepositoryFactory implements RepositoryFactory {
 
     @Override
     public IncomeTypeRepository incomeTypeRepository() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Persistence.InMemory.IncomeTypeRepositoryImpl();
     }
 
     @Override
