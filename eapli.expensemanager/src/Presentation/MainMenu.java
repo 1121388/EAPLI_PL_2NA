@@ -27,47 +27,54 @@ public class MainMenu {
             System.out.println("5. Define income types");
             System.out.println("6. Register entrie income");
             System.out.println("7. Establishment of savings");
-            System.out.println("8. Settings");
-            System.out.println("17. Definition of Limit");
+            System.out.println("8. Definition of Limit Type");
+            System.out.println("9. Definition of Limit");
+            System.out.println("10. Settings");
             System.out.println("0. Exit\n\n");
         
-
-
-            String option1 = Console.readLine("Please choose an option:");
-            char option = option1.charAt(0);
-            switch (option) {
-                case '0':
+            Integer option1 = Console.readInteger("Please choose an option:");
+            
+            switch (option1) {
+                case 0:
                     System.out.println("bye bye ...");
                     return;
-                case '1':
+                case 1:
                     ExpenseRegisterUI ui1 = new ExpenseRegisterUI();
                     ui1.show();
                     break;
-                case '2':
+                case 2:
                     ExpenseTypeUI ui2 = new ExpenseTypeUI();
                     ui2.show();
                     break;
-                case '3':
+                case 3:
                     PaymentTypeUI ui3 = new PaymentTypeUI();
                     ui3.show();
                     break;
-                case '4':
+                case 4:
                     ExpensesMonthlyUI ui4 = new ExpensesMonthlyUI();
                     ui4.show();
                     break;
-                case '5':
+                case 5:
                     IncomeTypeRegisterUI ui5 = new IncomeTypeRegisterUI();
                     ui5.show();
                     break;
-                case '6':
+                case 6:
                     IncomeRegisterUI ui6 = new IncomeRegisterUI();
                     ui6.show();
                     break;
-                case '7':
+                case 7:
                     SavingGoalUI ui7 = new SavingGoalUI();
                     ui7.show();
                     break;
-                case '8':
+                case 8:
+                    LimitTypeUI ui8 = new LimitTypeUI();
+                    ui8.show();
+                    break;
+                case 9:
+                    LimitUI ui9 = new LimitUI();
+                    ui9.show();
+                    break;
+                case 10:
                     Settings();
                     break;
                 default:
