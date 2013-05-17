@@ -8,7 +8,7 @@ import Controllers.BasicController;
 
 /**
  *
- * @author i111051
+ * @author i111051 && raul lima
  */
 public abstract class BasicUI {
     
