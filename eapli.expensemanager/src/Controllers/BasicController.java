@@ -14,31 +14,31 @@ import java.math.BigDecimal;
  * @author i111051 && raul lima
  */
 public class BasicController {
-    private ChekingAccountRepository pConta= 
+    public ChekingAccountRepository conta= 
             PersistenceFactory.buildPersistenceFactory().chekingAccountRepository();
     
     public BasicController(){}
     
     public BigDecimal currentMonthExpenses()
     {
-        if (pConta.GetChekingAccount() == null) {
+        if (conta.GetChekingAccount() == null) {
             return( (new ChekingAccount()).getMonthExpenses());
         }
-        return pConta.GetChekingAccount().getMonthExpenses();
+        return conta.GetChekingAccount().getMonthExpenses();
         
     }
     
     public BigDecimal currentWeekExpenses()
     {
-        if (pConta.GetChekingAccount() == null)
+        if (conta.GetChekingAccount() == null)
             return( (new ChekingAccount()).getWeekExpenses());
-        return pConta.GetChekingAccount().getWeekExpenses();
+        return conta.GetChekingAccount().getWeekExpenses();
     }
     
     public Double currentBalance() 
     { 
-        if (pConta.GetChekingAccount() == null)
+        if (conta.GetChekingAccount() == null)
             return( (new ChekingAccount()).getSaldo());
-        return pConta.GetChekingAccount().getSaldo();
+        return conta.GetChekingAccount().getSaldo();
     }
 }
