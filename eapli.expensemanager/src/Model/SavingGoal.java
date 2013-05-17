@@ -10,7 +10,8 @@ import javax.persistence.Temporal;
 public class SavingGoal implements Serializable {
 
     @Id
-    String descricao, Aalias;
+    String descricao; 
+    String Aalias;
     double valor;
     @Temporal(javax.persistence.TemporalType.DATE)
     Date Ddata;
