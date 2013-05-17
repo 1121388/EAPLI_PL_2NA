@@ -6,7 +6,6 @@ package Controllers;
 
 import Model.ChekingAccount;
 import Persistence.ChekingAccountRepository;
-import Persistence.InMemory.ChekingAccountRepositoryImpl;
 import Persistence.PersistenceFactory;
 import java.math.BigDecimal;
 
@@ -16,13 +15,17 @@ import java.math.BigDecimal;
  */
 public class InitializeBalanceController extends BasicController{
     
+    private ChekingAccountRepository pRepository = PersistenceFactory.buildPersistenceFactory().chekingAccountRepository();
+    
     public void InitializeBalance(BigDecimal valor){ 
         
 //            BalanceRepository repo = BalanceRepository.getInstance();
 //            repo.setBalance(valor);     
         
-        ChekingAccount chekAc=PersistenceFactory.buildPersistenceFactory().chekingAccountRepository().GetChekingAccount();
+        ChekingAccount chekAc=pRepository.GetChekingAccount();
         chekAc.setSaldoInicial(valor);
+        pRepository.SaveChekingAccount(chekAc);
+        
     }
     
 }
