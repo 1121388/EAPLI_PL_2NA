@@ -1,2 +1,2 @@
-BD:JpaRepositoryFactory
-\\BD:InMemoryRepositoryFactory
+BD:Persistence.JpaRepositoryFactory
+\\BD:Persistence.InMemoryRepositoryFactory
