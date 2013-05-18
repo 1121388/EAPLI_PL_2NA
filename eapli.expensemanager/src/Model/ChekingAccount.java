@@ -22,11 +22,11 @@ public class ChekingAccount implements Serializable {
     private BigDecimal saldoinicial;
 //    ExpenseRepository expenseRepository = ExpenseRepository.GetInstance();
     @Transient/*non persistent*/
-    private static ExpenseRepository expenseRepository = PersistenceFactory.buildPersistenceFactory().expenseRepository();
-   
+    private static ExpenseRepository expenseRepository = null;
+//   
     @Transient/*non persistent*/
-    private static IncomeRepository incomeRepository = PersistenceFactory.buildPersistenceFactory().incomeRepository();
-    
+    private static IncomeRepository incomeRepository = null;
+//    
     @Transient/*non persistent*/
     private BigDecimal saldoatual, tdespesas, treceitas;
 //    private double dtdespesas=0, dtreceitas=0, dsaldoatual=0;
@@ -34,22 +34,30 @@ public class ChekingAccount implements Serializable {
     //private List<Income> receitas = IncomeRepository.GetInstance().getListIncome();
     
     @Transient/*non persistent*/
-    private List<Expense> despesas = PersistenceFactory.buildPersistenceFactory().expenseRepository().getListExpense();
+    private List<Expense> despesas = null;
     
     @Transient/*non persistent*/
-    private List<Income> receitas = PersistenceFactory.buildPersistenceFactory().incomeRepository().IncomeObjectList();
+    private List<Income> receitas = null;
 
     public ChekingAccount() {
 
     }
 
     public ChekingAccount(String id, String oname) {
+        expenseRepository = PersistenceFactory.buildPersistenceFactory().expenseRepository();
+        incomeRepository = PersistenceFactory.buildPersistenceFactory().incomeRepository();
+
+        despesas = PersistenceFactory.buildPersistenceFactory().expenseRepository().getListExpense();
+        receitas = PersistenceFactory.buildPersistenceFactory().incomeRepository().IncomeObjectList();
+
         this.id = id;
         this.ownerName = oname;
         this.saldoinicial = new BigDecimal(0);
         this.saldoatual = saldoinicial;
         this.tdespesas = new BigDecimal(0);
         this.treceitas = new BigDecimal(0);
+
+
     }
 
     public void setSaldoInicial(BigDecimal saldo) {

@@ -14,6 +14,9 @@ public class PaymentType implements Serializable{
     private String alias;
     @Id
     private int cod_sys;
+
+    public PaymentType() {
+    }
     
     public PaymentType(String alias) 
     {
