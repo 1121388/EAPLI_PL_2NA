@@ -81,7 +81,7 @@ public class IncomeTypeRepositoryImpl implements IncomeTypeRepository {
 
     @Override
     public List<String> getIncomeTypesStrings() {
-        List<String> list=new ArrayList<String>();
+        List<String> list=new ArrayList<>();
         
         for (IncomeType inc:pIncomeTypeList)
             list.add(inc.getDescription());

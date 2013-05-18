@@ -97,11 +97,7 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
     }
     
 
-    @Override
-    public IncomeType save(IncomeType inc) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 
     @Override
     public List<IncomeType> getIncomeTypes() {
@@ -112,7 +108,7 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
     public List<String> getIncomeTypesStrings() {
 
         
-        List<String> list=new ArrayList<String>();
+        List<String> list=new ArrayList<>();
         
         for (IncomeType inc:IncomeTypeObjectList())
             list.add(inc.getDescription());
@@ -123,6 +119,16 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
 
     @Override
     public IncomeType getIncomeTypeByDescription(String desc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (IncomeType inc:IncomeTypeObjectList())
+        {
+            if (inc.getDescription().equals(desc))
+                return inc;
+                
+        }
+
+    return null;
     }
+    
+    
+  
 }
