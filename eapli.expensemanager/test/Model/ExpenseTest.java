@@ -49,7 +49,7 @@ public class ExpenseTest {
         System.out.println("getAmount");
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date date = df.parse("1-1-1");
-        ExpenseType et = new ExpenseType("TipoDespesa");
+        ExpenseType et = new ExpenseType("TipoDespesa", "TipoDespesa");
         PaymentType pt = new PaymentType("DinheiroTipo");
         MeansOfPayment mp = new MeansOfPayment(pt);
         Expense instance = new Expense("Jantar", date, new BigDecimal(12), et, mp);
@@ -63,7 +63,7 @@ public class ExpenseTest {
     @Test
     public void testGetAmount2() {
         System.out.println("getAmount");
-        ExpenseType et = new ExpenseType("TipoDespesa");
+        ExpenseType et = new ExpenseType("TipoDespesa", "TipoDespesa");
         PaymentType pt = new PaymentType("cheque");
         MeansOfPayment mp = new MeansOfPayment(pt, 1234567890);
         Expense instance = new Expense("Jantar", 1,1,1, new BigDecimal(12), et, mp);
@@ -81,7 +81,7 @@ public class ExpenseTest {
     @Test
     public void testGetExpenseType() {
         System.out.println("getExpenseType");
-        ExpenseType et = new ExpenseType("TipoDespesa");
+        ExpenseType et = new ExpenseType("TipoDespesa", "TipoDespesa");
         PaymentType pt = new PaymentType("cheque");
         MeansOfPayment mp = new MeansOfPayment(pt, 1234567890);
         Expense instance = new Expense("Jantar", 1,1,1, new BigDecimal(12), et, mp);
@@ -100,7 +100,7 @@ public class ExpenseTest {
         System.out.println("getDateOccurred");
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date date = df.parse("1-1-1");
-        ExpenseType et = new ExpenseType("TipoDespesa");
+        ExpenseType et = new ExpenseType("TipoDespesa", "TipoDespesa");
         PaymentType pt = new PaymentType("DinheiroTipo");
         MeansOfPayment mp = new MeansOfPayment(pt);
         Expense instance = new Expense("Jantar", date, new BigDecimal(12), et, mp);
