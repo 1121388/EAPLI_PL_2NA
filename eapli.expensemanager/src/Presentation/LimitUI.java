@@ -40,6 +40,13 @@ public class LimitUI extends BasicUI{
         LimitType n = list.get(selected);
         
         controller.createLimit(n, value_yellow, value_red);
+        
+        System.out.println("Limit register with success");
+        new java.util.Scanner(System.in).nextLine();
+        System.out.flush();
+        
+        MainMenu menu = new MainMenu();
+        menu.mainLoop();
     }
 
     @Override

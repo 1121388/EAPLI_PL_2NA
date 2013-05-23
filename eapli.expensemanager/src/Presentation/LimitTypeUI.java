@@ -24,6 +24,13 @@ public class LimitTypeUI extends BasicUI {
         int id = Console.readInteger("Limit id: ");  
         String name = Console.readLine("Limit Name: ");        
         controller.createLimitType(id, name);
+        
+        System.out.println("Limit type register with success");
+        new java.util.Scanner(System.in).nextLine();
+        System.out.flush();
+        
+        MainMenu menu = new MainMenu();
+        menu.mainLoop();
     }
     
     @Override

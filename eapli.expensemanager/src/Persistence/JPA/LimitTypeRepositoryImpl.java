@@ -45,17 +45,15 @@ public class LimitTypeRepositoryImpl extends JpaRepository<LimitType, String> im
         assert em != null;
 
         List<LimitType> listLimit = new ArrayList<LimitType>();
-        Query q = em.createQuery("SELECT * FROM LimitType");
+        Query q = em.createQuery("SELECT lt FROM LimitType lt");
         try {
-            listLimit = (ArrayList<LimitType>) q.getResultList();
+            listLimit = q.getResultList();
         }
         catch (NoResultException ex)
         {
-            //Nao tem valores
+            System.out.println("No Limit type list values.");
         }
         return listLimit;
-        
-        //return listLimit;
     }
     
     @Override
@@ -63,12 +61,14 @@ public class LimitTypeRepositoryImpl extends JpaRepository<LimitType, String> im
     {  
         EntityManager em = getEntityManager();
         assert em != null;
-        em.getTransaction().begin();
-        
-        em.persist(l);
-        em.getTransaction().commit();
-        em.close();
-        
+        try {
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            em.persist(l);
+            tx.commit();
+        } finally {
+            em.close();
+        }        
         return l;
     }
 }
