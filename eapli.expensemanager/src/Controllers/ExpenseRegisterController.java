@@ -18,7 +18,7 @@ public class ExpenseRegisterController extends BasicController{
     //ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
      ExpenseTypeRepository expenseTypeRepository = PersistenceFactory.buildPersistenceFactory().expenseTypeRepository();
 
-    PaymentTypeRepository paymentTypeRepository = new PaymentTypeRepository();
+    PaymentTypeRepository paymentTypeRepository = PersistenceFactory.buildPersistenceFactory().paymentTypeRepository();
     
     public ExpenseRegisterController() {
     }

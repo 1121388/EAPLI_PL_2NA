@@ -1,12 +1,19 @@
 package Model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author i080649
  */
+@Entity
 public class Cheque  extends PaymentType{
     
     //private int cheque_nr;
+    @Id
+    @GeneratedValue
     private String Bank_name;
     public Cheque( String alias,String Bank_name )
     {

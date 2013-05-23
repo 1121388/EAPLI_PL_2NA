@@ -1,12 +1,16 @@
 package Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author i080649
  */
+@Entity
 public class Card  extends PaymentType
 {
-    
+    @Id
     private int card_nr;
     private String Bank_name;
     

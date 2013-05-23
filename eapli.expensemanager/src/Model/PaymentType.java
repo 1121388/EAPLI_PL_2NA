@@ -3,12 +3,15 @@ package Model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 /**
  *
  * @author i080649
  */
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class PaymentType implements Serializable{
     
     private String alias;
