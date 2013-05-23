@@ -6,8 +6,7 @@ package Model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  *
@@ -17,7 +16,13 @@ import javax.persistence.Id;
 public class Limit implements Serializable {
     
     @Id
-    private LimitType type;
+    @GeneratedValue
+    private Integer id;
+    
+    @OneToOne
+    @JoinColumn(name="type_id")        
+    LimitType type;
+    
     private BigDecimal value_yellow;
     private BigDecimal value_red;
     
@@ -26,7 +31,7 @@ public class Limit implements Serializable {
     public Limit(LimitType t, BigDecimal v1, BigDecimal v2){
         this.type = t;
         this.value_yellow = v1;
-        this.value_yellow = v2;
+        this.value_red = v2;
     }
 
     /**

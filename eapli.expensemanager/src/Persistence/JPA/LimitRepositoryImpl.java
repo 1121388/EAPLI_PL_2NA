@@ -47,30 +47,30 @@ public class LimitRepositoryImpl extends JpaRepository<Limit, String> implements
         assert em != null;
 
         List<Limit> listLimit = new ArrayList<Limit>();
-        Query q = em.createQuery("SELECT * FROM Limit");
+        Query q = em.createQuery("SELECT l FROM Limit l");
         try {
-            listLimit = (ArrayList<Limit>) q.getResultList();
+            listLimit = q.getResultList();
         }
         catch (NoResultException ex)
         {
-            //Nao tem valores
+            System.out.println("No Limit list values.");
         }
         return listLimit;
-        
-        //return listLimit;
     }
     
     @Override
     public Limit save(Limit l)
-    {  
+    {               
         EntityManager em = getEntityManager();
         assert em != null;
-        em.getTransaction().begin();
-        
-        em.persist(l);
-        em.getTransaction().commit();
-        em.close();
-        
+        try {
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            em.persist(l);
+            tx.commit();
+        } finally {
+            em.close();
+        }
         return l;
     }
 }
