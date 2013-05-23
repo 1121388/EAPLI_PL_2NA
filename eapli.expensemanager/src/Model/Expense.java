@@ -7,7 +7,9 @@ package Model;
 import eapli.util.DateTime;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
@@ -18,10 +20,10 @@ import javax.persistence.OneToOne;
 @Entity
 public class Expense extends Movements{
     
-    @OneToOne
+    @ManyToOne
     ExpenseType expenseType;
     
-    @OneToOne   
+    @OneToOne(cascade=CascadeType.PERSIST)
     MeansOfPayment meansOfPayment;
 
     protected Expense() { }
