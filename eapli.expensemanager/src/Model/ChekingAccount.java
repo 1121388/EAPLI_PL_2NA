@@ -5,6 +5,7 @@ import Persistence.IncomeRepository;
 import Persistence.PersistenceFactory;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -40,6 +41,11 @@ public class ChekingAccount implements Serializable {
     private List<Income> receitas = null;
 
     public ChekingAccount() {
+        expenseRepository = PersistenceFactory.buildPersistenceFactory().expenseRepository();
+        incomeRepository = PersistenceFactory.buildPersistenceFactory().incomeRepository();
+
+        despesas = PersistenceFactory.buildPersistenceFactory().expenseRepository().getListExpense();
+        receitas = PersistenceFactory.buildPersistenceFactory().incomeRepository().IncomeObjectList();
 
     }
 
@@ -122,8 +128,8 @@ public class ChekingAccount implements Serializable {
 
     //--------Obter total de despesas da semana
     public BigDecimal getWeekExpenses() {
-         BigDecimal texpenses = null;
-         BigDecimal aux = null;
+         BigDecimal texpenses = new BigDecimal(0);
+         //BigDecimal aux = null;
 
          //----- Obter dias do mês
          Calendar c = Calendar.getInstance();
@@ -134,12 +140,20 @@ public class ChekingAccount implements Serializable {
          c.add(Calendar.DATE, 6);
          lstdate = c.getTime();
 
-         List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate, lstdate);
-
-         for (int i = 0; i < 7; i++) {
+         // Raul Lima - Retirados os casts!
+         //List<Expense> WeekExpenses = (List<Expense>) (Expense) getExpensesByPeriod(stdate, lstdate);
+         List<Expense> WeekExpenses = getExpensesByPeriod(stdate, lstdate);
+         
+         // Raul Lima - reformulação da soma das despesas
+         /* for (int i = 0; i < 7; i++) {
          texpenses = aux.add(WeekExpenses.get(i).getAmount());
          aux = texpenses;
          }
+         */
+         for (int i = 0; i < WeekExpenses.size(); i++) {
+            texpenses = texpenses.add(WeekExpenses.get(i).getAmount());
+         }
+         
          return texpenses;
     }
 
@@ -181,14 +195,16 @@ public class ChekingAccount implements Serializable {
 
     //--------- Método a ser usado pelas funções que necessitem de despesas por periodo de tempo.
     public List<Expense> getExpensesByPeriod(Date start, Date end) {
-        List<Expense> _resultado = null;
+        List<Expense> _resultado = new ArrayList<Expense>();
+        // Raul Lima - comentado por ser desnecessário
+        /*
         int index = despesas.size();
         if (index == 0) {
             return _resultado;
         }
+        */
 
-
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < despesas.size(); i++) {
             if (despesas.get(i).getDateOccurred().after(start) && despesas.get(i).getDateOccurred().before(end)) {
                 _resultado.add(despesas.get(i));
             }

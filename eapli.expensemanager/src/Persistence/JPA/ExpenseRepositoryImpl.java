@@ -22,7 +22,7 @@ public class ExpenseRepositoryImpl extends JpaRepository<Expense, String> implem
 
     @Override
     public ExpenseRepository GetInstance() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new ExpenseRepositoryImpl();
     }
     
     @Override

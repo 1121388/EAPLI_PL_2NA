@@ -108,7 +108,7 @@ public class IncomeTypeRepositoryImpl extends JpaRepository<IncomeType, String> 
     public List<String> getIncomeTypesStrings() {
 
         
-        List<String> list=new ArrayList<>();
+        List<String> list=new ArrayList<String>();
         
         for (IncomeType inc:IncomeTypeObjectList())
             list.add(inc.getDescription());
