@@ -26,7 +26,7 @@ public class Movements implements Serializable{
     
     @Id
     @GeneratedValue
-//    private int id;
+    private int id;
     String description;
     
     

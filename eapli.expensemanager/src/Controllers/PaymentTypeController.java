@@ -19,18 +19,18 @@ public class PaymentTypeController extends BasicController{
     public PaymentTypeController() {}
     
     public void registerPaymentType(String alias, int cod_sys) {
-        PaymentType paymentType = new PaymentType(alias);
-        pRepository.AddPaymentType(paymentType);
+        //PaymentType paymentType = new PaymentType(alias);
+        //pRepository.AddPaymentType(paymentType);
     }
     
     public void registerCard(String alias, int card_nr, String Bank_name) {
-        Card card = new Card(alias,card_nr,Bank_name);
-        pRepository.AddPaymentType(card);
+        //Card card = new Card(alias,card_nr,Bank_name);
+        //pRepository.AddPaymentType(card);
     }
     
     public void registerCheque(String alias, String Bank_name) {
-        Cheque cheque = new Cheque(alias,Bank_name);
-        pRepository.AddPaymentType(cheque);
+        //Cheque cheque = new Cheque(alias,Bank_name);
+        //pRepository.AddPaymentType(cheque);
     }
     
     public void registerCash(String alias, String currency) {
@@ -39,8 +39,8 @@ public class PaymentTypeController extends BasicController{
     }
     
     public void registerPaypal(String alias, String user) {
-        Paypal paypal = new Paypal(alias,user);
-        pRepository.AddPaymentType(paypal);
+        //Paypal paypal = new Paypal(alias,user);
+        //pRepository.AddPaymentType(paypal);
     }
     
     public String listPaymentTypeList() {

@@ -4,7 +4,7 @@
  */
 package Persistence.InMemory;
 
-import Model.PaymentType;
+import Model.Cash;
 import Persistence.PaymentTypeRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class PaymentTypeRepositoryImpl implements PaymentTypeRepository{
 
-    private static List<PaymentType> PaymentTypeList = new ArrayList<PaymentType>();
+    private static List<Cash> PaymentTypeList = new ArrayList<Cash>();
     
     @Override
-    public void AddPaymentType(PaymentType paymentType) {
+    public void AddPaymentType(Cash paymentType) {
         PaymentTypeList.add(paymentType);
     }
 
@@ -32,7 +32,7 @@ public class PaymentTypeRepositoryImpl implements PaymentTypeRepository{
     }
 
     @Override
-    public PaymentType GetPaymentType(int pos) {
+    public Cash GetPaymentType(int pos) {
         return PaymentTypeList.get(pos - 1);
     }
     

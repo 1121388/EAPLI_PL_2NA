@@ -1,6 +1,6 @@
 package Persistence;
 
-import Model.PaymentType;
+import Model.Cash;
 
 /**
  *
@@ -9,9 +9,9 @@ import Model.PaymentType;
 
 public interface PaymentTypeRepository {
     
-    public void AddPaymentType(PaymentType paymentType);
+    public void AddPaymentType(Cash paymentType);
     public String listPaymentTypeList();
-    public PaymentType GetPaymentType(int pos);
+    public Cash GetPaymentType(int pos);
     
 //    //private static PaymentTypeRepository uniquePaymentTypeRepository = new PaymentTypeRepository();
 //    private static List<PaymentType> PaymentTypeList = new ArrayList<PaymentType>();

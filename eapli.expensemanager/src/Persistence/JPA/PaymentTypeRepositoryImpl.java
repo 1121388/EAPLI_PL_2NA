@@ -4,7 +4,7 @@
  */
 package Persistence.JPA;
 
-import Model.PaymentType;
+import Model.Cash;
 import Persistence.PaymentTypeRepository;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -16,10 +16,10 @@ import javax.persistence.PersistenceException;
  *
  * @author Abilio
  */
-public class PaymentTypeRepositoryImpl extends JpaRepository<PaymentType, String> implements PaymentTypeRepository {
+public class PaymentTypeRepositoryImpl extends JpaRepository<Cash, String> implements PaymentTypeRepository {
 
     @Override
-    public void AddPaymentType(PaymentType paymentType) {
+    public void AddPaymentType(Cash paymentType) {
         
         EntityManager em = getEntityManager();
         assert em != null;
@@ -39,7 +39,7 @@ public class PaymentTypeRepositoryImpl extends JpaRepository<PaymentType, String
     @Override
     public String listPaymentTypeList() {
         
-        List<PaymentType> PaymentTypeList = all();
+        List<Cash> PaymentTypeList = all();
         String list = "\nPayment types list:\n";
             for (int i = 0; i < PaymentTypeList.size(); i++) {
                 list = list + (i + 1) + " -> " + PaymentTypeList.get(i).getAlias() + "\n";
@@ -48,9 +48,9 @@ public class PaymentTypeRepositoryImpl extends JpaRepository<PaymentType, String
     }
 
     @Override
-    public PaymentType GetPaymentType(int pos) {
+    public Cash GetPaymentType(int pos) {
         
-        List<PaymentType> ListaObjectos = all();
+        List<Cash> ListaObjectos = all();
         if (pos > 0 && pos <= ListaObjectos.size())
             return ListaObjectos.get(pos - 1);
         else

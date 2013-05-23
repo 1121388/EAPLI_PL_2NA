@@ -20,18 +20,19 @@ public class MeansOfPayment implements Serializable {
     @Id
     @GeneratedValue
     @OneToOne
-    PaymentType paymenType;
+    Cash paymenType;
     int nCheck;
 
     public MeansOfPayment() {
     }
     
-    public MeansOfPayment(PaymentType paymenType){
+    public MeansOfPayment(Cash paymenType){
         this.paymenType = paymenType;
     }
+    /*
     public MeansOfPayment(PaymentType paymenType, int nCheck){
         this.nCheck = nCheck;
         this.paymenType = paymenType;
     }
-
+    */
 }

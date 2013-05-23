@@ -33,17 +33,19 @@ public class ExpenseRegisterController extends BasicController{
     public String listPaymentTypeList(){
         return paymentTypeRepository.listPaymentTypeList();
     }
-    public PaymentType GetPaymentType(int paymentType){
+    public Cash GetPaymentType(int paymentType){
         return paymentTypeRepository.GetPaymentType(paymentType);
     }
     
-    public MeansOfPayment meansOfPayment (PaymentType paymentType){
+    public MeansOfPayment meansOfPayment (Cash paymentType){
         return new MeansOfPayment(paymentType);
     }
+    /*
     public MeansOfPayment meansOfPayment (PaymentType paymentType, int nCheck){
         return new MeansOfPayment(paymentType, nCheck);
     }
-            
+    */
+    
     public void registerExpense(String what, Date date, BigDecimal amount, ExpenseType expenseType, MeansOfPayment meansOfPayment) {
         new ChekingAccount().registerExpense( what, date, amount, expenseType, meansOfPayment);
     }
