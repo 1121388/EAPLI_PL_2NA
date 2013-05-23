@@ -26,6 +26,7 @@ public class IncomeTypeRegisterController extends BasicController {
             
         }
         IncomeType incType = new IncomeType(shortName,description);
+        // test
         
         
         repo.SaveIncomeType(incType);
