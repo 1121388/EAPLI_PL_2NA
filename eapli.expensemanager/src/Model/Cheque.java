@@ -12,9 +12,12 @@ import javax.persistence.Id;
 public class Cheque  extends PaymentType{
     
     //private int cheque_nr;
-    @Id
-    @GeneratedValue
+//    @GeneratedValue
+//    private int idInterno;
     private String Bank_name;
+    
+    public Cheque(){}
+    
     public Cheque( String alias,String Bank_name )
     {
         super(alias);

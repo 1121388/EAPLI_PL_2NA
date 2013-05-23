@@ -11,9 +11,11 @@ import javax.persistence.Id;
 @Entity
 public class Paypal extends PaymentType
 {
-    @Id
-    @GeneratedValue
+//    @GeneratedValue
+//    private int idInterno;
     private String user;
+    
+    public Paypal(){}
     
     public Paypal( String alias, String user )
     {

@@ -11,9 +11,11 @@ import javax.persistence.Id;
 @Entity
 public class Cash  extends PaymentType
 {
-    @Id
-    @GeneratedValue
+//    @GeneratedValue
+//    private int idInterno; 
     private String currency;
+    
+    public Cash(){}
     
     public Cash( String alias, String currency )
     {
