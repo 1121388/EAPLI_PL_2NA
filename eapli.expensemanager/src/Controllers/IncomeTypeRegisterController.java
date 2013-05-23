@@ -25,7 +25,7 @@ public class IncomeTypeRegisterController extends BasicController {
         if (repo.getIncomeTypeByDescription(description)==null){
             
         }
-        IncomeType incType = new IncomeType(description);
+        IncomeType incType = new IncomeType(shortName,description);
         
         
         repo.SaveIncomeType(incType);
