@@ -4,6 +4,8 @@
  */
 package Model;
 
+import Controllers.InitializeBalanceController;
+import Persistence.PersistenceFactory;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -198,6 +200,24 @@ public class ChekingAccountTest {
         IncomeType incomeType = null;
         ChekingAccount instance = new ChekingAccount();
         instance.registerIncome(what, date, amount, incomeType);
+        // TODO review the generated test code and remove the default call to fail.
+    }
+    
+    /**
+     * Test of Saldo Inicial
+     */        //fail("The test case is a prototype.");
+
+    @Test
+    public void testInitBalance() {
+        int valor = 15000;
+        System.out.println("init bal\nSet->15000");
+        InitializeBalanceController inticont = new InitializeBalanceController();
+        inticont.InitializeBalance(new BigDecimal(valor));
+        ChekingAccount ck = PersistenceFactory.buildPersistenceFactory().chekingAccountRepository().GetChekingAccount();
+        BigDecimal expResult = new BigDecimal(valor);
+        BigDecimal result = ck.getSaldoInicial();
+        System.out.println("Saldo inicial = " + result + "€");
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
