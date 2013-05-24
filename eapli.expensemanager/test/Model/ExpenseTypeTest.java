@@ -42,11 +42,12 @@ public class ExpenseTypeTest {
     @Test
     public void testGetDescription() {
         System.out.println("GetDescription");
-        ExpenseType instance = new ExpenseType("Luz");
-        String expResult = "Luz";
-        String result = instance.GetDescription();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        ExpenseType instance = new ExpenseType("GasN", "Gas Natural");
+        String expResultName = "GasN";
+        String expResultLongName = "Gas Natural";
+        String resultName = instance.GetName();
+        String resultLongName = instance.GetLongName();
+        assertEquals(expResultName, resultName);
+        assertEquals(expResultLongName, resultLongName);
     }
 }
