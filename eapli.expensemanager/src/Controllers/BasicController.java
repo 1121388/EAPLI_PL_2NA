@@ -14,8 +14,7 @@ import java.math.BigDecimal;
  * @author i111051 && raul lima
  */
 public class BasicController {
-    private ChekingAccountRepository pConta= 
-            PersistenceFactory.buildPersistenceFactory().chekingAccountRepository();
+    private ChekingAccountRepository pConta=PersistenceFactory.buildPersistenceFactory().chekingAccountRepository();
     
     public BasicController(){}
     

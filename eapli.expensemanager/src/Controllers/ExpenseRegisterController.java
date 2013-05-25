@@ -15,20 +15,20 @@ import java.util.Date;
  */
 public class ExpenseRegisterController extends BasicController{
     
-    //ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
-     ExpenseTypeRepository expenseTypeRepository = PersistenceFactory.buildPersistenceFactory().expenseTypeRepository();
+  //ExpenseTypeRepository expenseTypeRepository = ExpenseTypeRepository.GetInstance();
+//    ExpenseTypeRepository expenseTypeRepository = PersistenceFactory.buildPersistenceFactory().expenseTypeRepository();
 
     PaymentTypeRepository paymentTypeRepository = PersistenceFactory.buildPersistenceFactory().paymentTypeRepository();
     
     public ExpenseRegisterController() {
     }
     
-    public String ExpenseTypeList(){
-        return expenseTypeRepository.ExpenseTypeList(false);
-    }
-    public ExpenseType GetExpenseType(int expenseType){
-        return expenseTypeRepository.GetExpenseType(expenseType);
-    }
+//    public String ExpenseTypeList(){
+//        return expenseTypeRepository.ExpenseTypeList(false);
+//    }
+//    public ExpenseType GetExpenseType(int expenseType){
+//        return expenseTypeRepository.GetExpenseType(expenseType);
+//    }
     
     public String listPaymentTypeList(){
         return paymentTypeRepository.listPaymentTypeList();

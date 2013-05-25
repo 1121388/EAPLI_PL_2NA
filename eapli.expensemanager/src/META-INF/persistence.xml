@@ -14,12 +14,16 @@
     <class>Model.Movements</class>
     <class>Model.PaymentType</class>
     <class>Model.SavingGoal</class>
+    <class>Model.Card</class>
+    <class>Model.Cash</class>
+    <class>Model.Cheque</class>
+    <class>Model.Paypal</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost//data//expensemanager2NA"/>
       <property name="javax.persistence.jdbc.password" value=""/>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>
-      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>
